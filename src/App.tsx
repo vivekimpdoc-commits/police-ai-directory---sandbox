@@ -386,9 +386,9 @@ export default function App() {
         initial={{ opacity: 0, scale: 0.96 }} 
         animate={{ opacity: 1, scale: 1 }} 
         transition={{ duration: 0.5, delay: 0.1, type: "spring" }}
-        className="bg-white border-2 border-zinc-200/80 rounded-[2rem] p-5 md:p-7 mb-10 shadow-2xl shadow-zinc-200/50 overflow-x-auto scrollbar-none hover:shadow-xl transition-all duration-500"
+        className="bg-white border-2 border-zinc-200/80 rounded-[2rem] p-5 md:p-7 mb-10 shadow-2xl shadow-zinc-200/50 hover:shadow-xl transition-all duration-500"
       >
-        <div className="flex items-stretch gap-4 min-w-max">
+        <div className="flex flex-wrap items-stretch gap-4">
           {/* Label */}
           <div className="flex flex-col items-center justify-center gap-2 pr-6 border-r-2 border-zinc-200 shrink-0">
             <ListFilter className="w-7 h-7 text-zinc-700" />
