@@ -106,7 +106,7 @@ function renderSandboxBadge(type: string, isBig: boolean = false, currentLang: "
   let IconComponent = ShieldAlert;
 
   // Custom styled gradient border classes & color accents matching each category precisely
-  let colorClasses = "bg-zinc-50 border-zinc-200 text-zinc-900";
+  let colorClasses = "bg-slate-800/60 backdrop-blur-xl border-slate-700/50 text-slate-100";
 
   switch (type) {
     case "text":
@@ -149,7 +149,7 @@ function renderSandboxBadge(type: string, isBig: boolean = false, currentLang: "
       labelEnglish = "Document Analyzer";
       labelHindi = "दस्तावेज़ विश्लेषक";
       IconComponent = Database;
-      colorClasses = "bg-zinc-105 text-zinc-850 border-zinc-200 hover:bg-zinc-150/80 transition-all";
+      colorClasses = "bg-zinc-105 text-zinc-850 border-slate-700/50 hover:bg-zinc-150/80 transition-all";
       break;
     case "trend":
       labelEnglish = "Predictive / Trends";
@@ -161,7 +161,7 @@ function renderSandboxBadge(type: string, isBig: boolean = false, currentLang: "
       labelEnglish = type;
       labelHindi = type;
       IconComponent = ShieldAlert;
-      colorClasses = "bg-zinc-50 text-zinc-800 border-zinc-200 hover:bg-zinc-100 transition-all";
+      colorClasses = "bg-slate-800/60 backdrop-blur-xl text-slate-200 border-slate-700/50 hover:bg-slate-800 transition-all";
       break;
   }
 
@@ -296,31 +296,31 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-zinc-50/50 text-zinc-900 flex flex-col font-sans selection:bg-indigo-600 selection:text-white p-6 md:p-12 box-border animate-fade-in">
+    <div className="min-h-screen bg-slate-800/60 backdrop-blur-xl/50 text-slate-100 flex flex-col font-sans selection:bg-indigo-600 selection:text-white p-6 md:p-12 box-border animate-fade-in">
 
       {/* 🛡️ STATE POLICE POLISHED BENTO-HEADER PANEL */}
       <motion.header 
         initial={{ y: -40, opacity: 0 }} 
         animate={{ y: 0, opacity: 1 }} 
         transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
-        className="bg-white border border-zinc-200/80 rounded-[2.5rem] p-8 md:p-10 mb-10 shadow-2xl shadow-indigo-900/5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 hover:shadow-indigo-900/10 border-b-8 border-b-indigo-600/20 backdrop-blur-3xl"
+        className="bg-slate-900/60 backdrop-blur-2xl border border-slate-700/50/80 rounded-[2.5rem] p-8 md:p-10 mb-10 shadow-2xl shadow-indigo-900/5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 hover:shadow-indigo-900/10 border-b-8 border-b-indigo-600/20 backdrop-blur-3xl"
       >
 
         {/* Logo & Slogan */}
         <div className="flex items-center gap-6">
-          <div className="w-20 h-20 md:w-24 md:h-24 rounded-[1.5rem] bg-zinc-900 flex items-center justify-center shadow-2xl relative shrink-0 border-2 border-zinc-800">
+          <div className="w-20 h-20 md:w-24 md:h-24 rounded-[1.5rem] bg-slate-950 flex items-center justify-center shadow-2xl relative shrink-0 border-2 border-zinc-800">
             <ShieldAlert className="w-10 h-10 md:w-12 md:h-12 text-white" />
-            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-emerald-500 border-4 border-white rounded-full bg-cover shadow-lg animate-pulse" />
+            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-cyan-500 border-4 border-white rounded-full bg-cover shadow-lg animate-pulse" />
           </div>
           <div>
-            <div className="flex items-center gap-2 text-zinc-400 text-sm md:text-base font-extrabold tracking-widest uppercase mb-2">
+            <div className="flex items-center gap-2 text-slate-400 text-sm md:text-base font-extrabold tracking-widest uppercase mb-2">
               <span>Directory</span>
               <span className="opacity-50">/</span>
               <span className="text-indigo-600 font-black">National Police AI Registry</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-black tracking-tight text-zinc-950 font-display flex flex-wrap items-center gap-x-4 gap-y-2">
+            <h1 className="text-3xl md:text-5xl font-black tracking-tight text-white font-display flex flex-wrap items-center gap-x-4 gap-y-2">
               <span>राज्य पुलिस एआई डायरेक्टरी</span>
-              <span className="text-zinc-400 text-lg md:text-2xl font-bold border-l-4 border-zinc-200 pl-4">Police AI Directory & Sandbox</span>
+              <span className="text-slate-400 text-lg md:text-2xl font-bold border-l-4 border-slate-700/50 pl-4">Police AI Directory & Sandbox</span>
             </h1>
           </div>
         </div>
@@ -337,19 +337,19 @@ export default function App() {
           </div>
 
           {/* Search Input across all folders */}
-          <div className="bg-zinc-50/80 border-2 border-zinc-200 px-5 py-3.5 flex items-center gap-4 rounded-2xl shadow-inner w-full md:w-80 focus-within:ring-4 focus-within:ring-indigo-600/20 focus-within:border-indigo-500 focus-within:bg-white hover:border-zinc-300 transition-all duration-300">
-            <Search className="w-4 h-4 text-zinc-400 shrink-0" />
+          <div className="bg-slate-800/60 backdrop-blur-xl/80 border-2 border-slate-700/50 px-5 py-3.5 flex items-center gap-4 rounded-2xl shadow-inner w-full md:w-80 focus-within:ring-4 focus-within:ring-indigo-600/20 focus-within:border-indigo-500 focus-within:bg-slate-900/60 backdrop-blur-2xl hover:border-slate-600/50 transition-all duration-300">
+            <Search className="w-4 h-4 text-slate-400 shrink-0" />
             <input
               type="text"
               placeholder="खोजें / Search 45+ AI solutions..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="outline-none text-sm w-full bg-transparent text-zinc-900 placeholder-zinc-400 font-extrabold"
+              className="outline-none text-sm w-full bg-transparent text-slate-100 placeholder-zinc-400 font-extrabold"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                className="text-xs font-black text-indigo-600 hover:text-indigo-850 shrink-0 border-l border-zinc-200 pl-2 ml-1"
+                className="text-xs font-black text-indigo-600 hover:text-indigo-850 shrink-0 border-l border-slate-700/50 pl-2 ml-1"
               >
                 Clear
               </button>
@@ -357,12 +357,12 @@ export default function App() {
           </div>
 
           {/* Language Switcher Bento Capsule */}
-          <div className="bg-zinc-100 rounded-2xl p-1 flex items-center shadow-inner border border-zinc-200 shrink-0">
+          <div className="bg-slate-800 rounded-2xl p-1 flex items-center shadow-inner border border-slate-700/50 shrink-0">
             <button
               onClick={() => setLanguage("hi")}
               className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all duration-200 ${language === "hi"
-                ? "bg-white text-zinc-950 shadow-xs border border-zinc-200"
-                : "text-zinc-500 hover:text-zinc-900"
+                ? "bg-slate-900/60 backdrop-blur-2xl text-white shadow-xs border border-slate-700/50"
+                : "text-slate-400 hover:text-slate-100"
                 }`}
             >
               हिन्दी
@@ -370,8 +370,8 @@ export default function App() {
             <button
               onClick={() => setLanguage("en")}
               className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all duration-200 ${language === "en"
-                ? "bg-white text-zinc-950 shadow-xs border border-zinc-200"
-                : "text-zinc-500 hover:text-zinc-900"
+                ? "bg-slate-900/60 backdrop-blur-2xl text-white shadow-xs border border-slate-700/50"
+                : "text-slate-400 hover:text-slate-100"
                 }`}
             >
               EN
@@ -386,13 +386,13 @@ export default function App() {
         initial={{ opacity: 0, scale: 0.96 }} 
         animate={{ opacity: 1, scale: 1 }} 
         transition={{ duration: 0.5, delay: 0.1, type: "spring" }}
-        className="bg-white border-2 border-zinc-200/80 rounded-[2rem] p-5 md:p-7 mb-10 shadow-2xl shadow-zinc-200/50 hover:shadow-xl transition-all duration-500"
+        className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50/80 rounded-[2rem] p-5 md:p-7 mb-10 shadow-2xl shadow-slate-900/50/50 hover:shadow-xl transition-all duration-500"
       >
         <div className="flex flex-wrap items-stretch gap-4">
           {/* Label */}
-          <div className="flex flex-col items-center justify-center gap-2 pr-6 border-r-2 border-zinc-200 shrink-0">
-            <ListFilter className="w-7 h-7 text-zinc-700" />
-            <span className="text-xs text-zinc-400 font-black uppercase tracking-widest whitespace-nowrap">
+          <div className="flex flex-col items-center justify-center gap-2 pr-6 border-r-2 border-slate-700/50 shrink-0">
+            <ListFilter className="w-7 h-7 text-slate-300" />
+            <span className="text-xs text-slate-400 font-black uppercase tracking-widest whitespace-nowrap">
               {language === 'hi' ? 'संचालन स्तर' : 'Category'}
             </span>
           </div>
@@ -402,11 +402,11 @@ export default function App() {
 
             const colorMap: Record<string, { active: string; icon: string; badge: string; glow: string }> = {
               blue: { active: "bg-blue-600   text-white border-blue-600   shadow-xl shadow-blue-200", icon: "text-blue-500", badge: "bg-blue-100 text-blue-700", glow: "hover:shadow-blue-100/50" },
-              emerald: { active: "bg-emerald-600 text-white border-emerald-600 shadow-xl shadow-emerald-200", icon: "text-emerald-500", badge: "bg-emerald-100 text-emerald-700", glow: "hover:shadow-emerald-100/50" },
+              emerald: { active: "bg-emerald-600 text-white border-emerald-600 shadow-xl shadow-emerald-200", icon: "text-cyan-500", badge: "bg-emerald-100 text-emerald-700", glow: "hover:shadow-emerald-100/50" },
               indigo: { active: "bg-indigo-600  text-white border-indigo-600  shadow-xl shadow-indigo-200", icon: "text-indigo-500", badge: "bg-indigo-100 text-indigo-700", glow: "hover:shadow-indigo-100/50" },
               violet: { active: "bg-violet-600  text-white border-violet-600  shadow-xl shadow-violet-200", icon: "text-violet-500", badge: "bg-violet-100 text-violet-700", glow: "hover:shadow-violet-100/50" },
               rose: { active: "bg-rose-600    text-white border-rose-600    shadow-xl shadow-rose-200", icon: "text-rose-500", badge: "bg-rose-100 text-rose-700", glow: "hover:shadow-rose-100/50" },
-              amber: { active: "bg-amber-500   text-zinc-950 border-amber-500   shadow-xl shadow-amber-200", icon: "text-amber-500", badge: "bg-amber-100 text-amber-800", glow: "hover:shadow-amber-100/50" },
+              amber: { active: "bg-amber-500   text-white border-amber-500   shadow-xl shadow-amber-200", icon: "text-amber-500", badge: "bg-amber-100 text-amber-800", glow: "hover:shadow-amber-100/50" },
             };
             const s = colorMap[cat.color] || colorMap.indigo;
 
@@ -423,11 +423,11 @@ export default function App() {
                 }}
                 className={`px-7 py-5 rounded-2xl flex items-center gap-4 transition-all duration-300 border-2 relative cursor-pointer shrink-0 group ${isSelected
                   ? s.active
-                  : `bg-zinc-50 text-zinc-700 border-zinc-200 hover:border-zinc-300 hover:bg-white hover:shadow-lg ${s.glow} hover:scale-[1.04]`
+                  : `bg-slate-800/60 backdrop-blur-xl text-slate-300 border-slate-700/50 hover:border-slate-600/50 hover:bg-slate-900/60 backdrop-blur-2xl hover:shadow-lg ${s.glow} hover:scale-[1.04]`
                   }`}
               >
                 {/* Icon */}
-                <div className={`p-2 rounded-xl transition-all ${isSelected ? 'bg-white/20' : 'bg-white shadow-sm border border-zinc-200'}`}>
+                <div className={`p-2 rounded-xl transition-all ${isSelected ? 'bg-slate-900/60 backdrop-blur-2xl/20' : 'bg-slate-900/60 backdrop-blur-2xl shadow-sm border border-slate-700/50'}`}>
                   {isSelected ? (
                     <FolderOpen className="w-6 h-6 text-white" />
                   ) : (
@@ -437,18 +437,18 @@ export default function App() {
 
                 {/* Text */}
                 <div className="text-left">
-                  <div className={`font-black text-base md:text-lg leading-tight ${isSelected ? 'text-white' : 'text-zinc-900'}`}>
+                  <div className={`font-black text-base md:text-lg leading-tight ${isSelected ? 'text-white' : 'text-slate-100'}`}>
                     {language === "hi" ? cat.nameHindi : cat.nameEnglish}
                   </div>
-                  <div className={`text-xs font-bold mt-0.5 ${isSelected ? 'text-white/70' : 'text-zinc-400'}`}>
+                  <div className={`text-xs font-bold mt-0.5 ${isSelected ? 'text-white/70' : 'text-slate-400'}`}>
                     {AI_TOPICS.filter(t => t.categoryId === cat.id).length} AI Units
                   </div>
                 </div>
 
                 {/* Active count badge */}
                 {isSelected && (
-                  <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white/90 border-2 border-white flex items-center justify-center shadow-md">
-                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-slate-900/60 backdrop-blur-2xl/90 border-2 border-white flex items-center justify-center shadow-md">
+                    <div className="w-2.5 h-2.5 rounded-full bg-cyan-500 animate-pulse" />
                   </div>
                 )}
               </motion.button>
@@ -466,7 +466,7 @@ export default function App() {
           </span>
           <button
             onClick={() => setSearchQuery("")}
-            className="text-xs font-black text-indigo-700 hover:text-indigo-900 underline bg-white px-3.5 py-1.5 border border-indigo-200 rounded-xl cursor-pointer hover:bg-indigo-50/40 transition-colors"
+            className="text-xs font-black text-indigo-700 hover:text-indigo-900 underline bg-slate-900/60 backdrop-blur-2xl px-3.5 py-1.5 border border-indigo-200 rounded-xl cursor-pointer hover:bg-indigo-50/40 transition-colors"
           >
             Back to Categories
           </button>
@@ -482,16 +482,16 @@ export default function App() {
       >
 
         {/* 🗄️ LEFT SIDEBAR: TOPICS BENTO CELL */}
-        <section className="lg:col-span-4 bg-white border border-zinc-200/80 rounded-[2rem] overflow-hidden shadow-2xl shadow-zinc-200/50 flex flex-col hover:shadow-indigo-900/10 transition-all duration-500 backdrop-blur-3xl">
+        <section className="lg:col-span-4 bg-slate-900/60 backdrop-blur-2xl border border-slate-700/50/80 rounded-[2rem] overflow-hidden shadow-2xl shadow-slate-900/50/50 flex flex-col hover:shadow-indigo-900/10 transition-all duration-500 backdrop-blur-3xl">
 
-          <div className="bg-zinc-50/70 px-6 py-5 border-b border-zinc-200 flex items-center justify-between">
+          <div className="bg-slate-800/60 backdrop-blur-xl/70 px-6 py-5 border-b border-slate-700/50 flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-3 h-3 rounded-full bg-zinc-900 shadow-sm" />
-              <h2 className="text-sm font-black uppercase tracking-widest text-zinc-900">
+              <div className="w-3 h-3 rounded-full bg-slate-950 shadow-sm" />
+              <h2 className="text-sm font-black uppercase tracking-widest text-slate-100">
                 {searchQuery ? "All Search Hits" : `${CATEGORIES.find(c => c.id === selectedFolder)?.nameEnglish} List`}
               </h2>
             </div>
-            <span className="bg-white border border-zinc-200 text-zinc-700 font-extrabold px-2.5 py-0.5 rounded-lg text-[10px] font-mono">
+            <span className="bg-slate-900/60 backdrop-blur-2xl border border-slate-700/50 text-slate-300 font-extrabold px-2.5 py-0.5 rounded-lg text-[10px] font-mono">
               {filteredTopics.length} Matches
             </span>
           </div>
@@ -504,16 +504,16 @@ export default function App() {
 
                 const topicColorKey = CATEGORIES.find(c => c.id === topic.categoryId)?.color || "indigo";
                 const bgSelectedClass = topicColorKey === "amber"
-                  ? "bg-amber-50/60 border-l-amber-500 text-zinc-950 font-black"
+                  ? "bg-amber-50/60 border-l-amber-500 text-white font-black"
                   : topicColorKey === "emerald"
-                    ? "bg-emerald-50/60 border-l-emerald-600 text-zinc-950 font-black"
+                    ? "bg-emerald-50/60 border-l-emerald-600 text-white font-black"
                     : topicColorKey === "blue"
-                      ? "bg-blue-50/60 border-l-blue-600 text-zinc-950 font-black"
+                      ? "bg-blue-50/60 border-l-blue-600 text-white font-black"
                       : topicColorKey === "violet"
-                        ? "bg-violet-50/60 border-l-violet-600 text-zinc-950 font-black"
+                        ? "bg-violet-50/60 border-l-violet-600 text-white font-black"
                         : topicColorKey === "rose"
-                          ? "bg-rose-50/60 border-l-rose-600 text-zinc-950 font-black"
-                          : "bg-indigo-50/60 border-l-indigo-600 text-zinc-950 font-black";
+                          ? "bg-rose-50/60 border-l-rose-600 text-white font-black"
+                          : "bg-indigo-50/60 border-l-indigo-600 text-white font-black";
 
                 return (
                   <motion.button
@@ -523,12 +523,12 @@ export default function App() {
                     onClick={() => setSelectedTopic(topic)}
                     className={`w-full text-left p-5 md:p-6 transition-all duration-300 outline-none flex items-start gap-4 border-l-8 relative cursor-pointer ${isSelected
                       ? bgSelectedClass
-                      : "border-transparent hover:bg-zinc-50 text-zinc-650 hover:text-zinc-950"
+                      : "border-transparent hover:bg-slate-800/60 backdrop-blur-xl text-zinc-650 hover:text-white"
                       }`}
                   >
                     <div className={`p-2.5 rounded-xl shrink-0 transition-all ${isSelected
-                      ? (topicColorKey === 'amber' ? 'bg-amber-100/80 text-amber-950' : 'bg-white shadow-xs text-indigo-600')
-                      : "bg-zinc-50 text-zinc-400"
+                      ? (topicColorKey === 'amber' ? 'bg-amber-100/80 text-amber-950' : 'bg-slate-900/60 backdrop-blur-2xl shadow-xs text-indigo-600')
+                      : "bg-slate-800/60 backdrop-blur-xl text-slate-400"
                       }`}>
                       <IconComponent className="w-5 h-5 font-bold" />
                     </div>
@@ -536,14 +536,14 @@ export default function App() {
                     <div className="flex-1 min-w-0">
                       {/* Title + Badge Row */}
                       <div className="flex items-start justify-between gap-2 mb-1.5">
-                        <span className="font-extrabold text-sm md:text-base text-zinc-900 leading-snug pr-1">
+                        <span className="font-extrabold text-sm md:text-base text-slate-100 leading-snug pr-1">
                           {language === "hi" ? topic.titleHindi : topic.titleEnglish}
                         </span>
                         {renderSandboxBadge(topic.sandboxType, false, language)}
                       </div>
 
                       {/* Subtitle */}
-                      <p className="text-xs text-zinc-400 font-semibold truncate">
+                      <p className="text-xs text-slate-400 font-semibold truncate">
                         {topic.subtitleEnglish}
                       </p>
                     </div>
@@ -557,7 +557,7 @@ export default function App() {
                 );
               })
             ) : (
-              <div className="p-8 text-center text-zinc-400 text-xs font-semibold">
+              <div className="p-8 text-center text-slate-400 text-xs font-semibold">
                 <Info className="w-8 h-8 mx-auto text-zinc-350 mb-2" />
                 No police modules found matching query.
               </div>
@@ -579,11 +579,11 @@ export default function App() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.4 }}
-              className="bg-white border-2 border-zinc-200/80 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-900/10 hover:shadow-indigo-900/15 flex flex-col transition-all duration-500"
+              className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50/80 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-900/10 hover:shadow-indigo-900/15 flex flex-col transition-all duration-500"
             >
 
               {/* TOP CASE HEADER BENTO */}
-              <div className="bg-zinc-50/90 p-8 md:p-10 border-b-2 border-zinc-200 relative flex flex-col gap-5 backdrop-blur-2xl">
+              <div className="bg-slate-800/60 backdrop-blur-xl/90 p-8 md:p-10 border-b-2 border-slate-700/50 relative flex flex-col gap-5 backdrop-blur-2xl">
 
                 {/* Abstract decorative layout dots */}
                 <div className="absolute right-6 top-6 flex items-center gap-1.5">
@@ -593,48 +593,48 @@ export default function App() {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="font-mono text-[9px] text-zinc-600 bg-white border-2 border-zinc-200 px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                  <span className="font-mono text-[9px] text-slate-400 bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50 px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">
                     DEPT NODE: {selectedTopic.id.toUpperCase()}
                   </span>
-                  <span className="text-[10px] text-zinc-400 font-extrabold uppercase tracking-wide">
+                  <span className="text-[10px] text-slate-400 font-extrabold uppercase tracking-wide">
                     {CATEGORIES.find(c => c.id === selectedTopic.categoryId)?.nameEnglish} • Level III
                   </span>
                   {renderSandboxBadge(selectedTopic.sandboxType, true, language)}
                 </div>
 
                 <div>
-                  <h2 className="text-3xl md:text-5xl font-black text-zinc-950 leading-tight font-display flex flex-wrap items-center gap-x-4 gap-y-2 drop-shadow-sm">
-                    <span className="text-zinc-950 tracking-tight">
+                  <h2 className="text-3xl md:text-5xl font-black text-white leading-tight font-display flex flex-wrap items-center gap-x-4 gap-y-2 drop-shadow-sm">
+                    <span className="text-white tracking-tight">
                       {language === "hi" ? selectedTopic.titleHindi : selectedTopic.titleEnglish}
                     </span>
-                    <span className="text-xl md:text-2xl font-bold text-zinc-400 pl-4 border-l-4 border-zinc-300 self-end mb-1">
+                    <span className="text-xl md:text-2xl font-bold text-slate-400 pl-4 border-l-4 border-slate-600/50 self-end mb-1">
                       {language === "hi" ? selectedTopic.titleEnglish : selectedTopic.titleHindi}
                     </span>
                   </h2>
 
-                  <p className="text-sm md:text-lg text-zinc-500 mt-3 max-w-2xl font-medium">
+                  <p className="text-sm md:text-lg text-slate-400 mt-3 max-w-2xl font-medium">
                     {selectedTopic.subtitleEnglish}
                   </p>
                 </div>
               </div>
 
               {/* 📑 CASE DOC ACTIONS TABS BENTO STYLE */}
-              <div className="flex flex-col md:flex-row border-b-2 border-zinc-200 bg-zinc-50/50 p-4 gap-4">
+              <div className="flex flex-col md:flex-row border-b-2 border-slate-700/50 bg-slate-800/60 backdrop-blur-xl/50 p-4 gap-4">
                 <button
                   onClick={() => setActiveDocTab("spec")}
                   className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 ${activeDocTab === "spec"
-                    ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-zinc-200"
-                    : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
+                    ? "text-slate-100 bg-slate-900/60 backdrop-blur-2xl border-zinc-900 shadow-xl shadow-slate-900/50"
+                    : "text-slate-400 border-transparent hover:text-slate-200 hover:bg-slate-800 hover:border-slate-700/50"
                     }`}
                 >
-                  <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-zinc-900" />
+                  <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-slate-100" />
                   <span>{language === "hi" ? "1. प्रणाली विशिष्टता" : "1. System Spec"}</span>
                 </button>
                 <button
                   onClick={() => setActiveDocTab("flow")}
                   className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 ${activeDocTab === "flow"
-                    ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-emerald-100"
-                    : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
+                    ? "text-slate-100 bg-slate-900/60 backdrop-blur-2xl border-zinc-900 shadow-xl shadow-emerald-100"
+                    : "text-slate-400 border-transparent hover:text-slate-200 hover:bg-slate-800 hover:border-slate-700/50"
                     }`}
                 >
                   <Workflow className="w-5 h-5 md:w-6 md:h-6 text-emerald-600" />
@@ -643,32 +643,32 @@ export default function App() {
                 <button
                   onClick={() => setActiveDocTab("sandbox")}
                   className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 relative ${activeDocTab === "sandbox"
-                    ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-amber-100"
-                    : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
+                    ? "text-slate-100 bg-slate-900/60 backdrop-blur-2xl border-zinc-900 shadow-xl shadow-amber-100"
+                    : "text-slate-400 border-transparent hover:text-slate-200 hover:bg-slate-800 hover:border-slate-700/50"
                     }`}
                 >
                   <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-amber-500 shrink-0" />
                   <span>{language === "hi" ? "3. एआई लाइव सैंडबॉक्स" : "3. Live AI Sandbox"}</span>
-                  <span className="absolute -top-3 -right-2 md:-right-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-zinc-900 text-white shadow-lg border-2 border-zinc-700 animate-bounce">
+                  <span className="absolute -top-3 -right-2 md:-right-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-slate-950 text-white shadow-lg border-2 border-zinc-700 animate-bounce">
                     TEST
                   </span>
                 </button>
               </div>
 
               {/* TAB CONTAINER VIEW */}
-              <div className="p-8 md:p-12 bg-white min-h-[500px]">
+              <div className="p-8 md:p-12 bg-slate-900/60 backdrop-blur-2xl min-h-[500px]">
 
                 {/* --- TAB [1]: SPECIFICATION --- */}
                 {activeDocTab === "spec" && (
                   <div className="space-y-6">
 
                     {/* Primary Deep Concept Card Bento styled */}
-                    <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 rounded-[2rem] shadow-xl shadow-zinc-200/50 hover:border-zinc-300 hover:shadow-2xl hover:scale-[1.01] duration-500 transition-all flex flex-col gap-5">
+                    <div className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50 p-8 md:p-10 rounded-[2rem] shadow-xl shadow-slate-900/50/50 hover:border-slate-600/50 hover:shadow-2xl hover:scale-[1.01] duration-500 transition-all flex flex-col gap-5">
                       <div className="flex justify-between items-center">
-                        <h3 className="text-sm md:text-base font-extrabold uppercase tracking-widest text-zinc-400">
+                        <h3 className="text-sm md:text-base font-extrabold uppercase tracking-widest text-slate-400">
                           {language === "hi" ? "मूल अवधारणा / Core Concept" : "Core Concept"}
                         </h3>
-                        <span className="text-xl font-black text-zinc-300 font-display">01</span>
+                        <span className="text-xl font-black text-slate-500 font-display">01</span>
                       </div>
 
                       {/* Main description */}
@@ -678,18 +678,18 @@ export default function App() {
 
                       {/* English Context (shown only in Hindi mode) */}
                       {language === 'hi' && (
-                        <div className="text-xs text-zinc-500 italic border-t-2 border-zinc-100 pt-3 leading-relaxed">
+                        <div className="text-xs text-slate-400 italic border-t-2 border-slate-700/30 pt-3 leading-relaxed">
                           <span className="font-black text-zinc-650">English Context:</span> {selectedTopic.descriptionEnglish}
                         </div>
                       )}
 
                       {/* Technical Details — if data available */}
                       {(selectedTopic.technicalDetailsHindi || selectedTopic.technicalDetailsEnglish) && (
-                        <div className="border-t-2 border-zinc-100 pt-4">
-                          <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-2">
+                        <div className="border-t-2 border-slate-700/30 pt-4">
+                          <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">
                             {language === 'hi' ? '🔧 तकनीकी विवरण' : '🔧 Technical Details'}
                           </p>
-                          <p className="text-sm md:text-base text-zinc-700 leading-relaxed font-semibold">
+                          <p className="text-sm md:text-base text-slate-300 leading-relaxed font-semibold">
                             {language === 'hi'
                               ? selectedTopic.technicalDetailsHindi
                               : selectedTopic.technicalDetailsEnglish}
@@ -699,11 +699,11 @@ export default function App() {
 
                       {/* Need — shown as additional context if not already shown below */}
                       {(selectedTopic.needHindi || selectedTopic.needEnglish) && (
-                        <div className="border-t-2 border-zinc-100 pt-4">
-                          <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-2">
+                        <div className="border-t-2 border-slate-700/30 pt-4">
+                          <p className="text-xs font-black uppercase tracking-widest text-slate-400 mb-2">
                             {language === 'hi' ? '❓ ज़रूरत / Need' : '❓ Why Needed'}
                           </p>
-                          <p className="text-sm md:text-base text-zinc-700 leading-relaxed font-semibold">
+                          <p className="text-sm md:text-base text-slate-300 leading-relaxed font-semibold">
                             {language === 'hi' ? selectedTopic.needHindi : selectedTopic.needEnglish}
                           </p>
                         </div>
@@ -713,29 +713,29 @@ export default function App() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
                       {/* Why Needed Section Bento style */}
-                      <div className="bg-zinc-50 border-2 border-zinc-200/80 p-8 md:p-10 rounded-[2rem] flex flex-col justify-between shadow-lg hover:shadow-xl hover:border-zinc-300 hover:scale-[1.02] transition-all duration-500">
+                      <div className="bg-slate-800/60 backdrop-blur-xl border-2 border-slate-700/50/80 p-8 md:p-10 rounded-[2rem] flex flex-col justify-between shadow-lg hover:shadow-xl hover:border-slate-600/50 hover:scale-[1.02] transition-all duration-500">
                         <div className="flex justify-between items-start mb-6">
                           <div className="p-4 bg-indigo-50 text-indigo-700 rounded-[1.5rem] shadow-inner border border-indigo-100">
                             <HelpCircle className="w-8 h-8" />
                           </div>
-                          <span className="text-sm font-black text-zinc-400 uppercase tracking-widest">Justification</span>
+                          <span className="text-sm font-black text-slate-400 uppercase tracking-widest">Justification</span>
                         </div>
                         <div>
-                          <h4 className="text-xl font-black text-zinc-900 mb-4">{language === "hi" ? "ज़रूरत क्यों?" : "Why is it Needed?"}</h4>
-                          <div className="text-sm md:text-base text-zinc-600 leading-relaxed font-bold">
+                          <h4 className="text-xl font-black text-slate-100 mb-4">{language === "hi" ? "ज़रूरत क्यों?" : "Why is it Needed?"}</h4>
+                          <div className="text-sm md:text-base text-slate-400 leading-relaxed font-bold">
                             {selectedTopic.needHindi || selectedTopic.needEnglish ? (
                               <>
-                                <p className="text-zinc-800 font-bold mb-2">
+                                <p className="text-slate-200 font-bold mb-2">
                                   {language === "hi" ? selectedTopic.needHindi : selectedTopic.needEnglish}
                                 </p>
                                 {language === "hi" && selectedTopic.needEnglish && (
-                                  <p className="text-zinc-400 italic border-l-2 border-zinc-200 pl-2 mt-1 font-medium">
+                                  <p className="text-slate-400 italic border-l-2 border-slate-700/50 pl-2 mt-1 font-medium">
                                     {selectedTopic.needEnglish}
                                   </p>
                                 )}
                               </>
                             ) : (
-                              <p className="text-zinc-500">
+                              <p className="text-slate-400">
                                 {language === "hi"
                                   ? "पुलिस संचालन को न्यायसंगत और पारदर्शी बनाने के लिए इस डिजिटल मॉड्यूल की सख्त आवश्यकता है।"
                                   : "This digital module is highly requested to enhance departmental accountability and precision."
@@ -749,7 +749,7 @@ export default function App() {
                       {/* Benefits Section Bento style */}
                       <div className="bg-emerald-50/70 border-2 border-emerald-200 p-8 md:p-10 rounded-[2rem] flex flex-col justify-between shadow-lg shadow-emerald-500/5 hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300 hover:scale-[1.02] transition-all duration-500">
                         <div className="flex justify-between items-start mb-6">
-                          <div className="p-4 bg-white text-emerald-700 rounded-[1.5rem] shadow-md border border-emerald-100">
+                          <div className="p-4 bg-slate-900/60 backdrop-blur-2xl text-emerald-700 rounded-[1.5rem] shadow-md border border-emerald-100">
                             <CheckCircle2 className="w-8 h-8" />
                           </div>
                           <span className="text-sm font-black text-emerald-800 uppercase tracking-widest">Impact</span>
@@ -763,7 +763,7 @@ export default function App() {
                                   {language === "hi" ? selectedTopic.benefitsHindi : selectedTopic.benefitsEnglish}
                                 </p>
                                 {language === "hi" && selectedTopic.benefitsEnglish && (
-                                  <p className="text-emerald-500/80 italic mt-1 font-medium">
+                                  <p className="text-cyan-500/80 italic mt-1 font-medium">
                                     {selectedTopic.benefitsEnglish}
                                   </p>
                                 )}
@@ -784,13 +784,13 @@ export default function App() {
 
                     {/* Operational Stack Metadata Bento styled */}
                     <div className="pt-4 border-t-2 border-zinc-150 flex flex-wrap items-center gap-2.5">
-                      <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                      <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">
                         Operational Stack:
                       </span>
-                      <span className="text-xs bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-bold border border-zinc-200 px-3 py-1 rounded-full font-mono transition-colors">
+                      <span className="text-xs bg-slate-800 hover:bg-zinc-200 text-slate-200 font-bold border border-slate-700/50 px-3 py-1 rounded-full font-mono transition-colors">
                         Model: Gemini-2.5-flash
                       </span>
-                      <span className="text-xs bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-bold border border-zinc-200 px-3 py-1 rounded-full font-mono transition-colors">
+                      <span className="text-xs bg-slate-800 hover:bg-zinc-200 text-slate-200 font-bold border border-slate-700/50 px-3 py-1 rounded-full font-mono transition-colors">
                         Pipeline: Neural OCR/NLP Graph
                       </span>
                       <span className="text-xs bg-indigo-50 text-indigo-700 font-bold border border-indigo-100 px-3 py-1 rounded-full font-mono">
@@ -805,11 +805,11 @@ export default function App() {
                 {activeDocTab === "flow" && (
                   <div className="space-y-6">
 
-                    <div className="bg-white border-2 border-zinc-200 p-6 rounded-3xl shadow-xs">
-                      <div className="flex items-center justify-between text-xs text-zinc-400 mb-6 pb-3 border-b-2 border-zinc-100">
+                    <div className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50 p-6 rounded-3xl shadow-xs">
+                      <div className="flex items-center justify-between text-xs text-slate-400 mb-6 pb-3 border-b-2 border-slate-700/30">
                         <span className="uppercase font-bold tracking-wider">🛰️ SYSTEM DATA-ROUTE TELEMETRY DIAGRAM</span>
                         <span className="text-[10px] text-emerald-600 font-black flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-ping" />
                           LIVE DATA STREAM
                         </span>
                       </div>
@@ -818,9 +818,9 @@ export default function App() {
                       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-2">
 
                         {/* Node 1: Input Source */}
-                        <div className="bg-white border-2 border-zinc-200 p-4 rounded-2xl flex flex-col justify-between hover:border-zinc-300 transition-colors relative shadow-xs">
-                          <div className="text-[9px] text-zinc-400 uppercase tracking-widest font-black mb-1">Source Node</div>
-                          <div className="text-xs font-extrabold text-zinc-900">
+                        <div className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50 p-4 rounded-2xl flex flex-col justify-between hover:border-slate-600/50 transition-colors relative shadow-xs">
+                          <div className="text-[9px] text-slate-400 uppercase tracking-widest font-black mb-1">Source Node</div>
+                          <div className="text-xs font-extrabold text-slate-100">
                             {getInputSourceLabel(selectedTopic.sandboxType)}
                           </div>
 
@@ -829,11 +829,11 @@ export default function App() {
                         </div>
 
                         {/* Node 2: Neural Transcoder Engine (Gemini) */}
-                        <div className="bg-zinc-900 text-white p-4 rounded-2xl flex flex-col justify-between relative shadow-md">
+                        <div className="bg-slate-950 text-white p-4 rounded-2xl flex flex-col justify-between relative shadow-md">
                           <span className="text-[8px] bg-indigo-600 text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-widest w-fit mb-1">
                             Gemini Core Node
                           </span>
-                          <div className="text-[10px] text-zinc-400 font-mono">@google/genai</div>
+                          <div className="text-[10px] text-slate-400 font-mono">@google/genai</div>
                           <div className="text-xs font-extrabold text-indigo-300 mt-1">
                             {getNeuralProcessorLabel(selectedTopic.sandboxType)}
                           </div>
@@ -843,9 +843,9 @@ export default function App() {
                         </div>
 
                         {/* Node 3: Database & Ledger */}
-                        <div className="bg-white border-2 border-zinc-200 p-4 rounded-2xl flex flex-col justify-between hover:border-zinc-300 transition-colors relative shadow-xs">
-                          <div className="text-[9px] text-zinc-400 uppercase tracking-widest font-black mb-1">Sync Database</div>
-                          <div className="text-xs font-extrabold text-zinc-900">
+                        <div className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50 p-4 rounded-2xl flex flex-col justify-between hover:border-slate-600/50 transition-colors relative shadow-xs">
+                          <div className="text-[9px] text-slate-400 uppercase tracking-widest font-black mb-1">Sync Database</div>
+                          <div className="text-xs font-extrabold text-slate-100">
                             {getDatabaseLabel(selectedTopic.categoryId, selectedTopic.id)}
                           </div>
 
@@ -863,8 +863,8 @@ export default function App() {
 
                       </div>
 
-                      <div className="text-sm md:text-base text-zinc-600 leading-relaxed mt-8 p-6 md:p-8 bg-zinc-50 rounded-[1.5rem] border-2 border-zinc-200 shadow-inner">
-                        <span className="font-extrabold text-zinc-900 text-lg">Flow Analysis: </span>
+                      <div className="text-sm md:text-base text-slate-400 leading-relaxed mt-8 p-6 md:p-8 bg-slate-800/60 backdrop-blur-xl rounded-[1.5rem] border-2 border-slate-700/50 shadow-inner">
+                        <span className="font-extrabold text-slate-100 text-lg">Flow Analysis: </span>
                         {language === "hi"
                           ? "यह प्रणाली एनक्रिप्टेड फ़ाइल अपलोड या लाइव सीसीटीवी वीडियो फीड के स्रोत डेटा को समेटती है, इसे एपीआई गेटवे द्वारा सर्वर-साइड जेमिनी एआई मॉडल में भेजती है, जहां तंत्रिका नेटवर्क सेकंडों में संदर्भ को संसाधित करता है, और निष्कर्ष सीधे स्थानीय कमांड और पुलिस मुख्यालय (PHQ) के डैशबोर्ड पर रेड अलर्ट संचालित करता है।"
                           : "The telemetry pipelines fetch multi-source files, encoding them into JSON context frames, and proxy the payload server-side using the GoogleGenAI client SDK. Model predictions generate state signals instantly routed back to central police controls."
@@ -876,21 +876,21 @@ export default function App() {
                     {/* Database & Neural Details bento grids */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                      <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 rounded-[2rem] shadow-lg shadow-zinc-200/50 hover:shadow-xl transition-all duration-300">
-                        <h4 className="text-sm md:text-base font-black text-zinc-500 uppercase mb-4 tracking-widest">💾 Database Sync Stack</h4>
-                        <ul className="text-sm text-zinc-600 space-y-3 list-disc pl-5 leading-relaxed font-medium">
-                          <li><span className="text-zinc-900 font-extrabold text-base">Neo4j Graph Analytics:</span> Map complex criminal rings & whatsapp contact overlaps.</li>
-                          <li><span className="text-zinc-900 font-extrabold text-base">CCTNS Core Sync Pipeline:</span> Integrated federated tables without data privacy leaks.</li>
-                          <li><span className="text-zinc-900 font-extrabold text-base">Milvus Embeddings:</span> High-dimensional face/voice vector embeddings matching.</li>
+                      <div className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50 p-8 md:p-10 rounded-[2rem] shadow-lg shadow-slate-900/50/50 hover:shadow-xl transition-all duration-300">
+                        <h4 className="text-sm md:text-base font-black text-slate-400 uppercase mb-4 tracking-widest">💾 Database Sync Stack</h4>
+                        <ul className="text-sm text-slate-400 space-y-3 list-disc pl-5 leading-relaxed font-medium">
+                          <li><span className="text-slate-100 font-extrabold text-base">Neo4j Graph Analytics:</span> Map complex criminal rings & whatsapp contact overlaps.</li>
+                          <li><span className="text-slate-100 font-extrabold text-base">CCTNS Core Sync Pipeline:</span> Integrated federated tables without data privacy leaks.</li>
+                          <li><span className="text-slate-100 font-extrabold text-base">Milvus Embeddings:</span> High-dimensional face/voice vector embeddings matching.</li>
                         </ul>
                       </div>
 
-                      <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 rounded-[2rem] shadow-lg shadow-zinc-200/50 hover:shadow-xl transition-all duration-300">
-                        <h4 className="text-sm md:text-base font-black text-zinc-500 uppercase mb-4 tracking-widest">🧠 AI Models Overview</h4>
-                        <ul className="text-sm text-zinc-600 space-y-3 list-disc pl-5 leading-relaxed font-medium">
-                          <li><span className="text-zinc-900 font-extrabold text-base">NLP Tokenizer (BERT):</span> Case file entities mapping and NER classification.</li>
-                          <li><span className="text-zinc-900 font-extrabold text-base">Computer Vision Models:</span> YOLO real-time speed monitoring and crowd count overlays.</li>
-                          <li><span className="text-zinc-900 font-extrabold text-base">Integrity Check Analyzer:</span> Wavelet analysis of high frequency vocal stress.</li>
+                      <div className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50 p-8 md:p-10 rounded-[2rem] shadow-lg shadow-slate-900/50/50 hover:shadow-xl transition-all duration-300">
+                        <h4 className="text-sm md:text-base font-black text-slate-400 uppercase mb-4 tracking-widest">🧠 AI Models Overview</h4>
+                        <ul className="text-sm text-slate-400 space-y-3 list-disc pl-5 leading-relaxed font-medium">
+                          <li><span className="text-slate-100 font-extrabold text-base">NLP Tokenizer (BERT):</span> Case file entities mapping and NER classification.</li>
+                          <li><span className="text-slate-100 font-extrabold text-base">Computer Vision Models:</span> YOLO real-time speed monitoring and crowd count overlays.</li>
+                          <li><span className="text-slate-100 font-extrabold text-base">Integrity Check Analyzer:</span> Wavelet analysis of high frequency vocal stress.</li>
                         </ul>
                       </div>
 
@@ -923,7 +923,7 @@ export default function App() {
 
                       {/* Prompt trigger Textarea */}
                       <div className="space-y-3">
-                        <label className="block text-sm font-black text-zinc-500 uppercase tracking-widest">
+                        <label className="block text-sm font-black text-slate-400 uppercase tracking-widest">
                           {language === "hi" ? "इनपुट विवरण / Case Statement Input Context:" : "Inferred Input Context:"}
                         </label>
                         <textarea
@@ -931,13 +931,13 @@ export default function App() {
                           value={sandboxPrompt}
                           onChange={(e) => setSandboxPrompt(e.target.value)}
                           placeholder="Type or select a demo scenario to query..."
-                          className="w-full bg-white border-2 border-zinc-200/80 rounded-[1.5rem] text-sm md:text-base p-5 text-zinc-900 font-semibold focus:outline-none focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 placeholder-zinc-400 transition-all font-mono leading-relaxed shadow-inner"
+                          className="w-full bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50/80 rounded-[1.5rem] text-sm md:text-base p-5 text-slate-100 font-semibold focus:outline-none focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 placeholder-zinc-400 transition-all font-mono leading-relaxed shadow-inner"
                         />
                       </div>
 
                       {/* Predefined Quick Preset Scenario Buttons Bento Styled */}
                       <div className="mt-6">
-                        <span className="text-xs uppercase font-black tracking-widest text-zinc-400 block mb-3">
+                        <span className="text-xs uppercase font-black tracking-widest text-slate-400 block mb-3">
                           {language === 'hi' ? 'त्वरित डेमो परिदृश्य / Quick Presets:' : 'Quick Presets:'}
                         </span>
                         <div className="flex flex-wrap gap-3">
@@ -945,7 +945,7 @@ export default function App() {
                             <button
                               key={i}
                               onClick={() => setSandboxPrompt(preset.prompt)}
-                              className="text-xs md:text-sm bg-white hover:bg-zinc-100 text-zinc-700 font-black px-5 py-2.5 rounded-xl border-2 border-zinc-200 hover:border-zinc-300 transition-all shadow-sm active:scale-95"
+                              className="text-xs md:text-sm bg-slate-900/60 backdrop-blur-2xl hover:bg-slate-800 text-slate-300 font-black px-5 py-2.5 rounded-xl border-2 border-slate-700/50 hover:border-slate-600/50 transition-all shadow-sm active:scale-95"
                             >
                               {preset.label}
                             </button>
@@ -954,16 +954,16 @@ export default function App() {
                       </div>
 
                       {/* Trigger Action Panel Bento */}
-                      <div className="mt-8 pt-6 border-t-2 border-zinc-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-                        <div className="text-xs text-zinc-400 font-black uppercase tracking-widest flex items-center gap-2">
-                          <Sliders className="w-5 h-5 text-zinc-600" />
+                      <div className="mt-8 pt-6 border-t-2 border-slate-700/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                        <div className="text-xs text-slate-400 font-black uppercase tracking-widest flex items-center gap-2">
+                          <Sliders className="w-5 h-5 text-slate-400" />
                           <span>Temp: 0.2 | Model: Gemini-2.5-flash | Security checks: Enabled</span>
                         </div>
 
                         <button
                           onClick={handleRunSimulation}
                           disabled={isLoadingSim}
-                          className="w-full sm:w-auto bg-zinc-900 hover:bg-zinc-800 active:bg-black disabled:bg-zinc-400 text-white font-black text-sm md:text-base px-8 py-4 rounded-[1.5rem] flex items-center justify-center gap-3 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-95 cursor-pointer shrink-0"
+                          className="w-full sm:w-auto bg-slate-950 hover:bg-zinc-800 active:bg-black disabled:bg-zinc-400 text-white font-black text-sm md:text-base px-8 py-4 rounded-[1.5rem] flex items-center justify-center gap-3 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-95 cursor-pointer shrink-0"
                         >
                           {isLoadingSim ? (
                             <>
@@ -983,24 +983,24 @@ export default function App() {
 
                     {/* AI SIMULATION OUTPUT REPORT DISPLAY BENTO */}
                     {isLoadingSim && (
-                      <div className="bg-zinc-50 border-2 border-zinc-200 border-dashed p-10 rounded-3xl text-center space-y-3">
+                      <div className="bg-slate-800/60 backdrop-blur-xl border-2 border-slate-700/50 border-dashed p-10 rounded-3xl text-center space-y-3">
                         <Loader2 className="w-10 h-10 text-indigo-600 animate-spin mx-auto" />
-                        <p className="text-xs font-black text-zinc-800 font-mono tracking-widest uppercase animate-pulse">
+                        <p className="text-xs font-black text-slate-200 font-mono tracking-widest uppercase animate-pulse">
                           INITIALIZING NEURAL TRANSLATION PIPELINE...
                         </p>
-                        <p className="text-[10px] font-semibold text-zinc-400">
+                        <p className="text-[10px] font-semibold text-slate-400">
                           Mapping vectors, routing parameters, and drafting judicial entities on local sandboxed nodes.
                         </p>
                       </div>
                     )}
 
                     {!isLoadingSim && sandboxResult && (
-                      <div className="bg-zinc-900 text-white rounded-3xl overflow-hidden shadow-xl animate-fade-in border border-zinc-850">
+                      <div className="bg-slate-950 text-white rounded-3xl overflow-hidden shadow-xl animate-fade-in border border-zinc-850">
 
                         {/* Simulation Result Header Bento Accent */}
-                        <div className="bg-zinc-950 px-5 py-3 border-b border-zinc-850 flex items-center justify-between text-xs text-indigo-400">
+                        <div className="bg-slate-950 px-5 py-3 border-b border-zinc-850 flex items-center justify-between text-xs text-indigo-400">
                           <div className="flex items-center gap-2">
-                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 relative flex leading-none">
+                            <span className="w-2.5 h-2.5 rounded-full bg-cyan-500 relative flex leading-none">
                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                             </span>
                             <span className="font-extrabold uppercase tracking-widest font-mono">
@@ -1008,7 +1008,7 @@ export default function App() {
                             </span>
                           </div>
                           {processingTime && (
-                            <span className="font-mono text-zinc-500 font-bold">
+                            <span className="font-mono text-slate-400 font-bold">
                               {processingTime}ms Response
                             </span>
                           )}
@@ -1016,10 +1016,10 @@ export default function App() {
 
                         {/* Visual Telemetry Metrics Bento style */}
                         {visualTelemetry && (
-                          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 p-4 bg-zinc-950 border-b border-zinc-850">
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 p-4 bg-slate-950 border-b border-zinc-850">
                             {Object.entries(visualTelemetry).map(([key, val]) => (
-                              <div key={key} className="bg-zinc-900 border border-zinc-800 p-2.5 rounded-xl">
-                                <div className="text-[9px] text-zinc-500 font-mono uppercase tracking-widest">
+                              <div key={key} className="bg-slate-950 border border-zinc-800 p-2.5 rounded-xl">
+                                <div className="text-[9px] text-slate-400 font-mono uppercase tracking-widest">
                                   {key.replace(/([A-Z])/g, ' $1').trim()}
                                 </div>
                                 <div className="text-xs font-black text-white mt-0.5">
@@ -1031,13 +1031,13 @@ export default function App() {
                         )}
 
                         {/* Report Body */}
-                        <div className="p-6 font-sans leading-relaxed text-zinc-200 text-xs overflow-x-auto whitespace-pre-wrap max-h-96 overflow-y-auto bg-zinc-900 scrollbar-thin">
+                        <div className="p-6 font-sans leading-relaxed text-zinc-200 text-xs overflow-x-auto whitespace-pre-wrap max-h-96 overflow-y-auto bg-slate-950 scrollbar-thin">
                           <div className="prose prose-invert prose-xs max-w-none text-zinc-200 font-medium">
                             {formatSandboxOutput(sandboxResult)}
                           </div>
                         </div>
 
-                        <div className="bg-zinc-950 px-5 py-3 border-t border-zinc-850 flex items-center justify-between text-[10px] text-zinc-500 font-bold font-mono">
+                        <div className="bg-slate-950 px-5 py-3 border-t border-zinc-850 flex items-center justify-between text-[10px] text-slate-400 font-bold font-mono">
                           <span>Verified CCTNS Audit Checksum SHA-256 Enabled</span>
                           <span>BNS V2.0 REGISTER</span>
                         </div>
@@ -1052,8 +1052,8 @@ export default function App() {
 
             </motion.div>
           ) : (
-            <div className="bg-white border border-zinc-200/80 p-12 rounded-3xl text-center text-zinc-400 shadow-xs hover:shadow-sm transition-all duration-300">
-              <ShieldAlert className="w-12 h-12 text-zinc-300 mx-auto mb-3" />
+            <div className="bg-slate-900/60 backdrop-blur-2xl border border-slate-700/50/80 p-12 rounded-3xl text-center text-slate-400 shadow-xs hover:shadow-sm transition-all duration-300">
+              <ShieldAlert className="w-12 h-12 text-slate-500 mx-auto mb-3" />
               Select an AI system node from the left cabinet directory to inspect system specifics.
             </div>
           )}
@@ -1062,36 +1062,36 @@ export default function App() {
       </motion.div>
 
       {/* 📋 IN-DEPTH BOTTOM DIRECTORY SUMMARY FOOTER BENTO STYLE */}
-      <footer className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white border border-zinc-200/80 rounded-3xl p-6 md:p-8 shadow-xs hover:shadow-sm transition-all duration-300">
+      <footer className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 bg-slate-900/60 backdrop-blur-2xl border border-slate-700/50/80 rounded-3xl p-6 md:p-8 shadow-xs hover:shadow-sm transition-all duration-300">
 
-        <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200/60 hover:border-zinc-300 transition-colors">
-          <h4 className="text-zinc-900 font-black mb-2 text-xs uppercase tracking-widest font-display">
+        <div className="bg-slate-800/60 backdrop-blur-xl rounded-2xl p-5 border border-slate-700/50/60 hover:border-slate-600/50 transition-colors">
+          <h4 className="text-slate-100 font-black mb-2 text-xs uppercase tracking-widest font-display">
             About Police AI Initiative
           </h4>
-          <p className="leading-relaxed text-zinc-500 text-xs font-semibold">
+          <p className="leading-relaxed text-slate-400 text-xs font-semibold">
             An administrative suite cataloguing police operations, intelligence frameworks, ranges, zones, and headquarters (PHQ) levels AI-driven concepts for Indian Law Enforcement safety systems.
           </p>
         </div>
 
-        <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200/60 hover:border-zinc-300 transition-colors">
-          <h4 className="text-zinc-900 font-black mb-2 text-xs uppercase tracking-widest font-display">
+        <div className="bg-slate-800/60 backdrop-blur-xl rounded-2xl p-5 border border-slate-700/50/60 hover:border-slate-600/50 transition-colors">
+          <h4 className="text-slate-100 font-black mb-2 text-xs uppercase tracking-widest font-display">
             Engineering Guidelines
           </h4>
-          <p className="leading-relaxed text-zinc-500 text-xs font-semibold">
+          <p className="leading-relaxed text-slate-400 text-xs font-semibold">
             Integrates high-dimensional vector databases (Milvus), graph network maps (Neo4j), NLP tokenizers (BERT/RoBERTa), and real-time checkpoint ANPR tracking layers (YOLO).
           </p>
         </div>
 
-        <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200/60 hover:border-zinc-300 transition-colors">
-          <h4 className="text-zinc-900 font-black mb-2 text-xs uppercase tracking-widest font-display">
+        <div className="bg-slate-800/60 backdrop-blur-xl rounded-2xl p-5 border border-slate-700/50/60 hover:border-slate-600/50 transition-colors">
+          <h4 className="text-slate-100 font-black mb-2 text-xs uppercase tracking-widest font-display">
             Legislative Compliance
           </h4>
-          <p className="leading-relaxed text-zinc-500 text-xs font-semibold">
+          <p className="leading-relaxed text-slate-400 text-xs font-semibold">
             Complies with BNS (Bharatiya Nyaya Sanhita) procedural guidelines, ensuring secure sandboxed execution, zero data pooling leaks, and auditable departmental ledgers.
           </p>
         </div>
 
-        <div className="col-span-1 md:col-span-3 text-center text-[9px] text-zinc-400 uppercase tracking-widest font-black pt-4 border-t border-zinc-200">
+        <div className="col-span-1 md:col-span-3 text-center text-[9px] text-slate-400 uppercase tracking-widest font-black pt-4 border-t border-slate-700/50">
           © 2026 Police AI Directory System. Under Ministry of Home Affairs Technology Framework guidelines. Confidential.
         </div>
       </footer>
@@ -1263,7 +1263,7 @@ function formatSandboxOutput(text: string) {
 
   // Highlight common police indicators
   return text.split('\n').map((line, i) => {
-    let style = "mb-1 text-zinc-300 font-sans leading-relaxed text-xs";
+    let style = "mb-1 text-slate-500 font-sans leading-relaxed text-xs";
 
     // Check for headings
     if (line.trim().startsWith('###') || line.trim().startsWith('**[') || line.trim().startsWith('**1.') || line.trim().startsWith('**2.') || line.trim().startsWith('**3.')) {
@@ -1295,7 +1295,7 @@ function formatSandboxOutput(text: string) {
       return (
         <div key={i} className="flex items-start gap-2 pl-4 py-0.5">
           <span className="text-indigo-400 mt-1">•</span>
-          <p className="flex-1 text-zinc-300 text-xs leading-relaxed">{line.replace(/^[•*-]\s*/, '').trim()}</p>
+          <p className="flex-1 text-slate-500 text-xs leading-relaxed">{line.replace(/^[•*-]\s*/, '').trim()}</p>
         </div>
       );
     }
@@ -1305,9 +1305,9 @@ function formatSandboxOutput(text: string) {
       const parts = line.split('|').map(p => p.trim()).filter(p => p);
       if (parts.length > 0) {
         return (
-          <div key={i} className="grid grid-cols-12 gap-1 border-b border-zinc-800 bg-zinc-950 p-1.5 px-3 font-mono text-[11px] text-zinc-400">
+          <div key={i} className="grid grid-cols-12 gap-1 border-b border-zinc-800 bg-slate-950 p-1.5 px-3 font-mono text-[11px] text-slate-400">
             {parts.map((p, idx) => (
-              <span key={idx} className="col-span-3 truncate text-zinc-300 font-bold">{p}</span>
+              <span key={idx} className="col-span-3 truncate text-slate-500 font-bold">{p}</span>
             ))}
           </div>
         );
