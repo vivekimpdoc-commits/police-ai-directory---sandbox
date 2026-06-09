@@ -54,7 +54,7 @@ import {
   Send,
   Loader2
 } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence } from "framer-motion";
 import { AI_TOPICS, CATEGORIES, AITopic, Category } from "./data";
 
 // Map string icon names to Lucide Icon components
