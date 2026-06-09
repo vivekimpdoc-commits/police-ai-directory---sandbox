@@ -5,6 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
+    base: '/police-ai-directory---sandbox/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
