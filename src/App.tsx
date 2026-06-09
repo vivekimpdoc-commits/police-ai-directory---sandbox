@@ -296,7 +296,7 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-slate-800/60 backdrop-blur-xl/50 text-slate-100 flex flex-col font-sans selection:bg-indigo-600 selection:text-white p-6 md:p-12 box-border animate-fade-in">
+    <div className="min-h-screen bg-[#09090b] bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.25),rgba(255,255,255,0))] text-slate-100 flex flex-col font-sans selection:bg-indigo-600 selection:text-white p-6 md:p-12 box-border animate-fade-in">
 
       {/* 🛡️ STATE POLICE POLISHED BENTO-HEADER PANEL */}
       <motion.header 
