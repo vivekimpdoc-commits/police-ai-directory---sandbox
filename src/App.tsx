@@ -504,16 +504,16 @@ export default function App() {
 
                 const topicColorKey = CATEGORIES.find(c => c.id === topic.categoryId)?.color || "indigo";
                 const bgSelectedClass = topicColorKey === "amber"
-                  ? "bg-amber-50/60 border-l-amber-500 text-white font-black"
+                  ? "bg-amber-900/40 border-l-amber-500 text-white font-black shadow-[inset_0_0_20px_rgba(245,158,11,0.15)]"
                   : topicColorKey === "emerald"
-                    ? "bg-emerald-50/60 border-l-emerald-600 text-white font-black"
+                    ? "bg-emerald-900/40 border-l-emerald-500 text-white font-black shadow-[inset_0_0_20px_rgba(16,185,129,0.15)]"
                     : topicColorKey === "blue"
-                      ? "bg-blue-50/60 border-l-blue-600 text-white font-black"
+                      ? "bg-blue-900/40 border-l-blue-500 text-white font-black shadow-[inset_0_0_20px_rgba(59,130,246,0.15)]"
                       : topicColorKey === "violet"
-                        ? "bg-violet-50/60 border-l-violet-600 text-white font-black"
+                        ? "bg-violet-900/40 border-l-violet-500 text-white font-black shadow-[inset_0_0_20px_rgba(139,92,246,0.15)]"
                         : topicColorKey === "rose"
-                          ? "bg-rose-50/60 border-l-rose-600 text-white font-black"
-                          : "bg-indigo-50/60 border-l-indigo-600 text-white font-black";
+                          ? "bg-rose-900/40 border-l-rose-500 text-white font-black shadow-[inset_0_0_20px_rgba(244,63,94,0.15)]"
+                          : "bg-indigo-900/40 border-l-indigo-500 text-white font-black shadow-[inset_0_0_20px_rgba(99,102,241,0.15)]";
 
                 return (
                   <motion.button
@@ -523,7 +523,7 @@ export default function App() {
                     onClick={() => setSelectedTopic(topic)}
                     className={`w-full text-left p-5 md:p-6 transition-all duration-300 outline-none flex items-start gap-4 border-l-8 relative cursor-pointer ${isSelected
                       ? bgSelectedClass
-                      : "border-transparent hover:bg-slate-800/60 backdrop-blur-xl text-zinc-650 hover:text-white"
+                      : "border-transparent hover:bg-slate-800/60 backdrop-blur-xl text-slate-400 hover:text-white"
                       }`}
                   >
                     <div className={`p-2.5 rounded-xl shrink-0 transition-all ${isSelected
