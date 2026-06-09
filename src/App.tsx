@@ -818,45 +818,45 @@ export default function App() {
                       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-2">
 
                         {/* Node 1: Input Source */}
-                        <div className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50 p-4 rounded-2xl flex flex-col justify-between hover:border-slate-600/50 transition-colors relative shadow-xs">
-                          <div className="text-[9px] text-slate-400 uppercase tracking-widest font-black mb-1">Source Node</div>
+                        <div className="bg-slate-900/40 backdrop-blur-xl border-2 border-slate-700/50 p-4 rounded-2xl flex flex-col justify-between hover:border-cyan-500/40 hover:shadow-[0_0_20px_rgba(6,182,212,0.15)] transition-all duration-300 relative">
+                          <div className="text-[9px] text-cyan-400 uppercase tracking-widest font-black mb-1">Source Node</div>
                           <div className="text-xs font-extrabold text-slate-100">
                             {getInputSourceLabel(selectedTopic.sandboxType)}
                           </div>
 
                           {/* absolute connector line (desktop only) */}
-                          <div className="hidden md:block absolute top-1/2 left-full w-2 h-0.5 bg-zinc-200 z-10" />
+                          <div className="hidden md:block absolute top-1/2 left-full w-4 h-0.5 bg-slate-700 z-10" />
                         </div>
 
                         {/* Node 2: Neural Transcoder Engine (Gemini) */}
-                        <div className="bg-slate-950 text-white p-4 rounded-2xl flex flex-col justify-between relative shadow-md">
-                          <span className="text-[8px] bg-indigo-600 text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-widest w-fit mb-1">
+                        <div className="bg-indigo-950/40 backdrop-blur-xl border-2 border-indigo-500/40 p-4 rounded-2xl flex flex-col justify-between relative shadow-[0_0_30px_rgba(99,102,241,0.15)] hover:shadow-[0_0_40px_rgba(99,102,241,0.3)] transition-all duration-300">
+                          <span className="text-[8px] bg-indigo-500/20 border border-indigo-400/50 text-indigo-300 px-2 py-0.5 rounded-full font-bold uppercase tracking-widest w-fit mb-1 shadow-[0_0_10px_rgba(99,102,241,0.3)]">
                             Gemini Core Node
                           </span>
-                          <div className="text-[10px] text-slate-400 font-mono">@google/genai</div>
-                          <div className="text-xs font-extrabold text-indigo-300 mt-1">
+                          <div className="text-[10px] text-indigo-400/70 font-mono mt-1">@google/genai</div>
+                          <div className="text-xs font-extrabold text-indigo-100 mt-1">
                             {getNeuralProcessorLabel(selectedTopic.sandboxType)}
                           </div>
 
                           {/* absolute connector line (desktop only) */}
-                          <div className="hidden md:block absolute top-1/2 left-full w-2 h-0.5 bg-zinc-250 z-10" />
+                          <div className="hidden md:block absolute top-1/2 left-full w-4 h-0.5 bg-indigo-500/40 z-10 shadow-[0_0_8px_rgba(99,102,241,0.8)]" />
                         </div>
 
                         {/* Node 3: Database & Ledger */}
-                        <div className="bg-slate-900/60 backdrop-blur-2xl border-2 border-slate-700/50 p-4 rounded-2xl flex flex-col justify-between hover:border-slate-600/50 transition-colors relative shadow-xs">
-                          <div className="text-[9px] text-slate-400 uppercase tracking-widest font-black mb-1">Sync Database</div>
+                        <div className="bg-slate-900/40 backdrop-blur-xl border-2 border-slate-700/50 p-4 rounded-2xl flex flex-col justify-between hover:border-emerald-500/40 hover:shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 relative">
+                          <div className="text-[9px] text-emerald-400 uppercase tracking-widest font-black mb-1">Sync Database</div>
                           <div className="text-xs font-extrabold text-slate-100">
                             {getDatabaseLabel(selectedTopic.categoryId, selectedTopic.id)}
                           </div>
 
                           {/* absolute connector line (desktop only) */}
-                          <div className="hidden md:block absolute top-1/2 left-full w-2 h-0.5 bg-zinc-200 z-10" />
+                          <div className="hidden md:block absolute top-1/2 left-full w-4 h-0.5 bg-slate-700 z-10" />
                         </div>
 
                         {/* Node 4: Action Node / Dispatch */}
-                        <div className="bg-rose-50 border-2 border-rose-100 p-4 rounded-2xl flex flex-col justify-between relative shadow-xs">
-                          <div className="text-[9px] text-rose-600 uppercase tracking-widest font-black mb-1">Target Action</div>
-                          <div className="text-xs font-black text-rose-950 truncate">
+                        <div className="bg-rose-900/20 backdrop-blur-xl border-2 border-rose-500/40 p-4 rounded-2xl flex flex-col justify-between relative shadow-[inset_0_0_20px_rgba(244,63,94,0.1)] hover:shadow-[inset_0_0_30px_rgba(244,63,94,0.3)] transition-all duration-300">
+                          <div className="text-[9px] text-rose-400 uppercase tracking-widest font-black mb-1">Target Action</div>
+                          <div className="text-xs font-black text-rose-100 truncate">
                             {getActionLabel(selectedTopic.sandboxType)}
                           </div>
                         </div>
