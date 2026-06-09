@@ -296,26 +296,26 @@ export default function App() {
   });
 
   return (
-    <div className="min-h-screen bg-zinc-50/50 text-zinc-900 flex flex-col font-sans selection:bg-indigo-600 selection:text-white p-4 md:p-8 box-border animate-fade-in">
+    <div className="min-h-screen bg-zinc-50/50 text-zinc-900 flex flex-col font-sans selection:bg-indigo-600 selection:text-white p-6 md:p-12 box-border animate-fade-in">
       
       {/* 🛡️ STATE POLICE POLISHED BENTO-HEADER PANEL */}
-      <header className="bg-white border border-zinc-200 rounded-3xl p-6 mb-6 shadow-xs flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 transition-all duration-300 hover:shadow-md border-b-4 border-b-indigo-600/30">
+      <header className="bg-white border border-zinc-200/80 rounded-[2.5rem] p-8 md:p-10 mb-10 shadow-2xl shadow-indigo-900/5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 transition-all duration-300 hover:shadow-indigo-900/10 border-b-8 border-b-indigo-600/20 backdrop-blur-3xl">
         
         {/* Logo & Slogan */}
-        <div className="flex items-center gap-4">
-          <div className="w-14 h-14 rounded-2xl bg-zinc-900 flex items-center justify-center shadow-lg relative shrink-0 border border-zinc-800">
-            <ShieldAlert className="w-8 h-8 text-white" />
-            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full bg-cover" />
+        <div className="flex items-center gap-6">
+          <div className="w-20 h-20 md:w-24 md:h-24 rounded-[1.5rem] bg-zinc-900 flex items-center justify-center shadow-2xl relative shrink-0 border-2 border-zinc-800">
+            <ShieldAlert className="w-10 h-10 md:w-12 md:h-12 text-white" />
+            <div className="absolute -bottom-2 -right-2 w-6 h-6 bg-emerald-500 border-4 border-white rounded-full bg-cover shadow-lg animate-pulse" />
           </div>
           <div>
-            <div className="flex items-center gap-2 text-zinc-400 text-xs font-bold tracking-widest uppercase mb-1">
+            <div className="flex items-center gap-2 text-zinc-400 text-sm md:text-base font-extrabold tracking-widest uppercase mb-2">
               <span>Directory</span>
               <span className="opacity-50">/</span>
-              <span className="text-indigo-600 font-extrabold">National Police AI Registry</span>
+              <span className="text-indigo-600 font-black">National Police AI Registry</span>
             </div>
-            <h1 className="text-xl md:text-2xl font-black tracking-tight text-zinc-950 font-display flex flex-wrap items-center gap-x-3 gap-y-1">
+            <h1 className="text-3xl md:text-5xl font-black tracking-tight text-zinc-950 font-display flex flex-wrap items-center gap-x-4 gap-y-2">
               <span>राज्य पुलिस एआई डायरेक्टरी</span>
-              <span className="text-zinc-400 text-sm md:text-base font-normal border-l border-zinc-200 pl-3">Police AI Directory & Sandbox</span>
+              <span className="text-zinc-400 text-lg md:text-2xl font-bold border-l-4 border-zinc-200 pl-4">Police AI Directory & Sandbox</span>
             </h1>
           </div>
         </div>
@@ -324,15 +324,15 @@ export default function App() {
         <div className="flex items-center gap-3 w-full lg:w-auto justify-start lg:justify-end flex-wrap md:flex-nowrap">
           
           {/* Active node counter bento styled */}
-          <div className="bg-indigo-50/80 border border-indigo-100 text-indigo-900 px-4 py-2.5 rounded-2xl text-[11px] font-black tracking-wider uppercase flex items-center gap-2 shadow-xs bg-opacity-70">
-            <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 animate-pulse relative inline-block">
-              <span className="absolute inset-0 rounded-full bg-indigo-400 animate-ping" />
+          <div className="bg-indigo-50/90 border-2 border-indigo-100 text-indigo-900 px-6 py-4 rounded-2xl text-xs md:text-sm font-black tracking-widest uppercase flex items-center gap-3 shadow-xl shadow-indigo-500/10 backdrop-blur-md">
+            <span className="w-3.5 h-3.5 rounded-full bg-indigo-600 animate-pulse relative inline-block shadow-lg shadow-indigo-500">
+              <span className="absolute inset-0 rounded-full bg-indigo-400 animate-ping opacity-75" />
             </span>
             <span>BNS-V2 COMPLIANT PORTAL</span>
           </div>
 
           {/* Search Input across all folders */}
-          <div className="bg-zinc-50 border border-zinc-250 px-4 py-2 flex items-center gap-3 rounded-2xl shadow-inner w-full md:w-64 focus-within:ring-2 focus-within:ring-indigo-600/15 focus-within:border-indigo-600 focus-within:bg-white hover:border-zinc-350 transition-all duration-200">
+          <div className="bg-zinc-50/80 border-2 border-zinc-200 px-5 py-3.5 flex items-center gap-4 rounded-2xl shadow-inner w-full md:w-80 focus-within:ring-4 focus-within:ring-indigo-600/20 focus-within:border-indigo-500 focus-within:bg-white hover:border-zinc-300 transition-all duration-300">
             <Search className="w-4 h-4 text-zinc-400 shrink-0" />
             <input
               type="text"
@@ -379,60 +379,75 @@ export default function App() {
       </header>
 
       {/* 📁 FOLDER CATEGORIES NAV TAB BENTO */}
-      <div className="bg-white border border-zinc-200 rounded-3xl p-4 md:p-5 mb-6 shadow-xs overflow-x-auto scrollbar-none hover:shadow-sm transition-all duration-300">
-        <div className="flex items-center gap-3 min-w-max">
-          <span className="text-xs text-zinc-500 font-black uppercase tracking-widest flex items-center gap-2 mr-3 border-r border-zinc-200 pr-5">
-            <ListFilter className="w-4 h-4 text-zinc-800" />
-            {language === 'hi' ? 'संचालन स्तर' : 'Operations Level'}
-          </span>
+      <div className="bg-white border-2 border-zinc-200/80 rounded-[2rem] p-5 md:p-7 mb-10 shadow-2xl shadow-zinc-200/50 overflow-x-auto scrollbar-none hover:shadow-xl transition-all duration-500">
+        <div className="flex items-stretch gap-4 min-w-max">
+          {/* Label */}
+          <div className="flex flex-col items-center justify-center gap-2 pr-6 border-r-2 border-zinc-200 shrink-0">
+            <ListFilter className="w-7 h-7 text-zinc-700" />
+            <span className="text-xs text-zinc-400 font-black uppercase tracking-widest whitespace-nowrap">
+              {language === 'hi' ? 'संचालन स्तर' : 'Category'}
+            </span>
+          </div>
+
           {CATEGORIES.map((cat) => {
             const isSelected = selectedFolder === cat.id && !searchQuery;
             
-            // Map dynamic color guidelines safely
-            const colorMap: Record<string, { bg: string; text: string; border: string; active: string; icon: string }> = {
-              blue: { bg: "bg-blue-50/70", text: "text-blue-900", border: "border-blue-200", active: "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-100", icon: "text-blue-500" },
-              emerald: { bg: "bg-emerald-50/70", text: "text-emerald-905", border: "border-emerald-200", active: "bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-100", icon: "text-emerald-550" },
-              indigo: { bg: "bg-indigo-50/70", text: "text-indigo-905", border: "border-indigo-200", active: "bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-100", icon: "text-indigo-550" },
-              violet: { bg: "bg-violet-50/70", text: "text-violet-905", border: "border-violet-200", active: "bg-violet-600 text-white border-violet-600 shadow-md shadow-violet-100", icon: "text-violet-550" },
-              rose: { bg: "bg-rose-50/70", text: "text-rose-905", border: "border-rose-200", active: "bg-rose-600 text-white border-rose-600 shadow-md shadow-rose-100", icon: "text-rose-550" },
-              amber: { bg: "bg-amber-50/75", text: "text-amber-950", border: "border-amber-205", active: "bg-amber-500 text-zinc-950 border-amber-500 shadow-md shadow-amber-100", icon: "text-amber-600" },
+            const colorMap: Record<string, { active: string; icon: string; badge: string; glow: string }> = {
+              blue:    { active: "bg-blue-600   text-white border-blue-600   shadow-xl shadow-blue-200",   icon: "text-blue-500",    badge: "bg-blue-100 text-blue-700",    glow: "hover:shadow-blue-100/50"   },
+              emerald: { active: "bg-emerald-600 text-white border-emerald-600 shadow-xl shadow-emerald-200", icon: "text-emerald-500", badge: "bg-emerald-100 text-emerald-700", glow: "hover:shadow-emerald-100/50" },
+              indigo:  { active: "bg-indigo-600  text-white border-indigo-600  shadow-xl shadow-indigo-200",  icon: "text-indigo-500",  badge: "bg-indigo-100 text-indigo-700",  glow: "hover:shadow-indigo-100/50"  },
+              violet:  { active: "bg-violet-600  text-white border-violet-600  shadow-xl shadow-violet-200",  icon: "text-violet-500",  badge: "bg-violet-100 text-violet-700",  glow: "hover:shadow-violet-100/50"  },
+              rose:    { active: "bg-rose-600    text-white border-rose-600    shadow-xl shadow-rose-200",    icon: "text-rose-500",    badge: "bg-rose-100 text-rose-700",    glow: "hover:shadow-rose-100/50"    },
+              amber:   { active: "bg-amber-500   text-zinc-950 border-amber-500   shadow-xl shadow-amber-200",   icon: "text-amber-500",   badge: "bg-amber-100 text-amber-800",   glow: "hover:shadow-amber-100/50"   },
             };
-            const stylesObj = colorMap[cat.color] || colorMap.indigo;
+            const s = colorMap[cat.color] || colorMap.indigo;
 
             return (
               <button
                 key={cat.id}
                 onClick={() => {
                   setSelectedFolder(cat.id);
-                  setSearchQuery(""); // switch folder clears general search to maintain folder perspective
+                  setSearchQuery("");
                   const matched = AI_TOPICS.find(t => t.categoryId === cat.id);
                   if (matched) setSelectedTopic(matched);
                 }}
-                className={`px-4 py-2.5 rounded-2xl text-xs font-bold tracking-wide flex items-center gap-3 transition-all border relative cursor-pointer hover:scale-[1.01] ${
-                  isSelected 
-                    ? stylesObj.active 
-                    : "bg-zinc-50/60 text-zinc-700 border-zinc-200 hover:border-zinc-300 hover:bg-zinc-100"
+                className={`px-7 py-5 rounded-2xl flex items-center gap-4 transition-all duration-300 border-2 relative cursor-pointer shrink-0 group ${
+                  isSelected
+                    ? s.active
+                    : `bg-zinc-50 text-zinc-700 border-zinc-200 hover:border-zinc-300 hover:bg-white hover:shadow-lg ${s.glow} hover:scale-[1.04]`
                 }`}
               >
-                {/* Simulated Directory Folder Icon */}
-                {isSelected ? (
-                  <FolderOpen className={`w-4.5 h-4.5 text-white`} />
-                ) : (
-                  <Folder className={`w-4.5 h-4.5 ${stylesObj.icon}`} />
-                )}
+                {/* Icon */}
+                <div className={`p-2 rounded-xl transition-all ${isSelected ? 'bg-white/20' : 'bg-white shadow-sm border border-zinc-200'}`}>
+                  {isSelected ? (
+                    <FolderOpen className="w-6 h-6 text-white" />
+                  ) : (
+                    <Folder className={`w-6 h-6 ${s.icon}`} />
+                  )}
+                </div>
+
+                {/* Text */}
                 <div className="text-left">
-                  <div className={`font-black text-[11px] leading-tight ${isSelected ? "text-white" : "text-zinc-900"}`}>
+                  <div className={`font-black text-base md:text-lg leading-tight ${isSelected ? 'text-white' : 'text-zinc-900'}`}>
                     {language === "hi" ? cat.nameHindi : cat.nameEnglish}
                   </div>
-                  <div className={`text-[9.5px] font-semibold ${isSelected ? "text-indigo-100/80" : "text-zinc-500"}`}>
-                    {AI_TOPICS.filter(t => t.categoryId === cat.id).length} Units
+                  <div className={`text-xs font-bold mt-0.5 ${isSelected ? 'text-white/70' : 'text-zinc-400'}`}>
+                    {AI_TOPICS.filter(t => t.categoryId === cat.id).length} AI Units
                   </div>
                 </div>
+
+                {/* Active count badge */}
+                {isSelected && (
+                  <div className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-white/90 border-2 border-white flex items-center justify-center shadow-md">
+                    <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
+                  </div>
+                )}
               </button>
             );
           })}
         </div>
       </div>
+
 
       {/* SEARCH OVERLAY STATE INDICATOR BENTO */}
       {searchQuery && (
@@ -453,12 +468,12 @@ export default function App() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
         
         {/* 🗄️ LEFT SIDEBAR: TOPICS BENTO CELL */}
-        <section className="lg:col-span-4 bg-white border border-zinc-200 rounded-3xl overflow-hidden shadow-xs flex flex-col hover:shadow-sm transition-all duration-300">
+        <section className="lg:col-span-4 bg-white border border-zinc-200/80 rounded-[2rem] overflow-hidden shadow-2xl shadow-zinc-200/50 flex flex-col hover:shadow-indigo-900/10 transition-all duration-500 backdrop-blur-3xl">
           
-          <div className="bg-zinc-50/70 px-5 py-4 border-b border-zinc-200 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="w-2.5 h-2.5 rounded-full bg-zinc-900" />
-              <h2 className="text-xs font-black uppercase tracking-widest text-zinc-900">
+          <div className="bg-zinc-50/70 px-6 py-5 border-b border-zinc-200 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="w-3 h-3 rounded-full bg-zinc-900 shadow-sm" />
+              <h2 className="text-sm font-black uppercase tracking-widest text-zinc-900">
                 {searchQuery ? "All Search Hits" : `${CATEGORIES.find(c => c.id === selectedFolder)?.nameEnglish} List`}
               </h2>
             </div>
@@ -490,10 +505,10 @@ export default function App() {
                   <button
                     key={topic.id}
                     onClick={() => setSelectedTopic(topic)}
-                    className={`w-full text-left p-4.5 transition-all duration-200 outline-none flex items-start gap-3.5 border-l-4 relative cursor-pointer ${
+                    className={`w-full text-left p-5 md:p-6 transition-all duration-300 outline-none flex items-start gap-4 border-l-8 relative cursor-pointer ${
                       isSelected 
                         ? bgSelectedClass 
-                        : "border-transparent hover:bg-zinc-50/60 text-zinc-650 hover:text-zinc-950"
+                        : "border-transparent hover:bg-zinc-50 text-zinc-650 hover:text-zinc-950"
                     }`}
                   >
                     <div className={`p-2.5 rounded-xl shrink-0 transition-all ${
@@ -505,19 +520,15 @@ export default function App() {
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-1 mb-1.5">
-                        <span className="font-extrabold text-xs text-zinc-900 truncate pr-1">
+                      <div className="flex items-center justify-between gap-2 mb-2">
+                        <span className="font-extrabold text-sm md:text-base text-zinc-900 truncate pr-2">
                           {language === "hi" ? topic.titleHindi : topic.titleEnglish}
                         </span>
                         {renderSandboxBadge(topic.sandboxType, false, language)}
                       </div>
                       
-                      <p className="text-[10px] font-semibold text-zinc-400 truncate">
+                      <p className="text-xs text-zinc-400 font-bold truncate">
                         {topic.subtitleEnglish}
-                      </p>
-
-                      <p className="text-[11px] text-zinc-550 line-clamp-1 mt-1 leading-relaxed">
-                        {language === "hi" ? topic.descriptionHindi : topic.descriptionEnglish}
                       </p>
                     </div>
 
@@ -542,10 +553,10 @@ export default function App() {
         <section className="lg:col-span-8 flex flex-col gap-6">
 
           {selectedTopic ? (
-            <div className="bg-white border border-zinc-200/80 rounded-3xl overflow-hidden shadow-xs hover:shadow-sm flex flex-col transition-all duration-300">
+            <div className="bg-white border-2 border-zinc-200/80 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-900/10 hover:shadow-indigo-900/15 flex flex-col transition-all duration-500">
               
               {/* TOP CASE HEADER BENTO */}
-              <div className="bg-zinc-50/80 p-6 border-b border-zinc-200 relative flex flex-col gap-3">
+              <div className="bg-zinc-50/90 p-8 md:p-10 border-b-2 border-zinc-200 relative flex flex-col gap-5 backdrop-blur-2xl">
                 
                 {/* Abstract decorative layout dots */}
                 <div className="absolute right-6 top-6 flex items-center gap-1.5">
@@ -565,77 +576,77 @@ export default function App() {
                 </div>
 
                 <div>
-                  <h2 className="text-xl md:text-3xl font-black text-zinc-900 leading-tight font-display flex flex-wrap items-center gap-x-2.5 gap-y-1">
-                    <span className="text-zinc-900">
+                  <h2 className="text-3xl md:text-5xl font-black text-zinc-950 leading-tight font-display flex flex-wrap items-center gap-x-4 gap-y-2 drop-shadow-sm">
+                    <span className="text-zinc-950 tracking-tight">
                       {language === "hi" ? selectedTopic.titleHindi : selectedTopic.titleEnglish}
                     </span>
-                    <span className="text-sm font-bold text-zinc-400 pl-2.5 border-l-2 border-zinc-200 self-end mb-1">
+                    <span className="text-xl md:text-2xl font-bold text-zinc-400 pl-4 border-l-4 border-zinc-300 self-end mb-1">
                       {language === "hi" ? selectedTopic.titleEnglish : selectedTopic.titleHindi}
                     </span>
                   </h2>
 
-                  <p className="text-xs text-zinc-500 mt-1 max-w-xl italic font-semibold">
-                    "{selectedTopic.subtitleEnglish}"
+                  <p className="text-sm md:text-lg text-zinc-500 mt-3 max-w-2xl font-medium">
+                    {selectedTopic.subtitleEnglish}
                   </p>
                 </div>
               </div>
 
               {/* 📑 CASE DOC ACTIONS TABS BENTO STYLE */}
-              <div className="flex border-b border-zinc-200 bg-zinc-50/50 p-2 gap-2">
+              <div className="flex flex-col md:flex-row border-b-2 border-zinc-200 bg-zinc-50/50 p-4 gap-4">
                 <button
                   onClick={() => setActiveDocTab("spec")}
-                  className={`flex-1 md:flex-initial px-5 py-3 text-xs font-black tracking-widest uppercase transition-all rounded-2xl flex items-center justify-center gap-2 border ${
+                  className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 ${
                     activeDocTab === "spec"
-                      ? "text-zinc-900 bg-white border-zinc-900 shadow-sm"
-                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100"
+                      ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-zinc-200"
+                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
                   }`}
                 >
-                  <BookOpen className="w-4 h-4 text-zinc-900" />
+                  <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-zinc-900" />
                   <span>{language === "hi" ? "1. प्रणाली विशिष्टता" : "1. System Spec"}</span>
                 </button>
                 <button
                   onClick={() => setActiveDocTab("flow")}
-                  className={`flex-1 md:flex-initial px-5 py-3 text-xs font-black tracking-widest uppercase transition-all rounded-2xl flex items-center justify-center gap-2 border ${
+                  className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 ${
                     activeDocTab === "flow"
-                      ? "text-zinc-900 bg-white border-zinc-900 shadow-sm"
-                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100"
+                      ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-emerald-100"
+                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
                   }`}
                 >
-                  <Workflow className="w-4 h-4 text-emerald-600" />
+                  <Workflow className="w-5 h-5 md:w-6 md:h-6 text-emerald-600" />
                   <span>{language === "hi" ? "2. एआई तकनीकी प्रवाह" : "2. Technical Flow"}</span>
                 </button>
                 <button
                   onClick={() => setActiveDocTab("sandbox")}
-                  className={`flex-1 md:flex-initial px-5 py-3 text-xs font-black tracking-widest uppercase transition-all rounded-2xl flex items-center justify-center gap-2 border relative ${
+                  className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 relative ${
                     activeDocTab === "sandbox"
-                      ? "text-zinc-900 bg-white border-zinc-900 shadow-sm"
-                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100"
+                      ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-amber-100"
+                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
                   }`}
                 >
-                  <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
+                  <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-amber-500 shrink-0" />
                   <span>{language === "hi" ? "3. एआई लाइव सैंडबॉक्स" : "3. Live AI Sandbox"}</span>
-                  <span className="absolute -top-1 -right-1 inline-flex items-center px-2 py-0.5 rounded-full text-[8.5px] font-black bg-zinc-900 text-white shadow-sm border border-zinc-700">
+                  <span className="absolute -top-3 -right-2 md:-right-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-black bg-zinc-900 text-white shadow-lg border-2 border-zinc-700 animate-bounce">
                     TEST
                   </span>
                 </button>
               </div>
 
               {/* TAB CONTAINER VIEW */}
-              <div className="p-6 bg-white">
+              <div className="p-8 md:p-12 bg-white min-h-[500px]">
                 
                 {/* --- TAB [1]: SPECIFICATION --- */}
                 {activeDocTab === "spec" && (
                   <div className="space-y-6">
                     
                     {/* Primary Deep Concept Card Bento styled */}
-                    <div className="bg-white border border-zinc-200/85 p-6 rounded-3xl shadow-xs hover:border-zinc-300 hover:scale-[1.005] duration-300 transition-all flex flex-col gap-3">
+                    <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 rounded-[2rem] shadow-xl shadow-zinc-200/50 hover:border-zinc-300 hover:shadow-2xl hover:scale-[1.01] duration-500 transition-all flex flex-col gap-5">
                       <div className="flex justify-between items-center">
-                        <h3 className="text-xs font-extrabold uppercase tracking-widest text-zinc-400">
+                        <h3 className="text-sm md:text-base font-extrabold uppercase tracking-widest text-zinc-400">
                           {language === "hi" ? "मूल अवधारणा / Core Concept" : "Core Concept"}
                         </h3>
-                        <span className="text-xs font-black text-zinc-300 font-display">01</span>
+                        <span className="text-xl font-black text-zinc-300 font-display">01</span>
                       </div>
-                      <p className="text-sm text-zinc-850 font-medium leading-relaxed">
+                      <p className="text-lg md:text-xl text-zinc-850 font-bold leading-relaxed">
                         {language === 'hi' ? selectedTopic.descriptionHindi : selectedTopic.descriptionEnglish}
                       </p>
                       {language === 'hi' && (
@@ -648,16 +659,16 @@ export default function App() {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       
                       {/* Why Needed Section Bento style */}
-                      <div className="bg-zinc-50 border border-zinc-200/80 p-6 rounded-3xl flex flex-col justify-between hover:border-zinc-300 hover:scale-[1.005] transition-all duration-300">
-                        <div className="flex justify-between items-start mb-4">
-                          <div className="p-3 bg-indigo-50 text-indigo-700 rounded-2xl">
-                            <HelpCircle className="w-5 h-5" />
+                      <div className="bg-zinc-50 border-2 border-zinc-200/80 p-8 md:p-10 rounded-[2rem] flex flex-col justify-between shadow-lg hover:shadow-xl hover:border-zinc-300 hover:scale-[1.02] transition-all duration-500">
+                        <div className="flex justify-between items-start mb-6">
+                          <div className="p-4 bg-indigo-50 text-indigo-700 rounded-[1.5rem] shadow-inner border border-indigo-100">
+                            <HelpCircle className="w-8 h-8" />
                           </div>
-                          <span className="text-xs font-extrabold text-zinc-400 uppercase tracking-widest">Justification</span>
+                          <span className="text-sm font-black text-zinc-400 uppercase tracking-widest">Justification</span>
                         </div>
                         <div>
-                          <h4 className="text-base font-black text-zinc-900 mb-2">{language === "hi" ? "ज़रूरत क्यों?" : "Why is it Needed?"}</h4>
-                          <div className="text-xs text-zinc-600 leading-relaxed font-semibold">
+                          <h4 className="text-xl font-black text-zinc-900 mb-4">{language === "hi" ? "ज़रूरत क्यों?" : "Why is it Needed?"}</h4>
+                          <div className="text-sm md:text-base text-zinc-600 leading-relaxed font-bold">
                             {selectedTopic.needHindi || selectedTopic.needEnglish ? (
                               <>
                                 <p className="text-zinc-800 font-bold mb-2">
@@ -682,16 +693,16 @@ export default function App() {
                       </div>
 
                       {/* Benefits Section Bento style */}
-                      <div className="bg-emerald-50/70 border border-emerald-150 p-6 rounded-3xl flex flex-col justify-between hover:border-emerald-250 hover:scale-[1.005] transition-all duration-300">
-                        <div className="flex justify-between items-start mb-4">
-                          <div className="p-3 bg-white text-emerald-700 rounded-2xl shadow-xs">
-                            <CheckCircle2 className="w-5 h-5" />
+                      <div className="bg-emerald-50/70 border-2 border-emerald-200 p-8 md:p-10 rounded-[2rem] flex flex-col justify-between shadow-lg shadow-emerald-500/5 hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300 hover:scale-[1.02] transition-all duration-500">
+                        <div className="flex justify-between items-start mb-6">
+                          <div className="p-4 bg-white text-emerald-700 rounded-[1.5rem] shadow-md border border-emerald-100">
+                            <CheckCircle2 className="w-8 h-8" />
                           </div>
-                          <span className="text-xs font-extrabold text-emerald-800 uppercase tracking-widest">Impact</span>
+                          <span className="text-sm font-black text-emerald-800 uppercase tracking-widest">Impact</span>
                         </div>
                         <div>
-                          <h4 className="text-base font-black text-emerald-950 mb-2">{language === "hi" ? "फ़ीचर्स व लाभ" : "Key Benefits"}</h4>
-                          <div className="text-xs text-emerald-800 leading-relaxed font-semibold">
+                          <h4 className="text-xl font-black text-emerald-950 mb-4">{language === "hi" ? "फ़ीचर्स व लाभ" : "Key Benefits"}</h4>
+                          <div className="text-sm md:text-base text-emerald-800 leading-relaxed font-bold">
                             {selectedTopic.benefitsHindi || selectedTopic.benefitsEnglish ? (
                               <>
                                 <p className="text-emerald-900 font-extrabold mb-1">
@@ -798,10 +809,10 @@ export default function App() {
 
                       </div>
 
-                      <div className="text-xs text-zinc-600 leading-relaxed mt-6 p-4 bg-zinc-50 rounded-2xl border border-zinc-200">
-                        <span className="font-extrabold text-zinc-900">Flow Analysis: </span>
+                      <div className="text-sm md:text-base text-zinc-600 leading-relaxed mt-8 p-6 md:p-8 bg-zinc-50 rounded-[1.5rem] border-2 border-zinc-200 shadow-inner">
+                        <span className="font-extrabold text-zinc-900 text-lg">Flow Analysis: </span>
                         {language === "hi" 
-                          ? "यह प्रणाली एनक्रिप्टेड फ़ाइल अपलोड या लाइव सीसीटीवी वीडियो फीड के स्रोत डेटा को समेटती है, इसे एपीआई गेटवे द्वारा सर्वर-साइड जेमिनी 3.5 मॉडल में भेजती है, जहां तंत्रिका नेटवर्क सेकंडों में संदर्भ को संसाधित करता है, और निष्कर्ष सीधे स्थानीय कमांड और पुलिस मुख्यालय (PHQ) के डैशबोर्ड पर रेड अलर्ट संचालित करता है।"
+                          ? "यह प्रणाली एनक्रिप्टेड फ़ाइल अपलोड या लाइव सीसीटीवी वीडियो फीड के स्रोत डेटा को समेटती है, इसे एपीआई गेटवे द्वारा सर्वर-साइड जेमिनी एआई मॉडल में भेजती है, जहां तंत्रिका नेटवर्क सेकंडों में संदर्भ को संसाधित करता है, और निष्कर्ष सीधे स्थानीय कमांड और पुलिस मुख्यालय (PHQ) के डैशबोर्ड पर रेड अलर्ट संचालित करता है।"
                           : "The telemetry pipelines fetch multi-source files, encoding them into JSON context frames, and proxy the payload server-side using the GoogleGenAI client SDK. Model predictions generate state signals instantly routed back to central police controls."
                         }
                       </div>
@@ -811,21 +822,21 @@ export default function App() {
                     {/* Database & Neural Details bento grids */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       
-                      <div className="bg-white border-2 border-zinc-200 p-6 rounded-3xl shadow-xs">
-                        <h4 className="text-xs font-black text-zinc-450 uppercase mb-3 tracking-widest">💾 Database Sync Stack</h4>
-                        <ul className="text-xs text-zinc-600 space-y-2 list-disc pl-4 leading-normal">
-                          <li><span className="text-zinc-900 font-extrabold">Neo4j Graph Analytics:</span> Map complex criminal rings & whatsapp contact overlaps.</li>
-                          <li><span className="text-zinc-900 font-extrabold">CCTNS Core Sync Pipeline:</span> Integrated federated tables without data privacy leaks.</li>
-                          <li><span className="text-zinc-900 font-extrabold">Milvus Embeddings:</span> High-dimensional face/voice vector embeddings matching.</li>
+                      <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 rounded-[2rem] shadow-lg shadow-zinc-200/50 hover:shadow-xl transition-all duration-300">
+                        <h4 className="text-sm md:text-base font-black text-zinc-500 uppercase mb-4 tracking-widest">💾 Database Sync Stack</h4>
+                        <ul className="text-sm text-zinc-600 space-y-3 list-disc pl-5 leading-relaxed font-medium">
+                          <li><span className="text-zinc-900 font-extrabold text-base">Neo4j Graph Analytics:</span> Map complex criminal rings & whatsapp contact overlaps.</li>
+                          <li><span className="text-zinc-900 font-extrabold text-base">CCTNS Core Sync Pipeline:</span> Integrated federated tables without data privacy leaks.</li>
+                          <li><span className="text-zinc-900 font-extrabold text-base">Milvus Embeddings:</span> High-dimensional face/voice vector embeddings matching.</li>
                         </ul>
                       </div>
 
-                      <div className="bg-white border-2 border-zinc-200 p-6 rounded-3xl shadow-xs">
-                        <h4 className="text-xs font-black text-zinc-455 uppercase mb-3 tracking-widest">🧠 AI Models Overview</h4>
-                        <ul className="text-xs text-zinc-600 space-y-2 list-disc pl-4 leading-normal">
-                          <li><span className="text-zinc-900 font-extrabold">NLP Tokenizer (BERT):</span> Case file entities mapping and NER classification.</li>
-                          <li><span className="text-zinc-900 font-extrabold">Computer Vision Models:</span> YOLO real-time speed monitoring and crowd count overlays.</li>
-                          <li><span className="text-zinc-900 font-extrabold">Integrity Check Analyzer:</span> Wavelet analysis of high frequency vocal stress.</li>
+                      <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 rounded-[2rem] shadow-lg shadow-zinc-200/50 hover:shadow-xl transition-all duration-300">
+                        <h4 className="text-sm md:text-base font-black text-zinc-500 uppercase mb-4 tracking-widest">🧠 AI Models Overview</h4>
+                        <ul className="text-sm text-zinc-600 space-y-3 list-disc pl-5 leading-relaxed font-medium">
+                          <li><span className="text-zinc-900 font-extrabold text-base">NLP Tokenizer (BERT):</span> Case file entities mapping and NER classification.</li>
+                          <li><span className="text-zinc-900 font-extrabold text-base">Computer Vision Models:</span> YOLO real-time speed monitoring and crowd count overlays.</li>
+                          <li><span className="text-zinc-900 font-extrabold text-base">Integrity Check Analyzer:</span> Wavelet analysis of high frequency vocal stress.</li>
                         </ul>
                       </div>
 
@@ -838,27 +849,27 @@ export default function App() {
                 {activeDocTab === "sandbox" && (
                   <div className="space-y-6">
                     
-                    <div className="bg-indigo-50/50 border-2 border-indigo-100 p-6 rounded-3xl">
-                      <div className="flex items-center gap-3 mb-4">
-                        <div className="bg-indigo-600 text-white p-2.5 rounded-2xl shadow-xs">
-                          <Sparkles className="w-5 h-5" />
+                    <div className="bg-indigo-50/50 border-2 border-indigo-200 p-8 md:p-10 rounded-[2rem] shadow-xl shadow-indigo-100/50">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div className="bg-indigo-600 text-white p-4 rounded-[1.5rem] shadow-lg shadow-indigo-500/30">
+                          <Sparkles className="w-8 h-8" />
                         </div>
                         <div className="flex-1">
-                          <div className="flex flex-wrap items-center justify-between gap-2">
-                            <h3 className="text-sm font-black text-indigo-950 uppercase tracking-wider">
+                          <div className="flex flex-wrap items-center justify-between gap-3">
+                            <h3 className="text-lg md:text-xl font-black text-indigo-950 uppercase tracking-widest">
                               {language === "hi" ? "त्वरित एआई सिमुलेशन टेस्टबेड" : "Interactive Neural Testbed"}
                             </h3>
                             {renderSandboxBadge(selectedTopic.sandboxType, true, language)}
                           </div>
-                          <p className="text-[11px] font-semibold text-indigo-650 mt-1">
+                          <p className="text-sm md:text-base font-bold text-indigo-600/80 mt-2">
                             Query the custom police AI model with custom inputs and see formatted outcomes.
                           </p>
                         </div>
                       </div>
 
                       {/* Prompt trigger Textarea */}
-                      <div className="space-y-2">
-                        <label className="block text-xs font-extrabold text-zinc-500 uppercase tracking-widest">
+                      <div className="space-y-3">
+                        <label className="block text-sm font-black text-zinc-500 uppercase tracking-widest">
                           {language === "hi" ? "इनपुट विवरण / Case Statement Input Context:" : "Inferred Input Context:"}
                         </label>
                         <textarea
@@ -866,21 +877,21 @@ export default function App() {
                           value={sandboxPrompt}
                           onChange={(e) => setSandboxPrompt(e.target.value)}
                           placeholder="Type or select a demo scenario to query..."
-                          className="w-full bg-white border-2 border-zinc-200 rounded-xl text-xs p-3.5 text-zinc-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-zinc-400 transition-all font-mono leading-relaxed shadow-inner"
+                          className="w-full bg-white border-2 border-zinc-200/80 rounded-[1.5rem] text-sm md:text-base p-5 text-zinc-900 font-semibold focus:outline-none focus:ring-4 focus:ring-indigo-500/20 focus:border-indigo-500 placeholder-zinc-400 transition-all font-mono leading-relaxed shadow-inner"
                         />
                       </div>
 
                       {/* Predefined Quick Preset Scenario Buttons Bento Styled */}
-                      <div className="mt-4">
-                        <span className="text-[10px] uppercase font-black tracking-widest text-zinc-400 block mb-2">
+                      <div className="mt-6">
+                        <span className="text-xs uppercase font-black tracking-widest text-zinc-400 block mb-3">
                           {language === 'hi' ? 'त्वरित डेमो परिदृश्य / Quick Presets:' : 'Quick Presets:'}
                         </span>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-3">
                           {getPresetScenarios(selectedTopic).map((preset, i) => (
                             <button
                               key={i}
                               onClick={() => setSandboxPrompt(preset.prompt)}
-                              className="text-[10px] bg-white hover:bg-zinc-100 text-zinc-700 font-bold px-3.5 py-1.5 rounded-xl border-2 border-zinc-200 hover:border-zinc-300 transition-all shadow-xs"
+                              className="text-xs md:text-sm bg-white hover:bg-zinc-100 text-zinc-700 font-black px-5 py-2.5 rounded-xl border-2 border-zinc-200 hover:border-zinc-300 transition-all shadow-sm active:scale-95"
                             >
                               {preset.label}
                             </button>
@@ -889,25 +900,25 @@ export default function App() {
                       </div>
 
                       {/* Trigger Action Panel Bento */}
-                      <div className="mt-6 pt-5 border-t border-zinc-150 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <div className="text-[10px] text-zinc-400 font-extrabold uppercase tracking-wide flex items-center gap-1.5">
-                          <Sliders className="w-4 h-4 text-zinc-800" />
+                      <div className="mt-8 pt-6 border-t-2 border-zinc-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+                        <div className="text-xs text-zinc-400 font-black uppercase tracking-widest flex items-center gap-2">
+                          <Sliders className="w-5 h-5 text-zinc-600" />
                           <span>Temp: 0.2 | Model: Gemini-2.5-flash | Security checks: Enabled</span>
                         </div>
 
                         <button
                           onClick={handleRunSimulation}
                           disabled={isLoadingSim}
-                          className="w-full sm:w-auto bg-zinc-900 hover:bg-zinc-800 active:bg-black disabled:bg-zinc-300 text-white font-extrabold text-xs px-6 py-3 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer shrink-0"
+                          className="w-full sm:w-auto bg-zinc-900 hover:bg-zinc-800 active:bg-black disabled:bg-zinc-400 text-white font-black text-sm md:text-base px-8 py-4 rounded-[1.5rem] flex items-center justify-center gap-3 transition-all shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-95 cursor-pointer shrink-0"
                         >
                           {isLoadingSim ? (
                             <>
-                              <Loader2 className="w-4 h-4 animate-spin text-white" />
+                              <Loader2 className="w-5 h-5 animate-spin text-white" />
                               <span>सिमुलेशन जारी है... / Running...</span>
                             </>
                           ) : (
                             <>
-                              <Send className="w-4 h-4 text-white" />
+                              <Send className="w-5 h-5 text-white" />
                               <span>रन सक्रिय सिमुलेशन / Run Simulation</span>
                             </>
                           )}
