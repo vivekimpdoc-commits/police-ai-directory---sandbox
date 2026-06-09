@@ -715,10 +715,10 @@ export default function App() {
                       {/* Why Needed Section Bento style */}
                       <div className="bg-slate-800/60 backdrop-blur-xl border-2 border-slate-700/50/80 p-8 md:p-10 rounded-[2rem] flex flex-col justify-between shadow-lg hover:shadow-xl hover:border-slate-600/50 hover:scale-[1.02] transition-all duration-500">
                         <div className="flex justify-between items-start mb-6">
-                          <div className="p-4 bg-indigo-50 text-indigo-700 rounded-[1.5rem] shadow-inner border border-indigo-100">
+                          <div className="p-4 bg-indigo-500/20 text-indigo-400 rounded-[1.5rem] shadow-[inset_0_0_15px_rgba(99,102,241,0.2)] border border-indigo-500/30">
                             <HelpCircle className="w-8 h-8" />
                           </div>
-                          <span className="text-sm font-black text-slate-400 uppercase tracking-widest">Justification</span>
+                          <span className="text-sm font-black text-indigo-400 uppercase tracking-widest">Justification</span>
                         </div>
                         <div>
                           <h4 className="text-xl font-black text-slate-100 mb-4">{language === "hi" ? "ज़रूरत क्यों?" : "Why is it Needed?"}</h4>
@@ -747,29 +747,29 @@ export default function App() {
                       </div>
 
                       {/* Benefits Section Bento style */}
-                      <div className="bg-emerald-50/70 border-2 border-emerald-200 p-8 md:p-10 rounded-[2rem] flex flex-col justify-between shadow-lg shadow-emerald-500/5 hover:shadow-xl hover:shadow-emerald-500/10 hover:border-emerald-300 hover:scale-[1.02] transition-all duration-500">
+                      <div className="bg-emerald-900/10 backdrop-blur-xl border-2 border-emerald-500/20 p-8 md:p-10 rounded-[2rem] flex flex-col justify-between shadow-[inset_0_0_20px_rgba(16,185,129,0.05)] hover:shadow-[inset_0_0_30px_rgba(16,185,129,0.15)] hover:border-emerald-500/50 hover:scale-[1.02] transition-all duration-500">
                         <div className="flex justify-between items-start mb-6">
-                          <div className="p-4 bg-slate-900/60 backdrop-blur-2xl text-emerald-700 rounded-[1.5rem] shadow-md border border-emerald-100">
+                          <div className="p-4 bg-emerald-500/20 backdrop-blur-2xl text-emerald-400 rounded-[1.5rem] shadow-[0_0_15px_rgba(16,185,129,0.2)] border border-emerald-500/40">
                             <CheckCircle2 className="w-8 h-8" />
                           </div>
-                          <span className="text-sm font-black text-emerald-800 uppercase tracking-widest">Impact</span>
+                          <span className="text-sm font-black text-emerald-400 uppercase tracking-widest">Impact</span>
                         </div>
                         <div>
-                          <h4 className="text-xl font-black text-emerald-950 mb-4">{language === "hi" ? "फ़ीचर्स व लाभ" : "Key Benefits"}</h4>
-                          <div className="text-sm md:text-base text-emerald-800 leading-relaxed font-bold">
+                          <h4 className="text-xl font-black text-emerald-300 mb-4">{language === "hi" ? "फ़ीचर्स व लाभ" : "Key Benefits"}</h4>
+                          <div className="text-sm md:text-base text-emerald-100 leading-relaxed font-bold">
                             {selectedTopic.benefitsHindi || selectedTopic.benefitsEnglish ? (
                               <>
-                                <p className="text-emerald-900 font-extrabold mb-1">
+                                <p className="text-white font-extrabold mb-1">
                                   {language === "hi" ? selectedTopic.benefitsHindi : selectedTopic.benefitsEnglish}
                                 </p>
                                 {language === "hi" && selectedTopic.benefitsEnglish && (
-                                  <p className="text-cyan-500/80 italic mt-1 font-medium">
+                                  <p className="text-emerald-400/80 italic mt-1 font-medium">
                                     {selectedTopic.benefitsEnglish}
                                   </p>
                                 )}
                               </>
                             ) : (
-                              <p className="text-emerald-600">
+                              <p className="text-emerald-200">
                                 {language === "hi"
                                   ? "दक्षता में जबरदस्त प्रगति, फाइलों के त्वरित निपटारे और विभागीय निर्णय-प्रक्रिया में गति।"
                                   : "Unlocks superior processing velocities, transparent file audits, and decisive tactical response capabilities."
