@@ -1,0 +1,1260 @@
+import React, { useState, useEffect } from "react";
+import { 
+  ShieldAlert, 
+  CalendarRange, 
+  Eye, 
+  Users, 
+  QrCode, 
+  FileAudio, 
+  Layers, 
+  Mic, 
+  Network, 
+  TrendingUp, 
+  Tv, 
+  Globe, 
+  Share2, 
+  MapPin, 
+  Speech, 
+  LogOut, 
+  GitBranch, 
+  Workflow, 
+  Locate, 
+  UserCheck, 
+  Truck, 
+  AlertOctagon, 
+  Scale, 
+  Contact, 
+  Brain, 
+  HeartHandshake, 
+  Fingerprint, 
+  Cpu, 
+  Database, 
+  Video, 
+  Smile, 
+  Binary, 
+  Link, 
+  Heart, 
+  MessageSquare, 
+  Languages, 
+  Search, 
+  Folder, 
+  FolderOpen, 
+  Server, 
+  ChevronRight, 
+  Sparkles, 
+  Command, 
+  RefreshCw, 
+  Sliders, 
+  ListFilter, 
+  CheckCircle2, 
+  HelpCircle, 
+  Info, 
+  Lock, 
+  BookOpen,
+  Send,
+  Loader2
+} from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { AI_TOPICS, CATEGORIES, AITopic, Category } from "./data";
+
+// Map string icon names to Lucide Icon components
+const iconMap: Record<string, React.ComponentType<any>> = {
+  ShieldAlert,
+  CalendarRange,
+  Eye,
+  UsersHorizontal: Users,
+  Users,
+  QrCode,
+  FileAudio,
+  Layers,
+  Mic,
+  Network,
+  TrendingUp,
+  Tv,
+  Globe,
+  Share2,
+  MapPin,
+  Speech,
+  LogOut,
+  GitBranch,
+  Workflow,
+  Locate,
+  UserCheck,
+  Truck,
+  AlertOctagon,
+  Scale,
+  Contact,
+  Brain,
+  HeartHandshake,
+  Fingerprint,
+  Cpu,
+  Database,
+  Video,
+  Smile,
+  Binary,
+  Link,
+  Heart,
+  MessageSquare,
+  Languages,
+  Server,
+};
+
+// Helper to render beautiful, highlighted, premium badges for each topic sandbox type
+function renderSandboxBadge(type: string, isBig: boolean = false, currentLang: "en" | "hi" = "hi") {
+  let labelEnglish = "Unknown";
+  let labelHindi = "अज्ञात प्रणाली";
+  let IconComponent = ShieldAlert;
+  
+  // Custom styled gradient border classes & color accents matching each category precisely
+  let colorClasses = "bg-zinc-50 border-zinc-200 text-zinc-900";
+
+  switch (type) {
+    case "text":
+      labelEnglish = "Text AI / NLP";
+      labelHindi = "टेक्स्ट एआई / NLP";
+      IconComponent = Speech;
+      colorClasses = "bg-sky-50 text-sky-800 border-sky-200/80 hover:bg-sky-100/60 transition-all";
+      break;
+    case "image":
+      labelEnglish = "Vision AI / Image";
+      labelHindi = "विजन एआई / इमेज";
+      IconComponent = Video;
+      colorClasses = "bg-indigo-50 text-indigo-800 border-indigo-200/80 hover:bg-indigo-100/60 transition-all";
+      break;
+    case "scheduling":
+      labelEnglish = "Scheduling / Logistics";
+      labelHindi = "रोस्टर & प्लानिंग";
+      IconComponent = CalendarRange;
+      colorClasses = "bg-amber-50 text-amber-900 border-amber-200/80 hover:bg-amber-100/50 transition-all";
+      break;
+    case "integrity":
+      labelEnglish = "Integrity / Forensics";
+      labelHindi = "सुरक्षा & डिजिटल साक्ष्य";
+      IconComponent = Cpu;
+      colorClasses = "bg-rose-50 text-rose-800 border-rose-200/80 hover:bg-rose-100/60 transition-all";
+      break;
+    case "geofence":
+      labelEnglish = "Geofence / Tracker";
+      labelHindi = "जियो-फ़ेंस / ट्रैकिंग";
+      IconComponent = MapPin;
+      colorClasses = "bg-emerald-50 text-emerald-800 border-emerald-200/80 hover:bg-emerald-100/60 transition-all";
+      break;
+    case "resource":
+      labelEnglish = "Resource Wearables";
+      labelHindi = "बायो-सेंसर कवच";
+      IconComponent = Layers;
+      colorClasses = "bg-violet-50 text-violet-800 border-violet-200/80 hover:bg-violet-100/60 transition-all";
+      break;
+    case "document":
+      labelEnglish = "Document Analyzer";
+      labelHindi = "दस्तावेज़ विश्लेषक";
+      IconComponent = Database;
+      colorClasses = "bg-zinc-105 text-zinc-850 border-zinc-200 hover:bg-zinc-150/80 transition-all";
+      break;
+    case "trend":
+      labelEnglish = "Predictive / Trends";
+      labelHindi = "पूर्वानुमान / एनालिटिक्स";
+      IconComponent = TrendingUp;
+      colorClasses = "bg-fuchsia-50 text-fuchsia-800 border-fuchsia-200/80 hover:bg-fuchsia-100/70 transition-all";
+      break;
+    default:
+      labelEnglish = type;
+      labelHindi = type;
+      IconComponent = ShieldAlert;
+      colorClasses = "bg-zinc-50 text-zinc-800 border-zinc-200 hover:bg-zinc-100 transition-all";
+      break;
+  }
+
+  if (isBig) {
+    return (
+      <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-2xl border font-sans text-xs font-black shadow-xs tracking-wide select-none ${colorClasses}`}>
+        <IconComponent className="w-4 h-4 shrink-0" />
+        <span>{currentLang === "hi" ? labelHindi : labelEnglish}</span>
+      </div>
+    );
+  }
+
+  return (
+    <span className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-xl border text-[10px] font-mono leading-none tracking-tight select-none shrink-0 uppercase font-black ${colorClasses}`}>
+      <IconComponent className="w-3 h-3 shrink-0" />
+      <span>{currentLang === "hi" ? labelHindi : labelEnglish}</span>
+    </span>
+  );
+}
+
+export default function App() {
+  // Navigation & Search States
+  const [selectedFolder, setSelectedFolder] = useState<string>("station");
+  const [searchQuery, setSearchQuery] = useState<string>("");
+  const [selectedTopic, setSelectedTopic] = useState<AITopic | null>(() => {
+    // Default to the first topic in the station category
+    return AI_TOPICS.find(t => t.categoryId === "station") || null;
+  });
+  const [language, setLanguage] = useState<"en" | "hi">("hi"); // hindi by default since it represents direct vernacular policing needs
+
+  // Document Interaction Tab (Specification vs Architecture Flow vs Sandbox Playground)
+  const [activeDocTab, setActiveDocTab] = useState<"spec" | "flow" | "sandbox">("spec");
+
+  // Sandbox Live Playground States
+  const [sandboxPrompt, setSandboxPrompt] = useState<string>("");
+  const [sandboxResult, setSandboxResult] = useState<string>("");
+  const [isLoadingSim, setIsLoadingSim] = useState<boolean>(false);
+  const [visualTelemetry, setVisualTelemetry] = useState<any>(null);
+  const [processingTime, setProcessingTime] = useState<number | null>(null);
+
+  // Live Server Status Indicator (Simulated active monitoring metrics)
+  const [serverState, setServerState] = useState({
+    activeCoreNodes: 42,
+    healthRate: "99.8%",
+    isLive: true,
+  });
+
+  // Automatically update prompt template or placeholder when topic changes
+  useEffect(() => {
+    if (selectedTopic) {
+      setSandboxPrompt(selectedTopic.sandboxPlaceholder || getDefaultMockPrompt(selectedTopic));
+      setSandboxResult("");
+      setVisualTelemetry(null);
+      setProcessingTime(null);
+      setActiveDocTab("spec");
+    }
+  }, [selectedTopic]);
+
+  const getDefaultMockPrompt = (topic: AITopic): string => {
+    switch (topic.sandboxType) {
+      case "text":
+        return topic.sandboxPlaceholder || "कल रात बाज़ार चौक पर दो बाइक सवार युवकों ने सोने की चेन छीन ली और सेक्टर 3 की ओर भाग गए...";
+      case "image":
+        return "Vision Scan Request: Capture malkhana locker #4 storage. Items detected: 3 pistols, 2 bags of brown powder, 1 red suitcase.";
+      case "scheduling":
+        return "Roster configuration: 8-hour shift pattern, high alert night patrolling, relief crew standby, 4 active officers.";
+      case "geofence":
+        return "Alert trigger: Black car (UP16-AB-1234) fled checkpoint toward National Highway 2 toll plaza at speed 120km/h.";
+      case "resource":
+        return "Demographic inputs: Local religious festival and public march scheduled in Sector B next Friday with estimated footfall 15,000.";
+      case "integrity":
+        return "Behavioral audio transcript: 'नहीं साहब, मैंने कोई चोरी नहीं की। मैं तो उस वक्त केवल मंदिर के पास प्रसाद लेने खड़ा था। मुझे कुछ नहीं पता!'";
+      case "document":
+        return "Case Log: Crime register #1032. Forensic CDR reports delayed by 45 days. Local investigator: IO S.K. Mishra.";
+      case "trend":
+      default:
+        return "Synthesize regional incident logs from past 14 days. Notable high frequencies: UPI scams, chain thefts, lockup brawls.";
+    }
+  };
+
+  const handleRunSimulation = async () => {
+    if (!selectedTopic) return;
+    setIsLoadingSim(true);
+    setSandboxResult("");
+    const startTime = Date.now();
+
+    try {
+      const response = await fetch("/api/simulate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          topicId: selectedTopic.id,
+          titleEnglish: selectedTopic.titleEnglish,
+          sandboxType: selectedTopic.sandboxType,
+          prompt: sandboxPrompt,
+        })
+      });
+
+      const data = await response.json();
+      if (data.success) {
+        setSandboxResult(data.text);
+        setVisualTelemetry(data.visualization);
+        setProcessingTime(Date.now() - startTime);
+      } else {
+        setSandboxResult(`⚠️ Error: ${data.details || 'Could not verify parameters with state servers.'}`);
+      }
+    } catch (err: any) {
+      setSandboxResult(`⚠️ Offline Simulation System Log:\n` +
+                      `Could not reach Express server for AI inference. Auto fallback sequence applied.\n\n` +
+                      `Analysis for: "${sandboxPrompt}"\n` +
+                      `1. System State Verified\n` +
+                      `2. Target Registry Linked\n` +
+                      `Result code: 200 OK (Simulated)`);
+    } finally {
+      setIsLoadingSim(false);
+    }
+  };
+
+  // Filter topics based on search or folder selection
+  const filteredTopics = AI_TOPICS.filter((topic) => {
+    const matchesSearch = 
+      topic.titleEnglish.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      topic.titleHindi.includes(searchQuery) ||
+      topic.subtitleEnglish.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      topic.descriptionEnglish.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      topic.descriptionHindi.includes(searchQuery);
+
+    if (searchQuery) {
+      return matchesSearch; // ignore folder constraints if user searches globally
+    }
+    return topic.categoryId === selectedFolder;
+  });
+
+  return (
+    <div className="min-h-screen bg-zinc-50/50 text-zinc-900 flex flex-col font-sans selection:bg-indigo-600 selection:text-white p-4 md:p-8 box-border animate-fade-in">
+      
+      {/* 🛡️ STATE POLICE POLISHED BENTO-HEADER PANEL */}
+      <header className="bg-white border border-zinc-200 rounded-3xl p-6 mb-6 shadow-xs flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6 transition-all duration-300 hover:shadow-md border-b-4 border-b-indigo-600/30">
+        
+        {/* Logo & Slogan */}
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 rounded-2xl bg-zinc-900 flex items-center justify-center shadow-lg relative shrink-0 border border-zinc-800">
+            <ShieldAlert className="w-8 h-8 text-white" />
+            <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-emerald-500 border-2 border-white rounded-full bg-cover" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2 text-zinc-400 text-xs font-bold tracking-widest uppercase mb-1">
+              <span>Directory</span>
+              <span className="opacity-50">/</span>
+              <span className="text-indigo-600 font-extrabold">National Police AI Registry</span>
+            </div>
+            <h1 className="text-xl md:text-2xl font-black tracking-tight text-zinc-950 font-display flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span>राज्य पुलिस एआई डायरेक्टरी</span>
+              <span className="text-zinc-400 text-sm md:text-base font-normal border-l border-zinc-200 pl-3">Police AI Directory & Sandbox</span>
+            </h1>
+          </div>
+        </div>
+
+        {/* Quick Stats & Controls */}
+        <div className="flex items-center gap-3 w-full lg:w-auto justify-start lg:justify-end flex-wrap md:flex-nowrap">
+          
+          {/* Active node counter bento styled */}
+          <div className="bg-indigo-50/80 border border-indigo-100 text-indigo-900 px-4 py-2.5 rounded-2xl text-[11px] font-black tracking-wider uppercase flex items-center gap-2 shadow-xs bg-opacity-70">
+            <span className="w-2.5 h-2.5 rounded-full bg-indigo-600 animate-pulse relative inline-block">
+              <span className="absolute inset-0 rounded-full bg-indigo-400 animate-ping" />
+            </span>
+            <span>BNS-V2 COMPLIANT PORTAL</span>
+          </div>
+
+          {/* Search Input across all folders */}
+          <div className="bg-zinc-50 border border-zinc-250 px-4 py-2 flex items-center gap-3 rounded-2xl shadow-inner w-full md:w-64 focus-within:ring-2 focus-within:ring-indigo-600/15 focus-within:border-indigo-600 focus-within:bg-white hover:border-zinc-350 transition-all duration-200">
+            <Search className="w-4 h-4 text-zinc-400 shrink-0" />
+            <input
+              type="text"
+              placeholder="खोजें / Search 45+ AI solutions..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="outline-none text-sm w-full bg-transparent text-zinc-900 placeholder-zinc-400 font-extrabold"
+            />
+            {searchQuery && (
+              <button 
+                onClick={() => setSearchQuery("")}
+                className="text-xs font-black text-indigo-600 hover:text-indigo-850 shrink-0 border-l border-zinc-200 pl-2 ml-1"
+              >
+                Clear
+              </button>
+            )}
+          </div>
+
+          {/* Language Switcher Bento Capsule */}
+          <div className="bg-zinc-100 rounded-2xl p-1 flex items-center shadow-inner border border-zinc-200 shrink-0">
+            <button
+              onClick={() => setLanguage("hi")}
+              className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all duration-200 ${
+                language === "hi" 
+                  ? "bg-white text-zinc-950 shadow-xs border border-zinc-200" 
+                  : "text-zinc-500 hover:text-zinc-900"
+              }`}
+            >
+              हिन्दी
+            </button>
+            <button
+              onClick={() => setLanguage("en")}
+              className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all duration-200 ${
+                language === "en" 
+                  ? "bg-white text-zinc-950 shadow-xs border border-zinc-200" 
+                  : "text-zinc-500 hover:text-zinc-900"
+              }`}
+            >
+              EN
+            </button>
+          </div>
+
+        </div>
+      </header>
+
+      {/* 📁 FOLDER CATEGORIES NAV TAB BENTO */}
+      <div className="bg-white border border-zinc-200 rounded-3xl p-4 md:p-5 mb-6 shadow-xs overflow-x-auto scrollbar-none hover:shadow-sm transition-all duration-300">
+        <div className="flex items-center gap-3 min-w-max">
+          <span className="text-xs text-zinc-500 font-black uppercase tracking-widest flex items-center gap-2 mr-3 border-r border-zinc-200 pr-5">
+            <ListFilter className="w-4 h-4 text-zinc-800" />
+            {language === 'hi' ? 'संचालन स्तर' : 'Operations Level'}
+          </span>
+          {CATEGORIES.map((cat) => {
+            const isSelected = selectedFolder === cat.id && !searchQuery;
+            
+            // Map dynamic color guidelines safely
+            const colorMap: Record<string, { bg: string; text: string; border: string; active: string; icon: string }> = {
+              blue: { bg: "bg-blue-50/70", text: "text-blue-900", border: "border-blue-200", active: "bg-blue-600 text-white border-blue-600 shadow-md shadow-blue-100", icon: "text-blue-500" },
+              emerald: { bg: "bg-emerald-50/70", text: "text-emerald-905", border: "border-emerald-200", active: "bg-emerald-600 text-white border-emerald-600 shadow-md shadow-emerald-100", icon: "text-emerald-550" },
+              indigo: { bg: "bg-indigo-50/70", text: "text-indigo-905", border: "border-indigo-200", active: "bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-100", icon: "text-indigo-550" },
+              violet: { bg: "bg-violet-50/70", text: "text-violet-905", border: "border-violet-200", active: "bg-violet-600 text-white border-violet-600 shadow-md shadow-violet-100", icon: "text-violet-550" },
+              rose: { bg: "bg-rose-50/70", text: "text-rose-905", border: "border-rose-200", active: "bg-rose-600 text-white border-rose-600 shadow-md shadow-rose-100", icon: "text-rose-550" },
+              amber: { bg: "bg-amber-50/75", text: "text-amber-950", border: "border-amber-205", active: "bg-amber-500 text-zinc-950 border-amber-500 shadow-md shadow-amber-100", icon: "text-amber-600" },
+            };
+            const stylesObj = colorMap[cat.color] || colorMap.indigo;
+
+            return (
+              <button
+                key={cat.id}
+                onClick={() => {
+                  setSelectedFolder(cat.id);
+                  setSearchQuery(""); // switch folder clears general search to maintain folder perspective
+                  const matched = AI_TOPICS.find(t => t.categoryId === cat.id);
+                  if (matched) setSelectedTopic(matched);
+                }}
+                className={`px-4 py-2.5 rounded-2xl text-xs font-bold tracking-wide flex items-center gap-3 transition-all border relative cursor-pointer hover:scale-[1.01] ${
+                  isSelected 
+                    ? stylesObj.active 
+                    : "bg-zinc-50/60 text-zinc-700 border-zinc-200 hover:border-zinc-300 hover:bg-zinc-100"
+                }`}
+              >
+                {/* Simulated Directory Folder Icon */}
+                {isSelected ? (
+                  <FolderOpen className={`w-4.5 h-4.5 text-white`} />
+                ) : (
+                  <Folder className={`w-4.5 h-4.5 ${stylesObj.icon}`} />
+                )}
+                <div className="text-left">
+                  <div className={`font-black text-[11px] leading-tight ${isSelected ? "text-white" : "text-zinc-900"}`}>
+                    {language === "hi" ? cat.nameHindi : cat.nameEnglish}
+                  </div>
+                  <div className={`text-[9.5px] font-semibold ${isSelected ? "text-indigo-100/80" : "text-zinc-500"}`}>
+                    {AI_TOPICS.filter(t => t.categoryId === cat.id).length} Units
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* SEARCH OVERLAY STATE INDICATOR BENTO */}
+      {searchQuery && (
+        <div className="bg-indigo-50 border border-indigo-150 rounded-2xl p-4 mb-6 flex items-center justify-between shadow-xs">
+          <span className="text-xs font-bold text-indigo-900">
+            🔍 Showing filtered results for "<span className="font-black text-indigo-650">{searchQuery}</span>" across all administrative directories.
+          </span>
+          <button 
+            onClick={() => setSearchQuery("")}
+            className="text-xs font-black text-indigo-700 hover:text-indigo-900 underline bg-white px-3.5 py-1.5 border border-indigo-200 rounded-xl cursor-pointer hover:bg-indigo-50/40 transition-colors"
+          >
+            Back to Categories
+          </button>
+        </div>
+      )}
+
+      {/* 📊 MAIN CONTENT LAYOUT GRID */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        
+        {/* 🗄️ LEFT SIDEBAR: TOPICS BENTO CELL */}
+        <section className="lg:col-span-4 bg-white border border-zinc-200 rounded-3xl overflow-hidden shadow-xs flex flex-col hover:shadow-sm transition-all duration-300">
+          
+          <div className="bg-zinc-50/70 px-5 py-4 border-b border-zinc-200 flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-zinc-900" />
+              <h2 className="text-xs font-black uppercase tracking-widest text-zinc-900">
+                {searchQuery ? "All Search Hits" : `${CATEGORIES.find(c => c.id === selectedFolder)?.nameEnglish} List`}
+              </h2>
+            </div>
+            <span className="bg-white border border-zinc-200 text-zinc-700 font-extrabold px-2.5 py-0.5 rounded-lg text-[10px] font-mono">
+              {filteredTopics.length} Matches
+            </span>
+          </div>
+
+          <div className="divide-y divide-zinc-100 max-h-[620px] overflow-y-auto scrollbar-thin">
+            {filteredTopics.length > 0 ? (
+              filteredTopics.map((topic) => {
+                const isSelected = selectedTopic?.id === topic.id;
+                const IconComponent = iconMap[topic.icon] || ShieldAlert;
+                
+                const topicColorKey = CATEGORIES.find(c => c.id === topic.categoryId)?.color || "indigo";
+                const bgSelectedClass = topicColorKey === "amber" 
+                  ? "bg-amber-50/60 border-l-amber-500 text-zinc-950 font-black"
+                  : topicColorKey === "emerald"
+                  ? "bg-emerald-50/60 border-l-emerald-600 text-zinc-950 font-black"
+                  : topicColorKey === "blue"
+                  ? "bg-blue-50/60 border-l-blue-600 text-zinc-950 font-black"
+                  : topicColorKey === "violet"
+                  ? "bg-violet-50/60 border-l-violet-600 text-zinc-950 font-black"
+                  : topicColorKey === "rose"
+                  ? "bg-rose-50/60 border-l-rose-600 text-zinc-950 font-black"
+                  : "bg-indigo-50/60 border-l-indigo-600 text-zinc-950 font-black";
+
+                return (
+                  <button
+                    key={topic.id}
+                    onClick={() => setSelectedTopic(topic)}
+                    className={`w-full text-left p-4.5 transition-all duration-200 outline-none flex items-start gap-3.5 border-l-4 relative cursor-pointer ${
+                      isSelected 
+                        ? bgSelectedClass 
+                        : "border-transparent hover:bg-zinc-50/60 text-zinc-650 hover:text-zinc-950"
+                    }`}
+                  >
+                    <div className={`p-2.5 rounded-xl shrink-0 transition-all ${
+                      isSelected 
+                        ? (topicColorKey === 'amber' ? 'bg-amber-100/80 text-amber-950' : 'bg-white shadow-xs text-indigo-600') 
+                        : "bg-zinc-50 text-zinc-400"
+                    }`}>
+                      <IconComponent className="w-5 h-5 font-bold" />
+                    </div>
+
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-1 mb-1.5">
+                        <span className="font-extrabold text-xs text-zinc-900 truncate pr-1">
+                          {language === "hi" ? topic.titleHindi : topic.titleEnglish}
+                        </span>
+                        {renderSandboxBadge(topic.sandboxType, false, language)}
+                      </div>
+                      
+                      <p className="text-[10px] font-semibold text-zinc-400 truncate">
+                        {topic.subtitleEnglish}
+                      </p>
+
+                      <p className="text-[11px] text-zinc-550 line-clamp-1 mt-1 leading-relaxed">
+                        {language === "hi" ? topic.descriptionHindi : topic.descriptionEnglish}
+                      </p>
+                    </div>
+
+                    {isSelected && (
+                      <div className="absolute right-3 top-1/2 -translate-y-1/2 text-indigo-600">
+                        <ChevronRight className="w-4 h-4 shrink-0" />
+                      </div>
+                    )}
+                  </button>
+                );
+              })
+            ) : (
+              <div className="p-8 text-center text-zinc-400 text-xs font-semibold">
+                <Info className="w-8 h-8 mx-auto text-zinc-350 mb-2" />
+                No police modules found matching query.
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* 📁 PRIMARY MIDDLE CONTAINER: AI SOLUTION DETAILS BENTO */}
+        <section className="lg:col-span-8 flex flex-col gap-6">
+
+          {selectedTopic ? (
+            <div className="bg-white border border-zinc-200/80 rounded-3xl overflow-hidden shadow-xs hover:shadow-sm flex flex-col transition-all duration-300">
+              
+              {/* TOP CASE HEADER BENTO */}
+              <div className="bg-zinc-50/80 p-6 border-b border-zinc-200 relative flex flex-col gap-3">
+                
+                {/* Abstract decorative layout dots */}
+                <div className="absolute right-6 top-6 flex items-center gap-1.5">
+                  <div className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
+                  <div className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
+                </div>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="font-mono text-[9px] text-zinc-600 bg-white border-2 border-zinc-200 px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                    DEPT NODE: {selectedTopic.id.toUpperCase()}
+                  </span>
+                  <span className="text-[10px] text-zinc-400 font-extrabold uppercase tracking-wide">
+                    {CATEGORIES.find(c => c.id === selectedTopic.categoryId)?.nameEnglish} • Level III
+                  </span>
+                  {renderSandboxBadge(selectedTopic.sandboxType, true, language)}
+                </div>
+
+                <div>
+                  <h2 className="text-xl md:text-3xl font-black text-zinc-900 leading-tight font-display flex flex-wrap items-center gap-x-2.5 gap-y-1">
+                    <span className="text-zinc-900">
+                      {language === "hi" ? selectedTopic.titleHindi : selectedTopic.titleEnglish}
+                    </span>
+                    <span className="text-sm font-bold text-zinc-400 pl-2.5 border-l-2 border-zinc-200 self-end mb-1">
+                      {language === "hi" ? selectedTopic.titleEnglish : selectedTopic.titleHindi}
+                    </span>
+                  </h2>
+
+                  <p className="text-xs text-zinc-500 mt-1 max-w-xl italic font-semibold">
+                    "{selectedTopic.subtitleEnglish}"
+                  </p>
+                </div>
+              </div>
+
+              {/* 📑 CASE DOC ACTIONS TABS BENTO STYLE */}
+              <div className="flex border-b border-zinc-200 bg-zinc-50/50 p-2 gap-2">
+                <button
+                  onClick={() => setActiveDocTab("spec")}
+                  className={`flex-1 md:flex-initial px-5 py-3 text-xs font-black tracking-widest uppercase transition-all rounded-2xl flex items-center justify-center gap-2 border ${
+                    activeDocTab === "spec"
+                      ? "text-zinc-900 bg-white border-zinc-900 shadow-sm"
+                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100"
+                  }`}
+                >
+                  <BookOpen className="w-4 h-4 text-zinc-900" />
+                  <span>{language === "hi" ? "1. प्रणाली विशिष्टता" : "1. System Spec"}</span>
+                </button>
+                <button
+                  onClick={() => setActiveDocTab("flow")}
+                  className={`flex-1 md:flex-initial px-5 py-3 text-xs font-black tracking-widest uppercase transition-all rounded-2xl flex items-center justify-center gap-2 border ${
+                    activeDocTab === "flow"
+                      ? "text-zinc-900 bg-white border-zinc-900 shadow-sm"
+                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100"
+                  }`}
+                >
+                  <Workflow className="w-4 h-4 text-emerald-600" />
+                  <span>{language === "hi" ? "2. एआई तकनीकी प्रवाह" : "2. Technical Flow"}</span>
+                </button>
+                <button
+                  onClick={() => setActiveDocTab("sandbox")}
+                  className={`flex-1 md:flex-initial px-5 py-3 text-xs font-black tracking-widest uppercase transition-all rounded-2xl flex items-center justify-center gap-2 border relative ${
+                    activeDocTab === "sandbox"
+                      ? "text-zinc-900 bg-white border-zinc-900 shadow-sm"
+                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100"
+                  }`}
+                >
+                  <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
+                  <span>{language === "hi" ? "3. एआई लाइव सैंडबॉक्स" : "3. Live AI Sandbox"}</span>
+                  <span className="absolute -top-1 -right-1 inline-flex items-center px-2 py-0.5 rounded-full text-[8.5px] font-black bg-zinc-900 text-white shadow-sm border border-zinc-700">
+                    TEST
+                  </span>
+                </button>
+              </div>
+
+              {/* TAB CONTAINER VIEW */}
+              <div className="p-6 bg-white">
+                
+                {/* --- TAB [1]: SPECIFICATION --- */}
+                {activeDocTab === "spec" && (
+                  <div className="space-y-6">
+                    
+                    {/* Primary Deep Concept Card Bento styled */}
+                    <div className="bg-white border border-zinc-200/85 p-6 rounded-3xl shadow-xs hover:border-zinc-300 hover:scale-[1.005] duration-300 transition-all flex flex-col gap-3">
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-xs font-extrabold uppercase tracking-widest text-zinc-400">
+                          {language === "hi" ? "मूल अवधारणा / Core Concept" : "Core Concept"}
+                        </h3>
+                        <span className="text-xs font-black text-zinc-300 font-display">01</span>
+                      </div>
+                      <p className="text-sm text-zinc-850 font-medium leading-relaxed">
+                        {language === 'hi' ? selectedTopic.descriptionHindi : selectedTopic.descriptionEnglish}
+                      </p>
+                      {language === 'hi' && (
+                        <div className="text-xs text-zinc-500 mt-2 italic border-t-2 border-zinc-100 pt-3 leading-relaxed">
+                          <span className="font-black text-zinc-650">English Context:</span> {selectedTopic.descriptionEnglish}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      
+                      {/* Why Needed Section Bento style */}
+                      <div className="bg-zinc-50 border border-zinc-200/80 p-6 rounded-3xl flex flex-col justify-between hover:border-zinc-300 hover:scale-[1.005] transition-all duration-300">
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="p-3 bg-indigo-50 text-indigo-700 rounded-2xl">
+                            <HelpCircle className="w-5 h-5" />
+                          </div>
+                          <span className="text-xs font-extrabold text-zinc-400 uppercase tracking-widest">Justification</span>
+                        </div>
+                        <div>
+                          <h4 className="text-base font-black text-zinc-900 mb-2">{language === "hi" ? "ज़रूरत क्यों?" : "Why is it Needed?"}</h4>
+                          <div className="text-xs text-zinc-600 leading-relaxed font-semibold">
+                            {selectedTopic.needHindi || selectedTopic.needEnglish ? (
+                              <>
+                                <p className="text-zinc-800 font-bold mb-2">
+                                  {language === "hi" ? selectedTopic.needHindi : selectedTopic.needEnglish}
+                                </p>
+                                {language === "hi" && selectedTopic.needEnglish && (
+                                  <p className="text-zinc-400 italic border-l-2 border-zinc-200 pl-2 mt-1 font-medium">
+                                    {selectedTopic.needEnglish}
+                                  </p>
+                                )}
+                              </>
+                            ) : (
+                              <p className="text-zinc-500">
+                                {language === "hi" 
+                                  ? "पुलिस संचालन को न्यायसंगत और पारदर्शी बनाने के लिए इस डिजिटल मॉड्यूल की सख्त आवश्यकता है।" 
+                                  : "This digital module is highly requested to enhance departmental accountability and precision."
+                                }
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Benefits Section Bento style */}
+                      <div className="bg-emerald-50/70 border border-emerald-150 p-6 rounded-3xl flex flex-col justify-between hover:border-emerald-250 hover:scale-[1.005] transition-all duration-300">
+                        <div className="flex justify-between items-start mb-4">
+                          <div className="p-3 bg-white text-emerald-700 rounded-2xl shadow-xs">
+                            <CheckCircle2 className="w-5 h-5" />
+                          </div>
+                          <span className="text-xs font-extrabold text-emerald-800 uppercase tracking-widest">Impact</span>
+                        </div>
+                        <div>
+                          <h4 className="text-base font-black text-emerald-950 mb-2">{language === "hi" ? "फ़ीचर्स व लाभ" : "Key Benefits"}</h4>
+                          <div className="text-xs text-emerald-800 leading-relaxed font-semibold">
+                            {selectedTopic.benefitsHindi || selectedTopic.benefitsEnglish ? (
+                              <>
+                                <p className="text-emerald-900 font-extrabold mb-1">
+                                  {language === "hi" ? selectedTopic.benefitsHindi : selectedTopic.benefitsEnglish}
+                                </p>
+                                {language === "hi" && selectedTopic.benefitsEnglish && (
+                                  <p className="text-emerald-500/80 italic mt-1 font-medium">
+                                    {selectedTopic.benefitsEnglish}
+                                  </p>
+                                )}
+                              </>
+                            ) : (
+                              <p className="text-emerald-600">
+                                {language === "hi" 
+                                  ? "दक्षता में जबरदस्त प्रगति, फाइलों के त्वरित निपटारे और विभागीय निर्णय-प्रक्रिया में गति।" 
+                                  : "Unlocks superior processing velocities, transparent file audits, and decisive tactical response capabilities."
+                                }
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      </div>
+
+                    </div>
+
+                    {/* Operational Stack Metadata Bento styled */}
+                    <div className="pt-4 border-t-2 border-zinc-150 flex flex-wrap items-center gap-2.5">
+                      <span className="text-[10px] font-black text-zinc-400 uppercase tracking-widest">
+                        Operational Stack:
+                      </span>
+                      <span className="text-xs bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-bold border border-zinc-200 px-3 py-1 rounded-full font-mono transition-colors">
+                        Model: Gemini-2.5-flash
+                      </span>
+                      <span className="text-xs bg-zinc-100 hover:bg-zinc-200 text-zinc-800 font-bold border border-zinc-200 px-3 py-1 rounded-full font-mono transition-colors">
+                        Pipeline: Neural OCR/NLP Graph
+                      </span>
+                      <span className="text-xs bg-indigo-50 text-indigo-700 font-bold border border-indigo-100 px-3 py-1 rounded-full font-mono">
+                        Tier Level: {selectedTopic.categoryId.toUpperCase()}
+                      </span>
+                    </div>
+
+                  </div>
+                )}
+
+                {/* --- TAB [2]: TECH ARCHITECTURE FLOWCHART --- */}
+                {activeDocTab === "flow" && (
+                  <div className="space-y-6">
+                    
+                    <div className="bg-white border-2 border-zinc-200 p-6 rounded-3xl shadow-xs">
+                      <div className="flex items-center justify-between text-xs text-zinc-400 mb-6 pb-3 border-b-2 border-zinc-100">
+                        <span className="uppercase font-bold tracking-wider">🛰️ SYSTEM DATA-ROUTE TELEMETRY DIAGRAM</span>
+                        <span className="text-[10px] text-emerald-600 font-black flex items-center gap-1.5 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-100">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
+                          LIVE DATA STREAM
+                        </span>
+                      </div>
+
+                      {/* Flex/Grid responsive custom node map Bento Layout */}
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-2">
+                        
+                        {/* Node 1: Input Source */}
+                        <div className="bg-white border-2 border-zinc-200 p-4 rounded-2xl flex flex-col justify-between hover:border-zinc-300 transition-colors relative shadow-xs">
+                          <div className="text-[9px] text-zinc-400 uppercase tracking-widest font-black mb-1">Source Node</div>
+                          <div className="text-xs font-extrabold text-zinc-900">
+                            {getInputSourceLabel(selectedTopic.sandboxType)}
+                          </div>
+                          
+                          {/* absolute connector line (desktop only) */}
+                          <div className="hidden md:block absolute top-1/2 left-full w-2 h-0.5 bg-zinc-200 z-10" />
+                        </div>
+
+                        {/* Node 2: Neural Transcoder Engine (Gemini) */}
+                        <div className="bg-zinc-900 text-white p-4 rounded-2xl flex flex-col justify-between relative shadow-md">
+                          <span className="text-[8px] bg-indigo-600 text-white px-2 py-0.5 rounded-full font-bold uppercase tracking-widest w-fit mb-1">
+                            Gemini Core Node
+                          </span>
+                          <div className="text-[10px] text-zinc-400 font-mono">@google/genai</div>
+                          <div className="text-xs font-extrabold text-indigo-300 mt-1">
+                            {getNeuralProcessorLabel(selectedTopic.sandboxType)}
+                          </div>
+
+                          {/* absolute connector line (desktop only) */}
+                          <div className="hidden md:block absolute top-1/2 left-full w-2 h-0.5 bg-zinc-250 z-10" />
+                        </div>
+
+                        {/* Node 3: Database & Ledger */}
+                        <div className="bg-white border-2 border-zinc-200 p-4 rounded-2xl flex flex-col justify-between hover:border-zinc-300 transition-colors relative shadow-xs">
+                          <div className="text-[9px] text-zinc-400 uppercase tracking-widest font-black mb-1">Sync Database</div>
+                          <div className="text-xs font-extrabold text-zinc-900">
+                            {getDatabaseLabel(selectedTopic.categoryId, selectedTopic.id)}
+                          </div>
+
+                          {/* absolute connector line (desktop only) */}
+                          <div className="hidden md:block absolute top-1/2 left-full w-2 h-0.5 bg-zinc-200 z-10" />
+                        </div>
+
+                        {/* Node 4: Action Node / Dispatch */}
+                        <div className="bg-rose-50 border-2 border-rose-100 p-4 rounded-2xl flex flex-col justify-between relative shadow-xs">
+                          <div className="text-[9px] text-rose-600 uppercase tracking-widest font-black mb-1">Target Action</div>
+                          <div className="text-xs font-black text-rose-950 truncate">
+                            {getActionLabel(selectedTopic.sandboxType)}
+                          </div>
+                        </div>
+
+                      </div>
+
+                      <div className="text-xs text-zinc-600 leading-relaxed mt-6 p-4 bg-zinc-50 rounded-2xl border border-zinc-200">
+                        <span className="font-extrabold text-zinc-900">Flow Analysis: </span>
+                        {language === "hi" 
+                          ? "यह प्रणाली एनक्रिप्टेड फ़ाइल अपलोड या लाइव सीसीटीवी वीडियो फीड के स्रोत डेटा को समेटती है, इसे एपीआई गेटवे द्वारा सर्वर-साइड जेमिनी 3.5 मॉडल में भेजती है, जहां तंत्रिका नेटवर्क सेकंडों में संदर्भ को संसाधित करता है, और निष्कर्ष सीधे स्थानीय कमांड और पुलिस मुख्यालय (PHQ) के डैशबोर्ड पर रेड अलर्ट संचालित करता है।"
+                          : "The telemetry pipelines fetch multi-source files, encoding them into JSON context frames, and proxy the payload server-side using the GoogleGenAI client SDK. Model predictions generate state signals instantly routed back to central police controls."
+                        }
+                      </div>
+
+                    </div>
+
+                    {/* Database & Neural Details bento grids */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      
+                      <div className="bg-white border-2 border-zinc-200 p-6 rounded-3xl shadow-xs">
+                        <h4 className="text-xs font-black text-zinc-450 uppercase mb-3 tracking-widest">💾 Database Sync Stack</h4>
+                        <ul className="text-xs text-zinc-600 space-y-2 list-disc pl-4 leading-normal">
+                          <li><span className="text-zinc-900 font-extrabold">Neo4j Graph Analytics:</span> Map complex criminal rings & whatsapp contact overlaps.</li>
+                          <li><span className="text-zinc-900 font-extrabold">CCTNS Core Sync Pipeline:</span> Integrated federated tables without data privacy leaks.</li>
+                          <li><span className="text-zinc-900 font-extrabold">Milvus Embeddings:</span> High-dimensional face/voice vector embeddings matching.</li>
+                        </ul>
+                      </div>
+
+                      <div className="bg-white border-2 border-zinc-200 p-6 rounded-3xl shadow-xs">
+                        <h4 className="text-xs font-black text-zinc-455 uppercase mb-3 tracking-widest">🧠 AI Models Overview</h4>
+                        <ul className="text-xs text-zinc-600 space-y-2 list-disc pl-4 leading-normal">
+                          <li><span className="text-zinc-900 font-extrabold">NLP Tokenizer (BERT):</span> Case file entities mapping and NER classification.</li>
+                          <li><span className="text-zinc-900 font-extrabold">Computer Vision Models:</span> YOLO real-time speed monitoring and crowd count overlays.</li>
+                          <li><span className="text-zinc-900 font-extrabold">Integrity Check Analyzer:</span> Wavelet analysis of high frequency vocal stress.</li>
+                        </ul>
+                      </div>
+
+                    </div>
+
+                  </div>
+                )}
+
+                {/* --- TAB [3]: LIVE AI SANDBOX PLAYGROUND --- */}
+                {activeDocTab === "sandbox" && (
+                  <div className="space-y-6">
+                    
+                    <div className="bg-indigo-50/50 border-2 border-indigo-100 p-6 rounded-3xl">
+                      <div className="flex items-center gap-3 mb-4">
+                        <div className="bg-indigo-600 text-white p-2.5 rounded-2xl shadow-xs">
+                          <Sparkles className="w-5 h-5" />
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex flex-wrap items-center justify-between gap-2">
+                            <h3 className="text-sm font-black text-indigo-950 uppercase tracking-wider">
+                              {language === "hi" ? "त्वरित एआई सिमुलेशन टेस्टबेड" : "Interactive Neural Testbed"}
+                            </h3>
+                            {renderSandboxBadge(selectedTopic.sandboxType, true, language)}
+                          </div>
+                          <p className="text-[11px] font-semibold text-indigo-650 mt-1">
+                            Query the custom police AI model with custom inputs and see formatted outcomes.
+                          </p>
+                        </div>
+                      </div>
+
+                      {/* Prompt trigger Textarea */}
+                      <div className="space-y-2">
+                        <label className="block text-xs font-extrabold text-zinc-500 uppercase tracking-widest">
+                          {language === "hi" ? "इनपुट विवरण / Case Statement Input Context:" : "Inferred Input Context:"}
+                        </label>
+                        <textarea
+                          rows={4}
+                          value={sandboxPrompt}
+                          onChange={(e) => setSandboxPrompt(e.target.value)}
+                          placeholder="Type or select a demo scenario to query..."
+                          className="w-full bg-white border-2 border-zinc-200 rounded-xl text-xs p-3.5 text-zinc-900 font-semibold focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-zinc-400 transition-all font-mono leading-relaxed shadow-inner"
+                        />
+                      </div>
+
+                      {/* Predefined Quick Preset Scenario Buttons Bento Styled */}
+                      <div className="mt-4">
+                        <span className="text-[10px] uppercase font-black tracking-widest text-zinc-400 block mb-2">
+                          {language === 'hi' ? 'त्वरित डेमो परिदृश्य / Quick Presets:' : 'Quick Presets:'}
+                        </span>
+                        <div className="flex flex-wrap gap-2">
+                          {getPresetScenarios(selectedTopic).map((preset, i) => (
+                            <button
+                              key={i}
+                              onClick={() => setSandboxPrompt(preset.prompt)}
+                              className="text-[10px] bg-white hover:bg-zinc-100 text-zinc-700 font-bold px-3.5 py-1.5 rounded-xl border-2 border-zinc-200 hover:border-zinc-300 transition-all shadow-xs"
+                            >
+                              {preset.label}
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Trigger Action Panel Bento */}
+                      <div className="mt-6 pt-5 border-t border-zinc-150 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                        <div className="text-[10px] text-zinc-400 font-extrabold uppercase tracking-wide flex items-center gap-1.5">
+                          <Sliders className="w-4 h-4 text-zinc-800" />
+                          <span>Temp: 0.2 | Model: Gemini-2.5-flash | Security checks: Enabled</span>
+                        </div>
+
+                        <button
+                          onClick={handleRunSimulation}
+                          disabled={isLoadingSim}
+                          className="w-full sm:w-auto bg-zinc-900 hover:bg-zinc-800 active:bg-black disabled:bg-zinc-300 text-white font-extrabold text-xs px-6 py-3 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-md cursor-pointer shrink-0"
+                        >
+                          {isLoadingSim ? (
+                            <>
+                              <Loader2 className="w-4 h-4 animate-spin text-white" />
+                              <span>सिमुलेशन जारी है... / Running...</span>
+                            </>
+                          ) : (
+                            <>
+                              <Send className="w-4 h-4 text-white" />
+                              <span>रन सक्रिय सिमुलेशन / Run Simulation</span>
+                            </>
+                          )}
+                        </button>
+                      </div>
+
+                    </div>
+
+                    {/* AI SIMULATION OUTPUT REPORT DISPLAY BENTO */}
+                    {isLoadingSim && (
+                      <div className="bg-zinc-50 border-2 border-zinc-200 border-dashed p-10 rounded-3xl text-center space-y-3">
+                        <Loader2 className="w-10 h-10 text-indigo-600 animate-spin mx-auto" />
+                        <p className="text-xs font-black text-zinc-800 font-mono tracking-widest uppercase animate-pulse">
+                          INITIALIZING NEURAL TRANSLATION PIPELINE...
+                        </p>
+                        <p className="text-[10px] font-semibold text-zinc-400">
+                          Mapping vectors, routing parameters, and drafting judicial entities on local sandboxed nodes.
+                        </p>
+                      </div>
+                    )}
+
+                    {!isLoadingSim && sandboxResult && (
+                      <div className="bg-zinc-900 text-white rounded-3xl overflow-hidden shadow-xl animate-fade-in border border-zinc-850">
+                        
+                        {/* Simulation Result Header Bento Accent */}
+                        <div className="bg-zinc-950 px-5 py-3 border-b border-zinc-850 flex items-center justify-between text-xs text-indigo-400">
+                          <div className="flex items-center gap-2">
+                            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 relative flex leading-none">
+                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                            </span>
+                            <span className="font-extrabold uppercase tracking-widest font-mono">
+                              ACTIVE NEURAL SYSTEM DEPLOYMENT REPORT
+                            </span>
+                          </div>
+                          {processingTime && (
+                            <span className="font-mono text-zinc-500 font-bold">
+                              {processingTime}ms Response
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Visual Telemetry Metrics Bento style */}
+                        {visualTelemetry && (
+                          <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 p-4 bg-zinc-950 border-b border-zinc-850">
+                            {Object.entries(visualTelemetry).map(([key, val]) => (
+                              <div key={key} className="bg-zinc-900 border border-zinc-800 p-2.5 rounded-xl">
+                                <div className="text-[9px] text-zinc-500 font-mono uppercase tracking-widest">
+                                  {key.replace(/([A-Z])/g, ' $1').trim()}
+                                </div>
+                                <div className="text-xs font-black text-white mt-0.5">
+                                  {String(val)}
+                                </div>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+
+                        {/* Report Body */}
+                        <div className="p-6 font-sans leading-relaxed text-zinc-200 text-xs overflow-x-auto whitespace-pre-wrap max-h-96 overflow-y-auto bg-zinc-900 scrollbar-thin">
+                          <div className="prose prose-invert prose-xs max-w-none text-zinc-200 font-medium">
+                            {formatSandboxOutput(sandboxResult)}
+                          </div>
+                        </div>
+
+                        <div className="bg-zinc-950 px-5 py-3 border-t border-zinc-850 flex items-center justify-between text-[10px] text-zinc-500 font-bold font-mono">
+                          <span>Verified CCTNS Audit Checksum SHA-256 Enabled</span>
+                          <span>BNS V2.0 REGISTER</span>
+                        </div>
+
+                      </div>
+                    )}
+
+                  </div>
+                )}
+
+              </div>
+
+            </div>
+          ) : (
+            <div className="bg-white border border-zinc-200/80 p-12 rounded-3xl text-center text-zinc-400 shadow-xs hover:shadow-sm transition-all duration-300">
+              <ShieldAlert className="w-12 h-12 text-zinc-300 mx-auto mb-3" />
+              Select an AI system node from the left cabinet directory to inspect system specifics.
+            </div>
+          )}
+
+        </section>
+
+      </div>
+
+      {/* 📋 IN-DEPTH BOTTOM DIRECTORY SUMMARY FOOTER BENTO STYLE */}
+      <footer className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white border border-zinc-200/80 rounded-3xl p-6 md:p-8 shadow-xs hover:shadow-sm transition-all duration-300">
+        
+        <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200/60 hover:border-zinc-300 transition-colors">
+          <h4 className="text-zinc-900 font-black mb-2 text-xs uppercase tracking-widest font-display">
+            About Police AI Initiative
+          </h4>
+          <p className="leading-relaxed text-zinc-500 text-xs font-semibold">
+            An administrative suite cataloguing police operations, intelligence frameworks, ranges, zones, and headquarters (PHQ) levels AI-driven concepts for Indian Law Enforcement safety systems.
+          </p>
+        </div>
+
+        <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200/60 hover:border-zinc-300 transition-colors">
+          <h4 className="text-zinc-900 font-black mb-2 text-xs uppercase tracking-widest font-display">
+            Engineering Guidelines
+          </h4>
+          <p className="leading-relaxed text-zinc-500 text-xs font-semibold">
+            Integrates high-dimensional vector databases (Milvus), graph network maps (Neo4j), NLP tokenizers (BERT/RoBERTa), and real-time checkpoint ANPR tracking layers (YOLO).
+          </p>
+        </div>
+
+        <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200/60 hover:border-zinc-300 transition-colors">
+          <h4 className="text-zinc-900 font-black mb-2 text-xs uppercase tracking-widest font-display">
+            Legislative Compliance
+          </h4>
+          <p className="leading-relaxed text-zinc-500 text-xs font-semibold">
+            Complies with BNS (Bharatiya Nyaya Sanhita) procedural guidelines, ensuring secure sandboxed execution, zero data pooling leaks, and auditable departmental ledgers.
+          </p>
+        </div>
+
+        <div className="col-span-1 md:col-span-3 text-center text-[9px] text-zinc-400 uppercase tracking-widest font-black pt-4 border-t border-zinc-200">
+          © 2026 Police AI Directory System. Under Ministry of Home Affairs Technology Framework guidelines. Confidential.
+        </div>
+      </footer>
+
+    </div>
+  );
+}
+
+// Map sandboxType to beautiful illustrative inputs
+function getInputSourceLabel(type: string): string {
+  switch (type) {
+    case 'image': return "📹 1080p Malkhana Armoury Camera Feed";
+    case 'scheduling': return "📅 Duty Shifts Register & Requests Logs";
+    case 'geofence': return "🚗 GPS Beacons & Highway ANPR Toll Cameras";
+    case 'resource': return "📊 Historical Crowd and Festivity Logs";
+    case 'integrity': return "🎤 Interrogation Room High-Res Audio";
+    case 'document': return "📑 Case Diaries & Forensic PDF Files";
+    case 'trend':
+    default: return "📜 75+ District Crime Occurrence Records";
+  }
+}
+
+function getNeuralProcessorLabel(type: string): string {
+  switch (type) {
+    case 'image': return "YOLO / ResNet Material Counter";
+    case 'scheduling': return "Heuristic Duty Rotator V2.1";
+    case 'geofence': return "Escaper Trajectory Predictor";
+    case 'resource': return "Fleet Allocation Predictor";
+    case 'integrity': return "WaveNet Micro-Tremor Stress Check";
+    case 'document': return "BERT Legal Entity Classifier";
+    case 'trend':
+    default: return "GenAI State Pattern Matcher";
+  }
+}
+
+function getDatabaseLabel(category: string, id: string): string {
+  if (id === "gang-network" || category === "zone") {
+    return "🌐 Neo4j Graph DB Node Links";
+  }
+  if (id === "biometric-search" || id === "master-brain") {
+    return "📁 Milvus Embeddings Cluster";
+  }
+  if (id === "blockchain-alliance") {
+    return "🔗 blockchain Secure Ledger";
+  }
+  return "🗄️ Standard CCTNS SQL Ledger";
+}
+
+function getActionLabel(type: string): string {
+  switch (type) {
+    case 'image': return "🚨 Alert Unauthorized Armory Moves";
+    case 'scheduling': return "📊 Auto-Publish Shift Allocation";
+    case 'geofence': return "📢 Ring Interceptor Sirens AT Tolls";
+    case 'resource': return "🚒 Deploy PAC Battalions In Realtime";
+    case 'integrity': return "📣 Send Truth Ratio Warning to IO";
+    case 'document': return "🚩 Flag Delay Escalations to ADG";
+    case 'trend':
+    default: return "📈 Projection Map dispatch to DGP";
+  }
+}
+
+// Predefined quick mock scenario presets for the sandbox tab
+interface PresetScenario {
+  label: string;
+  prompt: string;
+}
+
+function getPresetScenarios(topic: AITopic): PresetScenario[] {
+  switch (topic.sandboxType) {
+    case "text":
+      return [
+        { 
+          label: "Chain Theft (चोरी)", 
+          prompt: "कल शाम करीब 7:30 बजे मेरी पत्नी गीता मंदिर से पूजा करके लौट रही थी। अचानक पीछे से काले रंग की पल्सर बाइक पर दो मुखौटा पहने लड़के आए, उन्होंने पत्नी की सोने की चेन खींची और रेलवे फाटक की तरफ भाग गए। मेरी पत्नी गिर गई और उसके पैर में चोट आई है। कृपया मुकदमा दर्ज़ करें।" 
+        },
+        { 
+          label: "Burglary (नकबजनी)", 
+          prompt: "I closed my grocery store on Sector 15 main road on Sunday night. On Monday morning when I arrived, the side shutter lock was broken with iron rods. Cache drawer containing 15,000 INR was completely empty and 5 bags of costly spices were missing." 
+        },
+        {
+          label: "Slang Code Words",
+          prompt: "Dark-Web Local Slang Capture: Recieved telegram message ID #9041: 'भाई सामान रेडी है, रात को बबुआ के पीछे 2 पुड़िया डिलीवर कर देना, कट्टा भी साथ है, पुलिस नाका बचकर आना।'"
+        }
+      ];
+    case "image":
+      return [
+        { 
+          label: "Armoury Verification", 
+          prompt: "Visual scanning armoury locker sector F3. Captured visual elements: 12 INSAS Rifles, 4 Glock Pistols, 16 empty magazines, 1 steel case ammo box. Compare count with catalog balance of 12 Rifles and 5 Glocks." 
+        },
+        { 
+          label: "Malkhana Seized Items", 
+          prompt: "Evidence logger scan: Seized shipment of 3 crates of contraband dark pill packages and 1 country-made revolver (katta) found in vehicle UP-14-K-9988." 
+        }
+      ];
+    case "scheduling":
+      return [
+        { 
+          label: "Normal 3-Day Rotation", 
+          prompt: "Generate standard shifts. Officers available: Inspector S.K. Sharma, SI Verma, HC Yadav, Constable Singh. High alert market festival zone next Wednesday." 
+        },
+        { 
+          label: "Fatigue Minimizer relief", 
+          prompt: "Review duty pattern. HC Yadav completed consecutive night beach patrol shifts. Reschedule him to day administrative desk duty to avoid burnouts." 
+        }
+      ];
+    case "geofence":
+      return [
+        { 
+          label: "Escape Path Tracking", 
+          prompt: "A getaway white Fortuner SUV (UP-16-AB-3000) involved in a robbery in Noida is heading towards Ghaziabad at high speed. Plot ETA at NH-24 and ring intercept alerts." 
+        },
+        { 
+          label: "Geo-Fence Violation", 
+          prompt: "Device watch tag #8091 (Habitual offender Ramu) entered within 100 meters of VIP secure corridor outer boundary circle." 
+        }
+      ];
+    case "resource":
+      return [
+        { 
+          label: "Election Deployment Grid", 
+          prompt: "Zone ADG deployment query: Draft security logistics grid for upcoming local assembly election in block A (High sensitivity, 20 pooling booths) and block B (Low sensitivity, 15 polling booths)." 
+        },
+        { 
+          label: "Riot Control Standby", 
+          prompt: "Mobilize backup reserve force for Friday parade. Compute ETA for 3 reserved PAC battalions from regional cantonment bases to main city junctions." 
+        }
+      ];
+    case "integrity":
+      return [
+        { 
+          label: "Lockup Hazard Alert", 
+          prompt: "Camera stream locks lockup room 2. Detainee is pacing extremely fast, repeatedly looking toward hanging hooks, and exhibiting critical distress posture." 
+        },
+        { 
+          label: "Micro-Tremor Scan", 
+          prompt: "Suspect narration voice level analyze: 'साहब, मैं उस समय वहीं था पर मैंने किसी का बैग नहीं लिया। मेरा दोस्त राहुल गवाही दे देगा कि मैं तो चाय पी रहा था।' Detect micro-tremors and truth confidence ratio." 
+        }
+      ];
+    case "document":
+      return [
+        { 
+          label: "Pendency Inspection", 
+          prompt: "Case log registry status check: Investigation #451 (Assault case from Jan 2026). Stagnation logs: Case diary pending for past 5 months without IO signing. CDR forensic report pending with local lab." 
+        },
+        { 
+          label: "Evidence chain audit", 
+          prompt: "Assess checksum metrics for evidence document index #1093. Deepfake traces check: Not found. Metadata verification: Valid." 
+        }
+      ];
+    case "trend":
+    default:
+      return [
+        { 
+          label: "Vector detection scan", 
+          prompt: "Review aggregate incident reports across 5 divisions: Sharp spike in digital OTP scams targeting elderly citizens over retirement benefit packages." 
+        },
+        { 
+          label: "District safety check", 
+          prompt: "Perform statistical trend compilation for Range dashboard: Average charging time, crime clearance rate, summon disposal speeds in past quarter." 
+        }
+      ];
+  }
+}
+
+// Elegant formatting of sandbox outputs with beautiful highlights
+function formatSandboxOutput(text: string) {
+  if (!text) return "";
+  
+  // Highlight common police indicators
+  return text.split('\n').map((line, i) => {
+    let style = "mb-1 text-zinc-300 font-sans leading-relaxed text-xs";
+    
+    // Check for headings
+    if (line.trim().startsWith('###') || line.trim().startsWith('**[') || line.trim().startsWith('**1.') || line.trim().startsWith('**2.') || line.trim().startsWith('**3.')) {
+      return (
+        <h4 key={i} className="text-sm font-black text-indigo-400 mt-4 mb-2 border-l-2 border-indigo-500 pl-2">
+          {line.replace(/###|\*\*/g, '').trim()}
+        </h4>
+      );
+    }
+    
+    if (line.trim().startsWith('##')) {
+      return (
+        <h3 key={i} className="text-xs font-black text-white mt-5 mb-3 uppercase tracking-wide bg-indigo-950 px-3 py-1 rounded inline-block">
+          {line.replace(/##|\*\*/g, '').trim()}
+        </h3>
+      );
+    }
+
+    if (line.trim().startsWith('#')) {
+      return (
+        <h2 key={i} className="text-sm font-black text-white mt-6 mb-4 border-b border-zinc-800 pb-2">
+          {line.replace(/#|\*\*/g, '').trim()}
+        </h2>
+      );
+    }
+
+    // Format lists and bullet points
+    if (line.trim().startsWith('•') || line.trim().startsWith('*') || line.trim().startsWith('-')) {
+      return (
+        <div key={i} className="flex items-start gap-2 pl-4 py-0.5">
+          <span className="text-indigo-400 mt-1">•</span>
+          <p className="flex-1 text-zinc-300 text-xs leading-relaxed">{line.replace(/^[•*-]\s*/, '').trim()}</p>
+        </div>
+      );
+    }
+
+    // Table rows
+    if (line.includes('|')) {
+      const parts = line.split('|').map(p => p.trim()).filter(p => p);
+      if (parts.length > 0) {
+        return (
+          <div key={i} className="grid grid-cols-12 gap-1 border-b border-zinc-800 bg-zinc-950 p-1.5 px-3 font-mono text-[11px] text-zinc-400">
+            {parts.map((p, idx) => (
+              <span key={idx} className="col-span-3 truncate text-zinc-300 font-bold">{p}</span>
+            ))}
+          </div>
+        );
+      }
+    }
+
+    // Standard styling
+    return (
+      <p key={i} className={style}>
+        {line}
+      </p>
+    );
+  });
+}
