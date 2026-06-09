@@ -1,55 +1,55 @@
 import React, { useState, useEffect } from "react";
-import { 
-  ShieldAlert, 
-  CalendarRange, 
-  Eye, 
-  Users, 
-  QrCode, 
-  FileAudio, 
-  Layers, 
-  Mic, 
-  Network, 
-  TrendingUp, 
-  Tv, 
-  Globe, 
-  Share2, 
-  MapPin, 
-  Speech, 
-  LogOut, 
-  GitBranch, 
-  Workflow, 
-  Locate, 
-  UserCheck, 
-  Truck, 
-  AlertOctagon, 
-  Scale, 
-  Contact, 
-  Brain, 
-  HeartHandshake, 
-  Fingerprint, 
-  Cpu, 
-  Database, 
-  Video, 
-  Smile, 
-  Binary, 
-  Link, 
-  Heart, 
-  MessageSquare, 
-  Languages, 
-  Search, 
-  Folder, 
-  FolderOpen, 
-  Server, 
-  ChevronRight, 
-  Sparkles, 
-  Command, 
-  RefreshCw, 
-  Sliders, 
-  ListFilter, 
-  CheckCircle2, 
-  HelpCircle, 
-  Info, 
-  Lock, 
+import {
+  ShieldAlert,
+  CalendarRange,
+  Eye,
+  Users,
+  QrCode,
+  FileAudio,
+  Layers,
+  Mic,
+  Network,
+  TrendingUp,
+  Tv,
+  Globe,
+  Share2,
+  MapPin,
+  Speech,
+  LogOut,
+  GitBranch,
+  Workflow,
+  Locate,
+  UserCheck,
+  Truck,
+  AlertOctagon,
+  Scale,
+  Contact,
+  Brain,
+  HeartHandshake,
+  Fingerprint,
+  Cpu,
+  Database,
+  Video,
+  Smile,
+  Binary,
+  Link,
+  Heart,
+  MessageSquare,
+  Languages,
+  Search,
+  Folder,
+  FolderOpen,
+  Server,
+  ChevronRight,
+  Sparkles,
+  Command,
+  RefreshCw,
+  Sliders,
+  ListFilter,
+  CheckCircle2,
+  HelpCircle,
+  Info,
+  Lock,
   BookOpen,
   Send,
   Loader2
@@ -104,7 +104,7 @@ function renderSandboxBadge(type: string, isBig: boolean = false, currentLang: "
   let labelEnglish = "Unknown";
   let labelHindi = "अज्ञात प्रणाली";
   let IconComponent = ShieldAlert;
-  
+
   // Custom styled gradient border classes & color accents matching each category precisely
   let colorClasses = "bg-zinc-50 border-zinc-200 text-zinc-900";
 
@@ -270,11 +270,11 @@ export default function App() {
       }
     } catch (err: any) {
       setSandboxResult(`⚠️ Offline Simulation System Log:\n` +
-                      `Could not reach Express server for AI inference. Auto fallback sequence applied.\n\n` +
-                      `Analysis for: "${sandboxPrompt}"\n` +
-                      `1. System State Verified\n` +
-                      `2. Target Registry Linked\n` +
-                      `Result code: 200 OK (Simulated)`);
+        `Could not reach Express server for AI inference. Auto fallback sequence applied.\n\n` +
+        `Analysis for: "${sandboxPrompt}"\n` +
+        `1. System State Verified\n` +
+        `2. Target Registry Linked\n` +
+        `Result code: 200 OK (Simulated)`);
     } finally {
       setIsLoadingSim(false);
     }
@@ -282,7 +282,7 @@ export default function App() {
 
   // Filter topics based on search or folder selection
   const filteredTopics = AI_TOPICS.filter((topic) => {
-    const matchesSearch = 
+    const matchesSearch =
       topic.titleEnglish.toLowerCase().includes(searchQuery.toLowerCase()) ||
       topic.titleHindi.includes(searchQuery) ||
       topic.subtitleEnglish.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -297,10 +297,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-zinc-50/50 text-zinc-900 flex flex-col font-sans selection:bg-indigo-600 selection:text-white p-6 md:p-12 box-border animate-fade-in">
-      
+
       {/* 🛡️ STATE POLICE POLISHED BENTO-HEADER PANEL */}
       <header className="bg-white border border-zinc-200/80 rounded-[2.5rem] p-8 md:p-10 mb-10 shadow-2xl shadow-indigo-900/5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 transition-all duration-300 hover:shadow-indigo-900/10 border-b-8 border-b-indigo-600/20 backdrop-blur-3xl">
-        
+
         {/* Logo & Slogan */}
         <div className="flex items-center gap-6">
           <div className="w-20 h-20 md:w-24 md:h-24 rounded-[1.5rem] bg-zinc-900 flex items-center justify-center shadow-2xl relative shrink-0 border-2 border-zinc-800">
@@ -322,7 +322,7 @@ export default function App() {
 
         {/* Quick Stats & Controls */}
         <div className="flex items-center gap-3 w-full lg:w-auto justify-start lg:justify-end flex-wrap md:flex-nowrap">
-          
+
           {/* Active node counter bento styled */}
           <div className="bg-indigo-50/90 border-2 border-indigo-100 text-indigo-900 px-6 py-4 rounded-2xl text-xs md:text-sm font-black tracking-widest uppercase flex items-center gap-3 shadow-xl shadow-indigo-500/10 backdrop-blur-md">
             <span className="w-3.5 h-3.5 rounded-full bg-indigo-600 animate-pulse relative inline-block shadow-lg shadow-indigo-500">
@@ -342,7 +342,7 @@ export default function App() {
               className="outline-none text-sm w-full bg-transparent text-zinc-900 placeholder-zinc-400 font-extrabold"
             />
             {searchQuery && (
-              <button 
+              <button
                 onClick={() => setSearchQuery("")}
                 className="text-xs font-black text-indigo-600 hover:text-indigo-850 shrink-0 border-l border-zinc-200 pl-2 ml-1"
               >
@@ -355,21 +355,19 @@ export default function App() {
           <div className="bg-zinc-100 rounded-2xl p-1 flex items-center shadow-inner border border-zinc-200 shrink-0">
             <button
               onClick={() => setLanguage("hi")}
-              className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all duration-200 ${
-                language === "hi" 
-                  ? "bg-white text-zinc-950 shadow-xs border border-zinc-200" 
-                  : "text-zinc-500 hover:text-zinc-900"
-              }`}
+              className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all duration-200 ${language === "hi"
+                ? "bg-white text-zinc-950 shadow-xs border border-zinc-200"
+                : "text-zinc-500 hover:text-zinc-900"
+                }`}
             >
               हिन्दी
             </button>
             <button
               onClick={() => setLanguage("en")}
-              className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all duration-200 ${
-                language === "en" 
-                  ? "bg-white text-zinc-950 shadow-xs border border-zinc-200" 
-                  : "text-zinc-500 hover:text-zinc-900"
-              }`}
+              className={`px-4 py-1.5 rounded-xl text-xs font-black transition-all duration-200 ${language === "en"
+                ? "bg-white text-zinc-950 shadow-xs border border-zinc-200"
+                : "text-zinc-500 hover:text-zinc-900"
+                }`}
             >
               EN
             </button>
@@ -391,14 +389,14 @@ export default function App() {
 
           {CATEGORIES.map((cat) => {
             const isSelected = selectedFolder === cat.id && !searchQuery;
-            
+
             const colorMap: Record<string, { active: string; icon: string; badge: string; glow: string }> = {
-              blue:    { active: "bg-blue-600   text-white border-blue-600   shadow-xl shadow-blue-200",   icon: "text-blue-500",    badge: "bg-blue-100 text-blue-700",    glow: "hover:shadow-blue-100/50"   },
+              blue: { active: "bg-blue-600   text-white border-blue-600   shadow-xl shadow-blue-200", icon: "text-blue-500", badge: "bg-blue-100 text-blue-700", glow: "hover:shadow-blue-100/50" },
               emerald: { active: "bg-emerald-600 text-white border-emerald-600 shadow-xl shadow-emerald-200", icon: "text-emerald-500", badge: "bg-emerald-100 text-emerald-700", glow: "hover:shadow-emerald-100/50" },
-              indigo:  { active: "bg-indigo-600  text-white border-indigo-600  shadow-xl shadow-indigo-200",  icon: "text-indigo-500",  badge: "bg-indigo-100 text-indigo-700",  glow: "hover:shadow-indigo-100/50"  },
-              violet:  { active: "bg-violet-600  text-white border-violet-600  shadow-xl shadow-violet-200",  icon: "text-violet-500",  badge: "bg-violet-100 text-violet-700",  glow: "hover:shadow-violet-100/50"  },
-              rose:    { active: "bg-rose-600    text-white border-rose-600    shadow-xl shadow-rose-200",    icon: "text-rose-500",    badge: "bg-rose-100 text-rose-700",    glow: "hover:shadow-rose-100/50"    },
-              amber:   { active: "bg-amber-500   text-zinc-950 border-amber-500   shadow-xl shadow-amber-200",   icon: "text-amber-500",   badge: "bg-amber-100 text-amber-800",   glow: "hover:shadow-amber-100/50"   },
+              indigo: { active: "bg-indigo-600  text-white border-indigo-600  shadow-xl shadow-indigo-200", icon: "text-indigo-500", badge: "bg-indigo-100 text-indigo-700", glow: "hover:shadow-indigo-100/50" },
+              violet: { active: "bg-violet-600  text-white border-violet-600  shadow-xl shadow-violet-200", icon: "text-violet-500", badge: "bg-violet-100 text-violet-700", glow: "hover:shadow-violet-100/50" },
+              rose: { active: "bg-rose-600    text-white border-rose-600    shadow-xl shadow-rose-200", icon: "text-rose-500", badge: "bg-rose-100 text-rose-700", glow: "hover:shadow-rose-100/50" },
+              amber: { active: "bg-amber-500   text-zinc-950 border-amber-500   shadow-xl shadow-amber-200", icon: "text-amber-500", badge: "bg-amber-100 text-amber-800", glow: "hover:shadow-amber-100/50" },
             };
             const s = colorMap[cat.color] || colorMap.indigo;
 
@@ -411,11 +409,10 @@ export default function App() {
                   const matched = AI_TOPICS.find(t => t.categoryId === cat.id);
                   if (matched) setSelectedTopic(matched);
                 }}
-                className={`px-7 py-5 rounded-2xl flex items-center gap-4 transition-all duration-300 border-2 relative cursor-pointer shrink-0 group ${
-                  isSelected
-                    ? s.active
-                    : `bg-zinc-50 text-zinc-700 border-zinc-200 hover:border-zinc-300 hover:bg-white hover:shadow-lg ${s.glow} hover:scale-[1.04]`
-                }`}
+                className={`px-7 py-5 rounded-2xl flex items-center gap-4 transition-all duration-300 border-2 relative cursor-pointer shrink-0 group ${isSelected
+                  ? s.active
+                  : `bg-zinc-50 text-zinc-700 border-zinc-200 hover:border-zinc-300 hover:bg-white hover:shadow-lg ${s.glow} hover:scale-[1.04]`
+                  }`}
               >
                 {/* Icon */}
                 <div className={`p-2 rounded-xl transition-all ${isSelected ? 'bg-white/20' : 'bg-white shadow-sm border border-zinc-200'}`}>
@@ -455,7 +452,7 @@ export default function App() {
           <span className="text-xs font-bold text-indigo-900">
             🔍 Showing filtered results for "<span className="font-black text-indigo-650">{searchQuery}</span>" across all administrative directories.
           </span>
-          <button 
+          <button
             onClick={() => setSearchQuery("")}
             className="text-xs font-black text-indigo-700 hover:text-indigo-900 underline bg-white px-3.5 py-1.5 border border-indigo-200 rounded-xl cursor-pointer hover:bg-indigo-50/40 transition-colors"
           >
@@ -466,10 +463,10 @@ export default function App() {
 
       {/* 📊 MAIN CONTENT LAYOUT GRID */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-        
+
         {/* 🗄️ LEFT SIDEBAR: TOPICS BENTO CELL */}
         <section className="lg:col-span-4 bg-white border border-zinc-200/80 rounded-[2rem] overflow-hidden shadow-2xl shadow-zinc-200/50 flex flex-col hover:shadow-indigo-900/10 transition-all duration-500 backdrop-blur-3xl">
-          
+
           <div className="bg-zinc-50/70 px-6 py-5 border-b border-zinc-200 flex items-center justify-between">
             <div className="flex items-center gap-3">
               <div className="w-3 h-3 rounded-full bg-zinc-900 shadow-sm" />
@@ -487,47 +484,47 @@ export default function App() {
               filteredTopics.map((topic) => {
                 const isSelected = selectedTopic?.id === topic.id;
                 const IconComponent = iconMap[topic.icon] || ShieldAlert;
-                
+
                 const topicColorKey = CATEGORIES.find(c => c.id === topic.categoryId)?.color || "indigo";
-                const bgSelectedClass = topicColorKey === "amber" 
+                const bgSelectedClass = topicColorKey === "amber"
                   ? "bg-amber-50/60 border-l-amber-500 text-zinc-950 font-black"
                   : topicColorKey === "emerald"
-                  ? "bg-emerald-50/60 border-l-emerald-600 text-zinc-950 font-black"
-                  : topicColorKey === "blue"
-                  ? "bg-blue-50/60 border-l-blue-600 text-zinc-950 font-black"
-                  : topicColorKey === "violet"
-                  ? "bg-violet-50/60 border-l-violet-600 text-zinc-950 font-black"
-                  : topicColorKey === "rose"
-                  ? "bg-rose-50/60 border-l-rose-600 text-zinc-950 font-black"
-                  : "bg-indigo-50/60 border-l-indigo-600 text-zinc-950 font-black";
+                    ? "bg-emerald-50/60 border-l-emerald-600 text-zinc-950 font-black"
+                    : topicColorKey === "blue"
+                      ? "bg-blue-50/60 border-l-blue-600 text-zinc-950 font-black"
+                      : topicColorKey === "violet"
+                        ? "bg-violet-50/60 border-l-violet-600 text-zinc-950 font-black"
+                        : topicColorKey === "rose"
+                          ? "bg-rose-50/60 border-l-rose-600 text-zinc-950 font-black"
+                          : "bg-indigo-50/60 border-l-indigo-600 text-zinc-950 font-black";
 
                 return (
                   <button
                     key={topic.id}
                     onClick={() => setSelectedTopic(topic)}
-                    className={`w-full text-left p-5 md:p-6 transition-all duration-300 outline-none flex items-start gap-4 border-l-8 relative cursor-pointer ${
-                      isSelected 
-                        ? bgSelectedClass 
-                        : "border-transparent hover:bg-zinc-50 text-zinc-650 hover:text-zinc-950"
-                    }`}
+                    className={`w-full text-left p-5 md:p-6 transition-all duration-300 outline-none flex items-start gap-4 border-l-8 relative cursor-pointer ${isSelected
+                      ? bgSelectedClass
+                      : "border-transparent hover:bg-zinc-50 text-zinc-650 hover:text-zinc-950"
+                      }`}
                   >
-                    <div className={`p-2.5 rounded-xl shrink-0 transition-all ${
-                      isSelected 
-                        ? (topicColorKey === 'amber' ? 'bg-amber-100/80 text-amber-950' : 'bg-white shadow-xs text-indigo-600') 
-                        : "bg-zinc-50 text-zinc-400"
-                    }`}>
+                    <div className={`p-2.5 rounded-xl shrink-0 transition-all ${isSelected
+                      ? (topicColorKey === 'amber' ? 'bg-amber-100/80 text-amber-950' : 'bg-white shadow-xs text-indigo-600')
+                      : "bg-zinc-50 text-zinc-400"
+                      }`}>
                       <IconComponent className="w-5 h-5 font-bold" />
                     </div>
 
                     <div className="flex-1 min-w-0">
-                      <div className="flex items-center justify-between gap-2 mb-2">
-                        <span className="font-extrabold text-sm md:text-base text-zinc-900 truncate pr-2">
+                      {/* Title + Badge Row */}
+                      <div className="flex items-start justify-between gap-2 mb-1.5">
+                        <span className="font-extrabold text-sm md:text-base text-zinc-900 leading-snug pr-1">
                           {language === "hi" ? topic.titleHindi : topic.titleEnglish}
                         </span>
                         {renderSandboxBadge(topic.sandboxType, false, language)}
                       </div>
-                      
-                      <p className="text-xs text-zinc-400 font-bold truncate">
+
+                      {/* Subtitle */}
+                      <p className="text-xs text-zinc-400 font-semibold truncate">
                         {topic.subtitleEnglish}
                       </p>
                     </div>
@@ -554,10 +551,10 @@ export default function App() {
 
           {selectedTopic ? (
             <div className="bg-white border-2 border-zinc-200/80 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-900/10 hover:shadow-indigo-900/15 flex flex-col transition-all duration-500">
-              
+
               {/* TOP CASE HEADER BENTO */}
               <div className="bg-zinc-50/90 p-8 md:p-10 border-b-2 border-zinc-200 relative flex flex-col gap-5 backdrop-blur-2xl">
-                
+
                 {/* Abstract decorative layout dots */}
                 <div className="absolute right-6 top-6 flex items-center gap-1.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-zinc-300" />
@@ -595,33 +592,30 @@ export default function App() {
               <div className="flex flex-col md:flex-row border-b-2 border-zinc-200 bg-zinc-50/50 p-4 gap-4">
                 <button
                   onClick={() => setActiveDocTab("spec")}
-                  className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 ${
-                    activeDocTab === "spec"
-                      ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-zinc-200"
-                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
-                  }`}
+                  className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 ${activeDocTab === "spec"
+                    ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-zinc-200"
+                    : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
+                    }`}
                 >
                   <BookOpen className="w-5 h-5 md:w-6 md:h-6 text-zinc-900" />
                   <span>{language === "hi" ? "1. प्रणाली विशिष्टता" : "1. System Spec"}</span>
                 </button>
                 <button
                   onClick={() => setActiveDocTab("flow")}
-                  className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 ${
-                    activeDocTab === "flow"
-                      ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-emerald-100"
-                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
-                  }`}
+                  className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 ${activeDocTab === "flow"
+                    ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-emerald-100"
+                    : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
+                    }`}
                 >
                   <Workflow className="w-5 h-5 md:w-6 md:h-6 text-emerald-600" />
                   <span>{language === "hi" ? "2. एआई तकनीकी प्रवाह" : "2. Technical Flow"}</span>
                 </button>
                 <button
                   onClick={() => setActiveDocTab("sandbox")}
-                  className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 relative ${
-                    activeDocTab === "sandbox"
-                      ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-amber-100"
-                      : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
-                  }`}
+                  className={`flex-1 px-6 py-4 md:py-5 text-sm md:text-base font-black tracking-widest uppercase transition-all rounded-[1.5rem] flex items-center justify-center gap-3 border-2 relative ${activeDocTab === "sandbox"
+                    ? "text-zinc-900 bg-white border-zinc-900 shadow-xl shadow-amber-100"
+                    : "text-zinc-500 border-transparent hover:text-zinc-800 hover:bg-zinc-100 hover:border-zinc-200"
+                    }`}
                 >
                   <Sparkles className="w-5 h-5 md:w-6 md:h-6 text-amber-500 shrink-0" />
                   <span>{language === "hi" ? "3. एआई लाइव सैंडबॉक्स" : "3. Live AI Sandbox"}</span>
@@ -633,11 +627,11 @@ export default function App() {
 
               {/* TAB CONTAINER VIEW */}
               <div className="p-8 md:p-12 bg-white min-h-[500px]">
-                
+
                 {/* --- TAB [1]: SPECIFICATION --- */}
                 {activeDocTab === "spec" && (
                   <div className="space-y-6">
-                    
+
                     {/* Primary Deep Concept Card Bento styled */}
                     <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 rounded-[2rem] shadow-xl shadow-zinc-200/50 hover:border-zinc-300 hover:shadow-2xl hover:scale-[1.01] duration-500 transition-all flex flex-col gap-5">
                       <div className="flex justify-between items-center">
@@ -646,18 +640,48 @@ export default function App() {
                         </h3>
                         <span className="text-xl font-black text-zinc-300 font-display">01</span>
                       </div>
+
+                      {/* Main description */}
                       <p className="text-lg md:text-xl text-zinc-850 font-bold leading-relaxed">
                         {language === 'hi' ? selectedTopic.descriptionHindi : selectedTopic.descriptionEnglish}
                       </p>
+
+                      {/* English Context (shown only in Hindi mode) */}
                       {language === 'hi' && (
-                        <div className="text-xs text-zinc-500 mt-2 italic border-t-2 border-zinc-100 pt-3 leading-relaxed">
+                        <div className="text-xs text-zinc-500 italic border-t-2 border-zinc-100 pt-3 leading-relaxed">
                           <span className="font-black text-zinc-650">English Context:</span> {selectedTopic.descriptionEnglish}
+                        </div>
+                      )}
+
+                      {/* Technical Details — if data available */}
+                      {(selectedTopic.technicalDetailsHindi || selectedTopic.technicalDetailsEnglish) && (
+                        <div className="border-t-2 border-zinc-100 pt-4">
+                          <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-2">
+                            {language === 'hi' ? '🔧 तकनीकी विवरण' : '🔧 Technical Details'}
+                          </p>
+                          <p className="text-sm md:text-base text-zinc-700 leading-relaxed font-semibold">
+                            {language === 'hi'
+                              ? selectedTopic.technicalDetailsHindi
+                              : selectedTopic.technicalDetailsEnglish}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Need — shown as additional context if not already shown below */}
+                      {(selectedTopic.needHindi || selectedTopic.needEnglish) && (
+                        <div className="border-t-2 border-zinc-100 pt-4">
+                          <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-2">
+                            {language === 'hi' ? '❓ ज़रूरत / Need' : '❓ Why Needed'}
+                          </p>
+                          <p className="text-sm md:text-base text-zinc-700 leading-relaxed font-semibold">
+                            {language === 'hi' ? selectedTopic.needHindi : selectedTopic.needEnglish}
+                          </p>
                         </div>
                       )}
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      
+
                       {/* Why Needed Section Bento style */}
                       <div className="bg-zinc-50 border-2 border-zinc-200/80 p-8 md:p-10 rounded-[2rem] flex flex-col justify-between shadow-lg hover:shadow-xl hover:border-zinc-300 hover:scale-[1.02] transition-all duration-500">
                         <div className="flex justify-between items-start mb-6">
@@ -682,8 +706,8 @@ export default function App() {
                               </>
                             ) : (
                               <p className="text-zinc-500">
-                                {language === "hi" 
-                                  ? "पुलिस संचालन को न्यायसंगत और पारदर्शी बनाने के लिए इस डिजिटल मॉड्यूल की सख्त आवश्यकता है।" 
+                                {language === "hi"
+                                  ? "पुलिस संचालन को न्यायसंगत और पारदर्शी बनाने के लिए इस डिजिटल मॉड्यूल की सख्त आवश्यकता है।"
                                   : "This digital module is highly requested to enhance departmental accountability and precision."
                                 }
                               </p>
@@ -716,8 +740,8 @@ export default function App() {
                               </>
                             ) : (
                               <p className="text-emerald-600">
-                                {language === "hi" 
-                                  ? "दक्षता में जबरदस्त प्रगति, फाइलों के त्वरित निपटारे और विभागीय निर्णय-प्रक्रिया में गति।" 
+                                {language === "hi"
+                                  ? "दक्षता में जबरदस्त प्रगति, फाइलों के त्वरित निपटारे और विभागीय निर्णय-प्रक्रिया में गति।"
                                   : "Unlocks superior processing velocities, transparent file audits, and decisive tactical response capabilities."
                                 }
                               </p>
@@ -750,7 +774,7 @@ export default function App() {
                 {/* --- TAB [2]: TECH ARCHITECTURE FLOWCHART --- */}
                 {activeDocTab === "flow" && (
                   <div className="space-y-6">
-                    
+
                     <div className="bg-white border-2 border-zinc-200 p-6 rounded-3xl shadow-xs">
                       <div className="flex items-center justify-between text-xs text-zinc-400 mb-6 pb-3 border-b-2 border-zinc-100">
                         <span className="uppercase font-bold tracking-wider">🛰️ SYSTEM DATA-ROUTE TELEMETRY DIAGRAM</span>
@@ -762,14 +786,14 @@ export default function App() {
 
                       {/* Flex/Grid responsive custom node map Bento Layout */}
                       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-2">
-                        
+
                         {/* Node 1: Input Source */}
                         <div className="bg-white border-2 border-zinc-200 p-4 rounded-2xl flex flex-col justify-between hover:border-zinc-300 transition-colors relative shadow-xs">
                           <div className="text-[9px] text-zinc-400 uppercase tracking-widest font-black mb-1">Source Node</div>
                           <div className="text-xs font-extrabold text-zinc-900">
                             {getInputSourceLabel(selectedTopic.sandboxType)}
                           </div>
-                          
+
                           {/* absolute connector line (desktop only) */}
                           <div className="hidden md:block absolute top-1/2 left-full w-2 h-0.5 bg-zinc-200 z-10" />
                         </div>
@@ -811,7 +835,7 @@ export default function App() {
 
                       <div className="text-sm md:text-base text-zinc-600 leading-relaxed mt-8 p-6 md:p-8 bg-zinc-50 rounded-[1.5rem] border-2 border-zinc-200 shadow-inner">
                         <span className="font-extrabold text-zinc-900 text-lg">Flow Analysis: </span>
-                        {language === "hi" 
+                        {language === "hi"
                           ? "यह प्रणाली एनक्रिप्टेड फ़ाइल अपलोड या लाइव सीसीटीवी वीडियो फीड के स्रोत डेटा को समेटती है, इसे एपीआई गेटवे द्वारा सर्वर-साइड जेमिनी एआई मॉडल में भेजती है, जहां तंत्रिका नेटवर्क सेकंडों में संदर्भ को संसाधित करता है, और निष्कर्ष सीधे स्थानीय कमांड और पुलिस मुख्यालय (PHQ) के डैशबोर्ड पर रेड अलर्ट संचालित करता है।"
                           : "The telemetry pipelines fetch multi-source files, encoding them into JSON context frames, and proxy the payload server-side using the GoogleGenAI client SDK. Model predictions generate state signals instantly routed back to central police controls."
                         }
@@ -821,7 +845,7 @@ export default function App() {
 
                     {/* Database & Neural Details bento grids */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                      
+
                       <div className="bg-white border-2 border-zinc-200 p-8 md:p-10 rounded-[2rem] shadow-lg shadow-zinc-200/50 hover:shadow-xl transition-all duration-300">
                         <h4 className="text-sm md:text-base font-black text-zinc-500 uppercase mb-4 tracking-widest">💾 Database Sync Stack</h4>
                         <ul className="text-sm text-zinc-600 space-y-3 list-disc pl-5 leading-relaxed font-medium">
@@ -848,7 +872,7 @@ export default function App() {
                 {/* --- TAB [3]: LIVE AI SANDBOX PLAYGROUND --- */}
                 {activeDocTab === "sandbox" && (
                   <div className="space-y-6">
-                    
+
                     <div className="bg-indigo-50/50 border-2 border-indigo-200 p-8 md:p-10 rounded-[2rem] shadow-xl shadow-indigo-100/50">
                       <div className="flex items-center gap-4 mb-6">
                         <div className="bg-indigo-600 text-white p-4 rounded-[1.5rem] shadow-lg shadow-indigo-500/30">
@@ -942,7 +966,7 @@ export default function App() {
 
                     {!isLoadingSim && sandboxResult && (
                       <div className="bg-zinc-900 text-white rounded-3xl overflow-hidden shadow-xl animate-fade-in border border-zinc-850">
-                        
+
                         {/* Simulation Result Header Bento Accent */}
                         <div className="bg-zinc-950 px-5 py-3 border-b border-zinc-850 flex items-center justify-between text-xs text-indigo-400">
                           <div className="flex items-center gap-2">
@@ -1010,7 +1034,7 @@ export default function App() {
 
       {/* 📋 IN-DEPTH BOTTOM DIRECTORY SUMMARY FOOTER BENTO STYLE */}
       <footer className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white border border-zinc-200/80 rounded-3xl p-6 md:p-8 shadow-xs hover:shadow-sm transition-all duration-300">
-        
+
         <div className="bg-zinc-50 rounded-2xl p-5 border border-zinc-200/60 hover:border-zinc-300 transition-colors">
           <h4 className="text-zinc-900 font-black mb-2 text-xs uppercase tracking-widest font-display">
             About Police AI Initiative
@@ -1110,13 +1134,13 @@ function getPresetScenarios(topic: AITopic): PresetScenario[] {
   switch (topic.sandboxType) {
     case "text":
       return [
-        { 
-          label: "Chain Theft (चोरी)", 
-          prompt: "कल शाम करीब 7:30 बजे मेरी पत्नी गीता मंदिर से पूजा करके लौट रही थी। अचानक पीछे से काले रंग की पल्सर बाइक पर दो मुखौटा पहने लड़के आए, उन्होंने पत्नी की सोने की चेन खींची और रेलवे फाटक की तरफ भाग गए। मेरी पत्नी गिर गई और उसके पैर में चोट आई है। कृपया मुकदमा दर्ज़ करें।" 
+        {
+          label: "Chain Theft (चोरी)",
+          prompt: "कल शाम करीब 7:30 बजे मेरी पत्नी गीता मंदिर से पूजा करके लौट रही थी। अचानक पीछे से काले रंग की पल्सर बाइक पर दो मुखौटा पहने लड़के आए, उन्होंने पत्नी की सोने की चेन खींची और रेलवे फाटक की तरफ भाग गए। मेरी पत्नी गिर गई और उसके पैर में चोट आई है। कृपया मुकदमा दर्ज़ करें।"
         },
-        { 
-          label: "Burglary (नकबजनी)", 
-          prompt: "I closed my grocery store on Sector 15 main road on Sunday night. On Monday morning when I arrived, the side shutter lock was broken with iron rods. Cache drawer containing 15,000 INR was completely empty and 5 bags of costly spices were missing." 
+        {
+          label: "Burglary (नकबजनी)",
+          prompt: "I closed my grocery store on Sector 15 main road on Sunday night. On Monday morning when I arrived, the side shutter lock was broken with iron rods. Cache drawer containing 15,000 INR was completely empty and 5 bags of costly spices were missing."
         },
         {
           label: "Slang Code Words",
@@ -1125,80 +1149,80 @@ function getPresetScenarios(topic: AITopic): PresetScenario[] {
       ];
     case "image":
       return [
-        { 
-          label: "Armoury Verification", 
-          prompt: "Visual scanning armoury locker sector F3. Captured visual elements: 12 INSAS Rifles, 4 Glock Pistols, 16 empty magazines, 1 steel case ammo box. Compare count with catalog balance of 12 Rifles and 5 Glocks." 
+        {
+          label: "Armoury Verification",
+          prompt: "Visual scanning armoury locker sector F3. Captured visual elements: 12 INSAS Rifles, 4 Glock Pistols, 16 empty magazines, 1 steel case ammo box. Compare count with catalog balance of 12 Rifles and 5 Glocks."
         },
-        { 
-          label: "Malkhana Seized Items", 
-          prompt: "Evidence logger scan: Seized shipment of 3 crates of contraband dark pill packages and 1 country-made revolver (katta) found in vehicle UP-14-K-9988." 
+        {
+          label: "Malkhana Seized Items",
+          prompt: "Evidence logger scan: Seized shipment of 3 crates of contraband dark pill packages and 1 country-made revolver (katta) found in vehicle UP-14-K-9988."
         }
       ];
     case "scheduling":
       return [
-        { 
-          label: "Normal 3-Day Rotation", 
-          prompt: "Generate standard shifts. Officers available: Inspector S.K. Sharma, SI Verma, HC Yadav, Constable Singh. High alert market festival zone next Wednesday." 
+        {
+          label: "Normal 3-Day Rotation",
+          prompt: "Generate standard shifts. Officers available: Inspector S.K. Sharma, SI Verma, HC Yadav, Constable Singh. High alert market festival zone next Wednesday."
         },
-        { 
-          label: "Fatigue Minimizer relief", 
-          prompt: "Review duty pattern. HC Yadav completed consecutive night beach patrol shifts. Reschedule him to day administrative desk duty to avoid burnouts." 
+        {
+          label: "Fatigue Minimizer relief",
+          prompt: "Review duty pattern. HC Yadav completed consecutive night beach patrol shifts. Reschedule him to day administrative desk duty to avoid burnouts."
         }
       ];
     case "geofence":
       return [
-        { 
-          label: "Escape Path Tracking", 
-          prompt: "A getaway white Fortuner SUV (UP-16-AB-3000) involved in a robbery in Noida is heading towards Ghaziabad at high speed. Plot ETA at NH-24 and ring intercept alerts." 
+        {
+          label: "Escape Path Tracking",
+          prompt: "A getaway white Fortuner SUV (UP-16-AB-3000) involved in a robbery in Noida is heading towards Ghaziabad at high speed. Plot ETA at NH-24 and ring intercept alerts."
         },
-        { 
-          label: "Geo-Fence Violation", 
-          prompt: "Device watch tag #8091 (Habitual offender Ramu) entered within 100 meters of VIP secure corridor outer boundary circle." 
+        {
+          label: "Geo-Fence Violation",
+          prompt: "Device watch tag #8091 (Habitual offender Ramu) entered within 100 meters of VIP secure corridor outer boundary circle."
         }
       ];
     case "resource":
       return [
-        { 
-          label: "Election Deployment Grid", 
-          prompt: "Zone ADG deployment query: Draft security logistics grid for upcoming local assembly election in block A (High sensitivity, 20 pooling booths) and block B (Low sensitivity, 15 polling booths)." 
+        {
+          label: "Election Deployment Grid",
+          prompt: "Zone ADG deployment query: Draft security logistics grid for upcoming local assembly election in block A (High sensitivity, 20 pooling booths) and block B (Low sensitivity, 15 polling booths)."
         },
-        { 
-          label: "Riot Control Standby", 
-          prompt: "Mobilize backup reserve force for Friday parade. Compute ETA for 3 reserved PAC battalions from regional cantonment bases to main city junctions." 
+        {
+          label: "Riot Control Standby",
+          prompt: "Mobilize backup reserve force for Friday parade. Compute ETA for 3 reserved PAC battalions from regional cantonment bases to main city junctions."
         }
       ];
     case "integrity":
       return [
-        { 
-          label: "Lockup Hazard Alert", 
-          prompt: "Camera stream locks lockup room 2. Detainee is pacing extremely fast, repeatedly looking toward hanging hooks, and exhibiting critical distress posture." 
+        {
+          label: "Lockup Hazard Alert",
+          prompt: "Camera stream locks lockup room 2. Detainee is pacing extremely fast, repeatedly looking toward hanging hooks, and exhibiting critical distress posture."
         },
-        { 
-          label: "Micro-Tremor Scan", 
-          prompt: "Suspect narration voice level analyze: 'साहब, मैं उस समय वहीं था पर मैंने किसी का बैग नहीं लिया। मेरा दोस्त राहुल गवाही दे देगा कि मैं तो चाय पी रहा था।' Detect micro-tremors and truth confidence ratio." 
+        {
+          label: "Micro-Tremor Scan",
+          prompt: "Suspect narration voice level analyze: 'साहब, मैं उस समय वहीं था पर मैंने किसी का बैग नहीं लिया। मेरा दोस्त राहुल गवाही दे देगा कि मैं तो चाय पी रहा था।' Detect micro-tremors and truth confidence ratio."
         }
       ];
     case "document":
       return [
-        { 
-          label: "Pendency Inspection", 
-          prompt: "Case log registry status check: Investigation #451 (Assault case from Jan 2026). Stagnation logs: Case diary pending for past 5 months without IO signing. CDR forensic report pending with local lab." 
+        {
+          label: "Pendency Inspection",
+          prompt: "Case log registry status check: Investigation #451 (Assault case from Jan 2026). Stagnation logs: Case diary pending for past 5 months without IO signing. CDR forensic report pending with local lab."
         },
-        { 
-          label: "Evidence chain audit", 
-          prompt: "Assess checksum metrics for evidence document index #1093. Deepfake traces check: Not found. Metadata verification: Valid." 
+        {
+          label: "Evidence chain audit",
+          prompt: "Assess checksum metrics for evidence document index #1093. Deepfake traces check: Not found. Metadata verification: Valid."
         }
       ];
     case "trend":
     default:
       return [
-        { 
-          label: "Vector detection scan", 
-          prompt: "Review aggregate incident reports across 5 divisions: Sharp spike in digital OTP scams targeting elderly citizens over retirement benefit packages." 
+        {
+          label: "Vector detection scan",
+          prompt: "Review aggregate incident reports across 5 divisions: Sharp spike in digital OTP scams targeting elderly citizens over retirement benefit packages."
         },
-        { 
-          label: "District safety check", 
-          prompt: "Perform statistical trend compilation for Range dashboard: Average charging time, crime clearance rate, summon disposal speeds in past quarter." 
+        {
+          label: "District safety check",
+          prompt: "Perform statistical trend compilation for Range dashboard: Average charging time, crime clearance rate, summon disposal speeds in past quarter."
         }
       ];
   }
@@ -1207,11 +1231,11 @@ function getPresetScenarios(topic: AITopic): PresetScenario[] {
 // Elegant formatting of sandbox outputs with beautiful highlights
 function formatSandboxOutput(text: string) {
   if (!text) return "";
-  
+
   // Highlight common police indicators
   return text.split('\n').map((line, i) => {
     let style = "mb-1 text-zinc-300 font-sans leading-relaxed text-xs";
-    
+
     // Check for headings
     if (line.trim().startsWith('###') || line.trim().startsWith('**[') || line.trim().startsWith('**1.') || line.trim().startsWith('**2.') || line.trim().startsWith('**3.')) {
       return (
@@ -1220,7 +1244,7 @@ function formatSandboxOutput(text: string) {
         </h4>
       );
     }
-    
+
     if (line.trim().startsWith('##')) {
       return (
         <h3 key={i} className="text-xs font-black text-white mt-5 mb-3 uppercase tracking-wide bg-indigo-950 px-3 py-1 rounded inline-block">
