@@ -299,7 +299,12 @@ export default function App() {
     <div className="min-h-screen bg-zinc-50/50 text-zinc-900 flex flex-col font-sans selection:bg-indigo-600 selection:text-white p-6 md:p-12 box-border animate-fade-in">
 
       {/* 🛡️ STATE POLICE POLISHED BENTO-HEADER PANEL */}
-      <header className="bg-white border border-zinc-200/80 rounded-[2.5rem] p-8 md:p-10 mb-10 shadow-2xl shadow-indigo-900/5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 transition-all duration-300 hover:shadow-indigo-900/10 border-b-8 border-b-indigo-600/20 backdrop-blur-3xl">
+      <motion.header 
+        initial={{ y: -40, opacity: 0 }} 
+        animate={{ y: 0, opacity: 1 }} 
+        transition={{ duration: 0.5, type: "spring", bounce: 0.4 }}
+        className="bg-white border border-zinc-200/80 rounded-[2.5rem] p-8 md:p-10 mb-10 shadow-2xl shadow-indigo-900/5 flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8 hover:shadow-indigo-900/10 border-b-8 border-b-indigo-600/20 backdrop-blur-3xl"
+      >
 
         {/* Logo & Slogan */}
         <div className="flex items-center gap-6">
@@ -374,10 +379,15 @@ export default function App() {
           </div>
 
         </div>
-      </header>
+      </motion.header>
 
       {/* 📁 FOLDER CATEGORIES NAV TAB BENTO */}
-      <div className="bg-white border-2 border-zinc-200/80 rounded-[2rem] p-5 md:p-7 mb-10 shadow-2xl shadow-zinc-200/50 overflow-x-auto scrollbar-none hover:shadow-xl transition-all duration-500">
+      <motion.div 
+        initial={{ opacity: 0, scale: 0.96 }} 
+        animate={{ opacity: 1, scale: 1 }} 
+        transition={{ duration: 0.5, delay: 0.1, type: "spring" }}
+        className="bg-white border-2 border-zinc-200/80 rounded-[2rem] p-5 md:p-7 mb-10 shadow-2xl shadow-zinc-200/50 overflow-x-auto scrollbar-none hover:shadow-xl transition-all duration-500"
+      >
         <div className="flex items-stretch gap-4 min-w-max">
           {/* Label */}
           <div className="flex flex-col items-center justify-center gap-2 pr-6 border-r-2 border-zinc-200 shrink-0">
@@ -401,7 +411,9 @@ export default function App() {
             const s = colorMap[cat.color] || colorMap.indigo;
 
             return (
-              <button
+              <motion.button
+                whileHover={{ y: -4, scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
                 key={cat.id}
                 onClick={() => {
                   setSelectedFolder(cat.id);
@@ -439,11 +451,11 @@ export default function App() {
                     <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
                   </div>
                 )}
-              </button>
+              </motion.button>
             );
           })}
         </div>
-      </div>
+      </motion.div>
 
 
       {/* SEARCH OVERLAY STATE INDICATOR BENTO */}
@@ -462,7 +474,12 @@ export default function App() {
       )}
 
       {/* 📊 MAIN CONTENT LAYOUT GRID */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      <motion.div 
+        initial={{ opacity: 0, y: 40 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.6, delay: 0.2, type: "spring", bounce: 0.3 }}
+        className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start"
+      >
 
         {/* 🗄️ LEFT SIDEBAR: TOPICS BENTO CELL */}
         <section className="lg:col-span-4 bg-white border border-zinc-200/80 rounded-[2rem] overflow-hidden shadow-2xl shadow-zinc-200/50 flex flex-col hover:shadow-indigo-900/10 transition-all duration-500 backdrop-blur-3xl">
@@ -499,7 +516,9 @@ export default function App() {
                           : "bg-indigo-50/60 border-l-indigo-600 text-zinc-950 font-black";
 
                 return (
-                  <button
+                  <motion.button
+                    whileHover={{ scale: 1.01, x: 4 }}
+                    whileTap={{ scale: 0.98 }}
                     key={topic.id}
                     onClick={() => setSelectedTopic(topic)}
                     className={`w-full text-left p-5 md:p-6 transition-all duration-300 outline-none flex items-start gap-4 border-l-8 relative cursor-pointer ${isSelected
@@ -534,7 +553,7 @@ export default function App() {
                         <ChevronRight className="w-4 h-4 shrink-0" />
                       </div>
                     )}
-                  </button>
+                  </motion.button>
                 );
               })
             ) : (
@@ -547,10 +566,21 @@ export default function App() {
         </section>
 
         {/* 📁 PRIMARY MIDDLE CONTAINER: AI SOLUTION DETAILS BENTO */}
-        <section className="lg:col-span-8 flex flex-col gap-6">
+        <motion.section 
+          initial={{ opacity: 0, x: 30 }} 
+          animate={{ opacity: 1, x: 0 }} 
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="lg:col-span-8 flex flex-col gap-6"
+        >
 
           {selectedTopic ? (
-            <div className="bg-white border-2 border-zinc-200/80 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-900/10 hover:shadow-indigo-900/15 flex flex-col transition-all duration-500">
+            <motion.div 
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4 }}
+              className="bg-white border-2 border-zinc-200/80 rounded-[2.5rem] overflow-hidden shadow-2xl shadow-indigo-900/10 hover:shadow-indigo-900/15 flex flex-col transition-all duration-500"
+            >
 
               {/* TOP CASE HEADER BENTO */}
               <div className="bg-zinc-50/90 p-8 md:p-10 border-b-2 border-zinc-200 relative flex flex-col gap-5 backdrop-blur-2xl">
@@ -1020,7 +1050,7 @@ export default function App() {
 
               </div>
 
-            </div>
+            </motion.div>
           ) : (
             <div className="bg-white border border-zinc-200/80 p-12 rounded-3xl text-center text-zinc-400 shadow-xs hover:shadow-sm transition-all duration-300">
               <ShieldAlert className="w-12 h-12 text-zinc-300 mx-auto mb-3" />
@@ -1028,9 +1058,8 @@ export default function App() {
             </div>
           )}
 
-        </section>
-
-      </div>
+        </motion.section>
+      </motion.div>
 
       {/* 📋 IN-DEPTH BOTTOM DIRECTORY SUMMARY FOOTER BENTO STYLE */}
       <footer className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 bg-white border border-zinc-200/80 rounded-3xl p-6 md:p-8 shadow-xs hover:shadow-sm transition-all duration-300">
